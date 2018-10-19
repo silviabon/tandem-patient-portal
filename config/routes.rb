@@ -4,5 +4,10 @@ Rails.application.routes.draw do
 
   scope '/api' do
     resources :drinks
+    resources :ingredients
   end
+
+  root 'drinks#index'
+
+  match '*path', to: 'drinks#index', via: :all
 end
