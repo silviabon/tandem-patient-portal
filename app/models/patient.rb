@@ -5,4 +5,5 @@ class Patient < ApplicationRecord
   has_many :prescriptions
   has_many :conditions
   has_many :appointments
+  has_many :allergies
 end
