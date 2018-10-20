@@ -32,3 +32,34 @@ margarita.ingredients.create(description: "1½ oz. fresh pineapple juice")
 margarita.ingredients.create(description: "½ oz. Grand Marnier or other orange liqueur")
 margarita.ingredients.create(description: "Coarse salt, for rimming glass")
 margarita.ingredients.create(description: "Pineapple wedge and peel, for garnish")
+
+kevin = Provider.create!(first_name: 'Kevin', last_name: 'McIntosh', billing_number: 123456)
+maria = Provider.create!(first_name: 'Maria', last_name: 'Brown', billing_number: 122051)
+logan = Provider.create!(first_name: 'Logan', last_name: 'Smith', billing_number: 193473)
+
+carl = kevin.patients.create!(first_name: 'Carl', last_name: 'McDonald', dob: '1977-01-30', personal_health_number: 801759268, telephone: 6055943726, email: 'carl@gmail.com', password: '123', sex: 'male')
+sarah = kevin.patients.create!(first_name: 'Sarah', last_name: 'Wilson', dob: '1949-10-03', personal_health_number: 809457368, telephone: 6054876396, email: 'sarah@gmail.com', password: '123', sex: 'female')
+
+carl.vitals.create!(bp_s: 40, bp_d: 90, weight_kg: 80, height_cm: 177, temperature_c: 36, pulse: 90, bmi: 27, date: '2018-10-01')
+sarah.vitals.create!(bp_s: 40, bp_d: 90, weight_kg: 60, height_cm: 157, temperature_c: 36, pulse: 98, bmi: 24, date: '2018-09-28')
+sarah.vitals.create!(bp_s: 40, bp_d: 90, weight_kg: 62, height_cm: 157, temperature_c: 36, pulse: 90, bmi: 24, date: '2018-03-14')
+
+sarah.immunizations.create!(name: 'rubeola', dose: '1mg', date: '2010-09-18')
+carl.immunizations.create!(name: 'polio', dose: '1mg', date: '2000-02-10')
+
+sarah.prescriptions.create!(name: 'penicilin', dose: '10mg', quantity: '10 caps', refill: 0, route: 'oral', date: '2018-03-14')
+sarah.prescriptions.create!(name: 'amoxicilin', dose: '10mg', quantity: '30 caps', refill: 1, route: 'oral', date: '2018-04-10')
+carl.prescriptions.create!(name: 'amoxicilin', dose: '10mg', quantity: '30 caps', refill: 0, route: 'oral', date: '2017-09-10')
+
+sarah.conditions.create!(name: 'heart')
+carl.conditions.create!(name: 'high colesterol')
+
+sarah.appointments.create!(date: '2015-11-12', patient_summary: 'i have a cold', concern: 'cold', status: 'completed')
+sarah.appointments.create!(date: '2019-01-03', patient_summary: 'i have a headache', concern: 'headache', status: 'upcoming')
+
+
+app = carl.appointments.create!(date: '2016-07-03', patient_summary: 'i have a stomach pain', concern: 'stomach pain', status: 'completed')
+carl.appointments.create!(date: '2019-03-03', patient_summary: 'i have a stomach pain again', concern: 'stomach pain', status: 'upcoming')
+
+Soap.create!(provider: kevin, appointment: app, doctor_summary: 'hes faking it')
+

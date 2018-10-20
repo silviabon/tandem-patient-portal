@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider: one
+  patient: one
+  name: MyString
+  dose: MyString
+  quantity: MyString
+  refill: 1
+  route: MyString
+
+two:
+  provider: two
+  patient: two
+  name: MyString
+  dose: MyString
+  quantity: MyString
+  refill: 1
+  route: MyString
