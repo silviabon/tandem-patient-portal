@@ -10,8 +10,7 @@ import Confirmation from './components/Confirmation'
 
 class App extends Component {
   render () {
-    return
-    <Router>
+    return<Router>
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/login' component={Login} />
