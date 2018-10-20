@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302185406) do
+ActiveRecord::Schema.define(version: 20181020174706) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -43,6 +43,42 @@ ActiveRecord::Schema.define(version: 20170302185406) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "allergies", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "patient_id"
+    t.string   "name"
+    t.string   "severity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["patient_id"], name: "index_allergies_on_patient_id"
+    t.index ["provider_id"], name: "index_allergies_on_provider_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "patient_id"
+    t.integer  "condition_id"
+    t.date     "date"
+    t.text     "patient_summary"
+    t.string   "concern"
+    t.string   "status"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["condition_id"], name: "index_appointments_on_condition_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
+    t.index ["provider_id"], name: "index_appointments_on_provider_id"
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "patient_id"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["patient_id"], name: "index_conditions_on_patient_id"
+    t.index ["provider_id"], name: "index_conditions_on_provider_id"
+  end
+
   create_table "drinks", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
@@ -52,12 +88,89 @@ ActiveRecord::Schema.define(version: 20170302185406) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "immunizations", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "patient_id"
+    t.string   "name"
+    t.string   "dose"
+    t.date     "date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["patient_id"], name: "index_immunizations_on_patient_id"
+    t.index ["provider_id"], name: "index_immunizations_on_provider_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.integer  "drink_id"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["drink_id"], name: "index_ingredients_on_drink_id"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "dob"
+    t.integer  "personal_health_number"
+    t.bigint   "telephone"
+    t.string   "email"
+    t.string   "password"
+    t.string   "sex"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["provider_id"], name: "index_patients_on_provider_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "patient_id"
+    t.string   "name"
+    t.string   "dose"
+    t.string   "quantity"
+    t.integer  "refill"
+    t.string   "route"
+    t.date     "date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["patient_id"], name: "index_prescriptions_on_patient_id"
+    t.index ["provider_id"], name: "index_prescriptions_on_provider_id"
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "billing_number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "soaps", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "appointment_id"
+    t.text     "doctor_summary"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["appointment_id"], name: "index_soaps_on_appointment_id"
+    t.index ["provider_id"], name: "index_soaps_on_provider_id"
+  end
+
+  create_table "vitals", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "patient_id"
+    t.integer  "bp_s"
+    t.integer  "bp_d"
+    t.float    "weight_kg"
+    t.float    "height_cm"
+    t.float    "temperature_c"
+    t.integer  "pulse"
+    t.float    "bmi"
+    t.date     "date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["patient_id"], name: "index_vitals_on_patient_id"
+    t.index ["provider_id"], name: "index_vitals_on_provider_id"
   end
 
 end

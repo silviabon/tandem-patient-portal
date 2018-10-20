@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider: one
+  patient: one
+  bp_s: 1
+  bp_d: 1
+  weight_kg: 1.5
+  height_cm: 1.5
+  temperature_c: 1.5
+  pulse: 1
+  bmi: 1.5
+
+two:
+  provider: two
+  patient: two
+  bp_s: 1
+  bp_d: 1
+  weight_kg: 1.5
+  height_cm: 1.5
+  temperature_c: 1.5
+  pulse: 1
+  bmi: 1.5
