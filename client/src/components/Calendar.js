@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import { Container, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import Reactcal from 'react-calendar'
 
 class Calendar extends Component {
+  state = {
+    date: new Date(),
+  }
+  
   render () {
-    return <Container text textAlign='center'>
+    return <div className="row">
+    <div className="main col-8">
       <h1>Calendar Page</h1>
-      <Button as={Link} to='/'>Back to home</Button>
-    </Container>
+</div>
+</div>
   }
 }
 
