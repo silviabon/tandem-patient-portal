@@ -7,10 +7,13 @@ import EMR from './components/EMR'
 import Calendar from './components/Calendar'
 import Questionnaire from './components/Questionnaire'
 import Confirmation from './components/Confirmation'
+import Navbar from './components/Navbar'
 
 class App extends Component {
   render () {
-    return<Router>
+    return<div>
+    <Navbar />
+    <Router>
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/login' component={Login} />
@@ -21,6 +24,7 @@ class App extends Component {
         <Route path='/bookingConfirmation' component={Confirmation} />
       </Switch>
     </Router>
+    </div>
   }
 }
 
