@@ -19,7 +19,7 @@ negroni.ingredients.create(description: "⅓ oz. gin")
 negroni.ingredients.create(description: "⅓ oz. sweet vermouth")
 negroni.ingredients.create(description: "Chilled prosecco, or other sparkling wine, for topping")
 negroni.ingredients.create(description: "Orange peel twist (optional)")
-
+\
 margarita = Drink.create(
   title: "Pineapple-Jalapeño Margarita",
   description: "No margarita is complete without fresh-squeezed lime juice—there’s something about the sour punch of citrus that goes so well with the smokiness of tequila. To stir things up, try adding pineapple juice to the mix and muddling in some jalapeño peppers for a little heat.",
@@ -64,7 +64,7 @@ sarah.prescriptions.create!(name: 'Amoxicilin', dose: '10mg', quantity: '30 caps
 carl.prescriptions.create!(name: 'Amoxicilin', dose: '10mg', quantity: '30 caps', refill: 0, route: 'oral', date: '2017-09-10')
 
 sarah.conditions.create!(name: 'High blood pressure')
-carl.conditions.create!(name: 'Diabetes')
+c1 = carl.conditions.create!(name: 'Diabetes')
 
 sarah.allergies.create!(name: 'Ibuprofen', severity: 'Mild')
 carl.allergies.create!(name: 'Peanuts', severity: 'Severe')
@@ -72,7 +72,7 @@ carl.allergies.create!(name: 'Peanuts', severity: 'Severe')
 sarah.appointments.create!(date: '2015-11-12', patient_summary: 'I have a cold', concern: 'cold', status: 'completed')
 sarah.appointments.create!(date: '2019-01-03', patient_summary: 'I have a headache', concern: 'headache', status: 'upcoming')
 
-app = carl.appointments.create!(date: '2016-07-03', patient_summary: 'I have a stomach pain', concern: 'stomach pain', status: 'completed')
+app = carl.appointments.create!(date: '2016-07-03', patient_summary: 'I have a stomach pain', concern: 'stomach pain', status: 'completed', provider: kevin, condition: c1)
 carl.appointments.create!(date: '2019-03-03', patient_summary: 'I have a stomach pain again', concern: 'stomach pain', status: 'upcoming')
 
 Soap.create!(provider: kevin, appointment: app, doctor_summary: 'He is faking it')
