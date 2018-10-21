@@ -33,40 +33,36 @@ class Home extends Component {
             this.setState({ completedAppointments: appts })
           } else {
             this.setState({ upcomingAppointments: appts })
-          } 
+          }
         }
       })
   }
 
   render() {
-    let { completedAppointments } = this.state
-    return completedAppointments
-      ? <Container text>
-        {completedAppointments && completedAppointments.length
-          ? <Container>
-            <br />
-            <Button >Book Appointment</Button>
-            <Header as='h3' >
-              <Header.Content>
-                Upcoming Appointments
-             </Header.Content>
-            </Header>
-            <AppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />
-            <Header as='h3' >
-              <Header.Content>
-                Previous Appointments
-              </Header.Content>
-            </Header>
-            <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
-          </Container>
-          : <Container textAlign='center'>Loading...</Container>
-        }
-      </Container>
-      : <Container text>
-        <p>Loading...</p>
-      </Container>
+    let { completedAppointments, upcomingAppointments } = this.state
+    return (
+    <Container>
+      <br />
+      <Button >Book Appointment</Button>
+      <Header as='h3' >
+        <Header.Content>
+          Upcoming Appointments
+        </Header.Content>
+      </Header>
+      {upcomingAppointments && upcomingAppointments.length
+        ? (<AppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
+        : <Container textAlign='center'>No appointments found.</Container>}
+      <Header as='h3' >
+        <Header.Content>
+          Previous Appointments
+        </Header.Content>
+      </Header>
+      {completedAppointments && completedAppointments.length
+        ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
+        : <Container textAlign='center'>No appointments found.</Container>}
+    </Container>
+    )
   }
 }
-
 
 export default Home

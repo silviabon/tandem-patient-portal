@@ -21,33 +21,34 @@ class Appointment extends Component {
 
   getProvider(provider) {
     this.fetch(`/api/providers/${provider}`)
-      .then(provider => this.setState({ provider: provider}))
+      .then(provider => this.setState({ provider: provider }))
   }
 
 
-  render () {
+  render() {
     const appt = this.props.appointment
     const status = this.props.status
-    let {provider} = this.state
+    let { provider } = this.state
     return provider
-    ?(
+      ? (
         <Container text textAlign='center'>
-      <div>
-        <span> <strong>Date: </strong> <span>{appt.date}</span></span>
-        <span> <strong>Time: </strong><span>{appt.time}</span> </span>
-        <span> <strong>Dr.: </strong> <span>{provider.last_name}</span></span>
-        <span> <strong>Concern: </strong> <span>{appt.concern}</span></span>
-        {status === "upcoming"
-        ? <span>
-          <Button>Change date</Button>
-          <Button>Cancel</Button> </span>
-          : <Button>Details</Button>
-        }  
-      </div>
-    </Container>
-    )
-    : <Container text>
-       <p>Loading...</p>
+          <div>
+            <span> <strong>Date: </strong> <span>{appt.date}</span></span>
+            <span> <strong>Time: </strong><span>{appt.time}</span> </span>
+            <span> <strong>Dr.: </strong> <span>{provider.last_name}</span></span>
+            <span> <strong>Concern: </strong> <span>{appt.concern}</span></span>
+            {status === "upcoming"
+              ? <span>
+                <Button>Change date</Button>
+                <Button>Cancel</Button> 
+                </span>
+              : <Button>Details</Button>
+            }
+          </div>
+        </Container>
+      )
+      : <Container text>
+        <p>Loading...</p>
       </Container>
   }
 }
