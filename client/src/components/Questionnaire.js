@@ -16,6 +16,8 @@ class Questionnaire extends Component {
       <Button as={Link} to='/'>Back to home</Button>
     </Container>
   }
+
+  
 }
 
 export default Questionnaire
