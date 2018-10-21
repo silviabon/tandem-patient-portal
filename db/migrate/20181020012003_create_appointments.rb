@@ -5,6 +5,7 @@ class CreateAppointments < ActiveRecord::Migration[5.0]
       t.references :patient, foreign_key: true
       t.references :condition, foreign_key: true
       t.date :date
+      t.string :time
       t.text :patient_summary
       t.string :concern
       t.string :status
