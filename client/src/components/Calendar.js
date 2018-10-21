@@ -48,7 +48,6 @@ class Calendar extends Component {
       <h1>{this.state.date.getDate()}/{this.state.date.getMonth()}/{this.state.date.getFullYear()}</h1>
       </div>
   </div>) }
-      
     }
   }
 
