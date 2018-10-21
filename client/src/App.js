@@ -10,7 +10,28 @@ import Confirmation from './components/Confirmation'
 import Navbar from './components/Navbar'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+
+    this.state = {
+      apptDate: 'your moms house',
+      apptTime: '5pm'
+    }
+    this.updateApptDate = this.updateApptDate.bind(this);
+  };
+  
+
+  updateApptDate(newDate, newTime) {
+    this.setState({apptDate: newDate, apptTime: newTime});
+    //console.log(this.state)
+  }
+
+  
+
   render () {
+
+
     return<div>
     <Navbar />
     <Router>
@@ -19,8 +40,8 @@ class App extends Component {
         <Route path='/login' component={Login} />
         <Route path='/appointment' component={Appointment} />
         <Route path='/emr' component={EMR} />
-        <Route path='/bookingCalendar' component={Calendar} />
-        <Route path='/bookingQuestionnaire' component={Questionnaire} />
+        <Route path='/bookingCalendar' render={()=><Calendar apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
+        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
         <Route path='/bookingConfirmation' component={Confirmation} />
       </Switch>
     </Router>

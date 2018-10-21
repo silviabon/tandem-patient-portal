@@ -36,6 +36,10 @@ class Home extends Component {
       .then(drink => this.setState({drink: drink}))
   }
 
+  
+
+  
+
   render () {
     let {drinks, drink} = this.state
     return drinks
