@@ -25,17 +25,29 @@ class Calendar extends Component {
     }
     
   render () {
-    let calendar = <Reactcal onClickDay={this.onClickDay} value={this.state.date} />
+    let calendar = <Reactcal onClickDay={this.onClickDay} value={this.state.date}/>
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
-      return (<div className='row'>
+    if (this.state.date.getDay() === 1) {
+      return(<div className='row'>
+      <div className='col-8 main'>
+      <h1> Calendar Page </h1>
+      {calendar}
+      <h1>{this.state.date.getDate()}/{this.state.date.getMonth()}/{this.state.date.getFullYear()}</h1>
+      <ul>
+        <li>Appointment 1</li>
+        <li>Appointment 2</li>
+        <li>Appointment 3</li>
+        <li>Appointment 4</li>
+      </ul>
+      </div>
+  </div>) }
+    else { return(<div className='row'>
       <div className='col-8 main'>
       <h1> Calendar Page </h1>
       {calendar}
       <h1>{this.state.date.getDate()}/{this.state.date.getMonth()}/{this.state.date.getFullYear()}</h1>
       </div>
-  </div>
-      )
+  </div>) }
       
     }
   }
