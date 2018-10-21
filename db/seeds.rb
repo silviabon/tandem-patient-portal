@@ -69,10 +69,9 @@ c1 = carl.conditions.create!(name: 'Diabetes')
 sarah.allergies.create!(name: 'Ibuprofen', severity: 'Mild')
 carl.allergies.create!(name: 'Peanuts', severity: 'Severe')
 
-sarah.appointments.create!(date: '2015-11-12', patient_summary: 'I have a cold', concern: 'cold', status: 'completed')
-sarah.appointments.create!(date: '2019-01-03', patient_summary: 'I have a headache', concern: 'headache', status: 'upcoming')
+app1 = sarah.appointments.create!(provider: kevin, date: '2015-11-12', time: '11:00', patient_summary: 'I have a cold', concern: 'cold', status: 'completed')
+app2 = sarah.appointments.create!(provider: kevin, date: '2019-01-03', time: '18:00', patient_summary: 'I have a headache', concern: 'headache', status: 'upcoming')
+app3 = carl.appointments.create!(provider: kevin, date: '2016-07-03', time: '9:00', patient_summary: 'I have a stomach pain', concern: 'stomach pain', status: 'completed', condition: c1)
+app4 = carl.appointments.create!(provider: kevin, date: '2019-03-03', time: '10:00', patient_summary: 'I have a stomach pain again', concern: 'stomach pain', status: 'upcoming')
 
-app = carl.appointments.create!(date: '2016-07-03', patient_summary: 'I have a stomach pain', concern: 'stomach pain', status: 'completed', provider: kevin, condition: c1)
-carl.appointments.create!(date: '2019-03-03', patient_summary: 'I have a stomach pain again', concern: 'stomach pain', status: 'upcoming')
-
-Soap.create!(provider: kevin, appointment: app, doctor_summary: 'He is faking it')
+Soap.create!(provider: kevin, appointment: app1, doctor_summary: 'He is faking it')
