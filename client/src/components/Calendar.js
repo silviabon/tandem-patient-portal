@@ -20,19 +20,15 @@ class Calendar extends Component {
     this.setState({ date })
   }
 
-
-
   render() {
     let today = this.state.date
 
     const onSelectAppt = e => {
       e.preventDefault()
-      let time = e.currentTarget.textContent
+      //let time = e.currentTarget.textContent
       let apptDate = today
-      let apptTime = timesOfDay
+      let apptTime = '3PM'
       this.props.updateApptDate(apptDate, apptTime)
-
-      
       
     }
     
