@@ -33,7 +33,7 @@ class Appointment extends Component {
         <Container text textAlign='center'>
       <div>
         <span> <strong>Date: </strong> <span>{appt.date}</span></span>
-        <span> <strong>Time: </strong><span>25:00</span> </span>
+        <span> <strong>Time: </strong><span>{appt.time}</span> </span>
         <span> <strong>Dr.: </strong> <span>{provider.last_name}</span></span>
         <span> <strong>Concern: </strong> <span>{appt.concern}</span></span>
         <Button>Change date</Button>

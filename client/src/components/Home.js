@@ -14,42 +14,29 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log('component did mount')
-    this.getCompletedAppointments()
-    this.getUpcomingAppointments()
+    this.getAppointments('upcoming')
+    this.getAppointments('completed')
   }
 
   fetch(endpoint) {
-    console.log('doing fetch')
     return window.fetch(endpoint)
       .then(response => response.json())
       .catch(error => console.log(error))
   }
 
-  getUpcomingAppointments() {
+  getAppointments(status) {
     this.fetch('/api/patients/1/appointments/')
       .then(appointments => {
         if (appointments.length) {
-          const appts = appointments.filter(app => app.status === 'upcoming')
-          this.setState({ upcomingAppointments: appts })
-        } else {
-          this.setState({ upcomingAppointments: [] })
+          const appts = appointments.filter(app => app.status === status)
+          if (status === 'completed') {
+            this.setState({ completedAppointments: appts })
+          } else {
+            this.setState({ upcomingAppointments: appts })
+          } 
         }
       })
   }
-
-  getCompletedAppointments() {
-    console.log('getting appointments')
-    this.fetch('/api/patients/1/appointments/')
-      .then(appointments => {
-        console.log('got appointments')
-        if (appointments.length) {
-          const appts = appointments.filter(app => app.status === 'completed')
-          this.setState({ completedAppointments: appts })
-        }
-      })
-  }
-
 
   render() {
     let { completedAppointments } = this.state
@@ -72,43 +59,14 @@ class Home extends Component {
             </Header>
             <AppointmentList appointments={this.state.completedAppointments} />
           </Container>
-          : <Container textAlign='center'>No appointments found.</Container>
+          : <Container textAlign='center'>Loading...</Container>
         }
-        <Divider section />
-
       </Container>
       : <Container text>
         <p>Loading...</p>
       </Container>
   }
 }
-
-
-// if (this.state.loading) {
-//   console.log("inside home, this is the state: ", this.state.upcomingAppointments)
-
-//   return <h1>Loading...</h1>
-// } else {
-//   console.log("is it state loading? ", this.state.loading)
-//   return (
-//     <Container>
-//     <br />
-//     <Button >Book Appointment</Button>
-//     <Header as='h3' >
-//       <Header.Content>
-//         Upcoming Appointments
-//      </Header.Content>
-//     </Header>
-//     <AppointmentList appointments={this.state.upcomingAppointments} />
-//     <Header as='h3' >
-//       <Header.Content>
-//         Previous Appointments
-//       </Header.Content>
-//     </Header>
-//     <AppointmentList appointments={this.state.previousAppointments} />
-//   </Container>
-//   )}
-
 
 
 export default Home

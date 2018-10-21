@@ -11,12 +11,10 @@ class AppointmentList extends Component {
   }
   componentDidMount() {
    const bla = this.props.appointments
-   console.log ("this is bla: ", bla)
   }
 
   render() {
     let appointments = this.props.appointments
-    console.log ("this is the props passed: ", appointments)
      return <Container text>
        <Divider hidden section />
        {appointments && appointments.length
@@ -26,7 +24,7 @@ class AppointmentList extends Component {
            })}
 
          </div>
-         : <Container textAlign='center'>No appointments found.</Container>
+         : <Container textAlign='center'>Loading...</Container>
        }
        <Divider section />
        </Container>
