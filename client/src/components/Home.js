@@ -1,83 +1,114 @@
 import React, { Component } from 'react'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
+import AppointmentList from './AppointmentList.jsx';
+
 
 class Home extends Component {
-  constructor () {
+  constructor() {
     super()
-    this.state = {}
-    this.getDrinks = this.getDrinks.bind(this)
-    this.getDrink = this.getDrink.bind(this)
+    this.state = {
+      loading: true,
+      upcomingAppointments: [],
+      completedAppointments: []
+    }
   }
 
-  componentDidMount () {
-    this.getDrinks()
+  componentDidMount() {
+    console.log('component did mount')
+    this.getCompletedAppointments()
+    this.getUpcomingAppointments()
   }
 
-  fetch (endpoint) {
+  fetch(endpoint) {
+    console.log('doing fetch')
     return window.fetch(endpoint)
       .then(response => response.json())
       .catch(error => console.log(error))
   }
 
-  getDrinks () {
-    this.fetch('/api/drinks')
-      .then(drinks => {
-        if (drinks.length) {
-          this.setState({drinks: drinks})
-          this.getDrink(drinks[0].id)
+  getUpcomingAppointments() {
+    this.fetch('/api/patients/1/appointments/')
+      .then(appointments => {
+        if (appointments.length) {
+          const appts = appointments.filter(app => app.status === 'upcoming')
+          this.setState({ upcomingAppointments: appts })
         } else {
-          this.setState({drinks: []})
+          this.setState({ upcomingAppointments: [] })
         }
       })
   }
 
-  getDrink (id) {
-    this.fetch(`/api/drinks/${id}`)
-      .then(drink => this.setState({drink: drink}))
+  getCompletedAppointments() {
+    console.log('getting appointments')
+    this.fetch('/api/patients/1/appointments/')
+      .then(appointments => {
+        console.log('got appointments')
+        if (appointments.length) {
+          const appts = appointments.filter(app => app.status === 'completed')
+          this.setState({ completedAppointments: appts })
+        }
+      })
   }
 
-  render () {
-    let {drinks, drink} = this.state
-    return drinks
+
+  render() {
+    let { completedAppointments } = this.state
+    return completedAppointments
       ? <Container text>
-        <Header as='h2' icon textAlign='center' color='teal'>
-          <Icon name='unordered list' circular />
-          <Header.Content>
-            List of Ingredients
-          </Header.Content>
-        </Header>
-        <Divider hidden section />
-        {drinks && drinks.length
-          ? <Button.Group color='teal' fluid widths={drinks.length}>
-            {Object.keys(drinks).map((key) => {
-              return <Button active={drink && drink.id === drinks[key].id} fluid key={key} onClick={() => this.getDrink(drinks[key].id)}>
-                {drinks[key].title}
-              </Button>
-            })}
-          </Button.Group>
-          : <Container textAlign='center'>No drinks found.</Container>
+        {completedAppointments && completedAppointments.length
+          ? <Container>
+            <br />
+            <Button >Book Appointment</Button>
+            <Header as='h3' >
+              <Header.Content>
+                Upcoming Appointments
+             </Header.Content>
+            </Header>
+            <AppointmentList appointments={this.state.upcomingAppointments} />
+            <Header as='h3' >
+              <Header.Content>
+                Previous Appointments
+              </Header.Content>
+            </Header>
+            <AppointmentList appointments={this.state.completedAppointments} />
+          </Container>
+          : <Container textAlign='center'>No appointments found.</Container>
         }
         <Divider section />
-        {drink &&
-          <Container>
-            <Header as='h2'>{drink.title}</Header>
-            {drink.description && <p>{drink.description}</p>}
-            {drink.ingredients &&
-              <Segment.Group>
-                {drink.ingredients.map((ingredient, i) => <Segment key={i}>{ingredient.description}</Segment>)}
-              </Segment.Group>
-            }
-            {drink.steps && <p>{drink.steps}</p>}
-            {drink.source && <Button basic size='tiny' color='teal' href={drink.source}>Source</Button>}
-          </Container>
-        }
+
       </Container>
       : <Container text>
-        <Dimmer active inverted>
-          <Loader content='Loading' />
-        </Dimmer>
+        <p>Loading...</p>
       </Container>
   }
 }
+
+
+// if (this.state.loading) {
+//   console.log("inside home, this is the state: ", this.state.upcomingAppointments)
+
+//   return <h1>Loading...</h1>
+// } else {
+//   console.log("is it state loading? ", this.state.loading)
+//   return (
+//     <Container>
+//     <br />
+//     <Button >Book Appointment</Button>
+//     <Header as='h3' >
+//       <Header.Content>
+//         Upcoming Appointments
+//      </Header.Content>
+//     </Header>
+//     <AppointmentList appointments={this.state.upcomingAppointments} />
+//     <Header as='h3' >
+//       <Header.Content>
+//         Previous Appointments
+//       </Header.Content>
+//     </Header>
+//     <AppointmentList appointments={this.state.previousAppointments} />
+//   </Container>
+//   )}
+
+
 
 export default Home
