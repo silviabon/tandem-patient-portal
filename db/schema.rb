@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20181020174706) do
     t.integer  "patient_id"
     t.integer  "condition_id"
     t.date     "date"
+    t.string   "time"
     t.text     "patient_summary"
     t.string   "concern"
     t.string   "status"
@@ -176,4 +177,11 @@ ActiveRecord::Schema.define(version: 20181020174706) do
     t.index ["provider_id"], name: "index_vitals_on_provider_id", using: :btree
   end
 
+  add_foreign_key "allergies", "patients"
+  add_foreign_key "allergies", "providers"
+  add_foreign_key "appointments", "conditions"
+  add_foreign_key "appointments", "patients"
+  add_foreign_key "appointments", "providers"
+  add_foreign_key "soaps", "appointments"
+  add_foreign_key "soaps", "providers"
 end
