@@ -20,7 +20,7 @@ class AppointmentList extends Component {
        {appointments && appointments.length
          ? <div>
            {appointments.map((appointment) => {
-             return <Appointment appointment={appointment} key={appointment.id} />
+             return <Appointment appointment={appointment} key={appointment.id} status={this.props.status}/>
            })}
 
          </div>

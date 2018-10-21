@@ -27,6 +27,7 @@ class Appointment extends Component {
 
   render () {
     const appt = this.props.appointment
+    const status = this.props.status
     let {provider} = this.state
     return provider
     ?(
@@ -36,10 +37,13 @@ class Appointment extends Component {
         <span> <strong>Time: </strong><span>{appt.time}</span> </span>
         <span> <strong>Dr.: </strong> <span>{provider.last_name}</span></span>
         <span> <strong>Concern: </strong> <span>{appt.concern}</span></span>
-        <Button>Change date</Button>
-        <Button>Cancel</Button>
+        {status === "upcoming"
+        ? <span>
+          <Button>Change date</Button>
+          <Button>Cancel</Button> </span>
+          : <Button>Details</Button>
+        }  
       </div>
-      
     </Container>
     )
     : <Container text>

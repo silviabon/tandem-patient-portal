@@ -51,13 +51,13 @@ class Home extends Component {
                 Upcoming Appointments
              </Header.Content>
             </Header>
-            <AppointmentList appointments={this.state.upcomingAppointments} />
+            <AppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />
             <Header as='h3' >
               <Header.Content>
                 Previous Appointments
               </Header.Content>
             </Header>
-            <AppointmentList appointments={this.state.completedAppointments} />
+            <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
           </Container>
           : <Container textAlign='center'>Loading...</Container>
         }
