@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
-import Appointment from './components/Appointment.jsx'
+import Appointment from './components/Appointment'
 import EMR from './components/EMR'
 import Calendar from './components/Calendar'
 import Questionnaire from './components/Questionnaire'
@@ -15,9 +15,9 @@ class App extends Component {
 
 
     this.state = {
-      apptDate: 'your moms house',
-      apptTime: '5pm',
-      patient: ''
+
+      patient: '',
+      conditions: []
     }
     this.updateApptDate = this.updateApptDate.bind(this);
     this.getPatients = this.getPatients.bind(this)
@@ -44,6 +44,7 @@ class App extends Component {
       this.fetch('/api/patients')
         .then(patients => {
           this.getPatient(patients[0].id)
+          this.getConditions(patients[0].id)
         })
     }
 
@@ -52,6 +53,13 @@ class App extends Component {
         .then(patient => this.setState({
           patient: patient
         }))
+    }
+
+    getConditions(id) {
+      this.fetch(`/api/patients/${id}/conditions`)
+      .then(conditions => {
+        this.setState({ conditions: conditions })
+      })
     }
 
 
@@ -69,7 +77,7 @@ class App extends Component {
         <Route path='/appointment' component={Appointment} />
         <Route path='/emr' component={EMR} />
         <Route path='/bookingCalendar' render={()=><Calendar apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
-        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
+        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
         <Route path='/bookingConfirmation' component={Confirmation} />
       </Switch>
     </Router>
