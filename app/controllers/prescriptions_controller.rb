@@ -3,7 +3,9 @@ class PrescriptionsController < ApplicationController
 
   # GET /prescriptions
   def index
-    @prescriptions = Prescription.all
+    @patient = Patient.find(params[:patient_id])
+    @prescriptions = @patient.prescriptions.all
+
 
     render json: @prescriptions
   end

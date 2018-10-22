@@ -13,13 +13,13 @@ class Conditions extends Component {
     ));
     
     return (
-      <div>
+      <Container text>
         <Header as='h4'>
           <Header.Content>Conditions</Header.Content>
         </Header>
         {conditionsItems}
         <Divider section />
-      </div>
+        </Container>
     )
     
   }

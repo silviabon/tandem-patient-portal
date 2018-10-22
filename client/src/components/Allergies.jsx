@@ -6,22 +6,20 @@ import Allergy from './Allergy.jsx';
 
 class Allergies extends Component {
 
-
   render() {
     const allergiesItems = this.props.allergies.map(allergy => (
-      <Allergy allergy={allergy} key = {allergy.id} />
+      <Allergy allergy={allergy} key={allergy.id} />
     ));
-    
+
     return (
-      <div>
+      <Container text>
         <Header as='h4'>
           <Header.Content>Allergies</Header.Content>
         </Header>
         {allergiesItems}
         <Divider section />
-      </div>
+      </Container>
     )
-    
   }
 }
 
