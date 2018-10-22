@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :allergies
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
     resources :ingredients
     resources :providers
     resources :patients do
+      resources :allergies
       resources :vitals
       resources :immunizations
       resources :prescriptions
