@@ -7,9 +7,7 @@ class Home extends Component {
   constructor() {
     super()
     this.state = {
-      patient: 5,
-      upcomingAppointments: [],
-      completedAppointments: []
+      patient: 5
     }
   }
 
@@ -25,7 +23,7 @@ class Home extends Component {
   }
 
   getAppointments(status) {
-    this.fetch('/api/patients/5/appointments/')
+    this.fetch(`/api/patients/${this.state.patient}/appointments/`)
       .then(appointments => {
         if (appointments.length) {
           const appts = appointments.filter(app => app.status === status)
@@ -37,7 +35,6 @@ class Home extends Component {
         }
       })
   }
-
 
   render() {
     let { completedAppointments, upcomingAppointments } = this.state

@@ -3,7 +3,8 @@ class VitalsController < ApplicationController
 
   # GET /vitals
   def index
-    @vitals = Vital.all
+    @patient = Patient.find(params[:patient_id])
+    @vitals = @patient.vitals.all
 
     render json: @vitals
   end
