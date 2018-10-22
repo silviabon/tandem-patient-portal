@@ -3,8 +3,9 @@ class ConditionsController < ApplicationController
 
   # GET /conditions
   def index
-    @conditions = Condition.all
-
+    @patient = Patient.find(params[:patient_id])
+    @conditions = @patient.conditions.all
+    
     render json: @conditions
   end
 
