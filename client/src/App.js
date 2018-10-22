@@ -20,14 +20,14 @@ class App extends Component {
     }
     this.updateApptDate = this.updateApptDate.bind(this);
   };
-  
+
 
   updateApptDate(newDate, newTime) {
     this.setState({apptDate: newDate, apptTime: newTime});
     //console.log(this.state)
   }
 
-  
+
 
   render () {
 
