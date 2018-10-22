@@ -9,19 +9,19 @@ class Immunizations extends Component {
 
   render() {
     const immunizationsItems = this.props.immunizations.map(immunization => (
-      <Immunization immunization={immunization} key = {immunization.id} />
+      <Immunization immunization={immunization} key={immunization.id} />
     ));
-    
+
     return (
-      <div>
+      <Container text>
         <Header as='h4'>
           <Header.Content>Immunizations</Header.Content>
         </Header>
         {immunizationsItems}
         <Divider section />
-      </div>
+      </Container>
     )
-    
+
   }
 }
 

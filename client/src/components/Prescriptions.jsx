@@ -9,19 +9,19 @@ class Prescriptions extends Component {
 
   render() {
     const prescriptionsItems = this.props.prescriptions.map(prescription => (
-      <Prescription prescription={prescription} key = {prescription.id} />
+      <Prescription prescription={prescription} key={prescription.id} />
     ));
-    
+
     return (
-      <div>
+      <Container text>
         <Header as='h4'>
           <Header.Content>Prescriptions</Header.Content>
         </Header>
         {prescriptionsItems}
         <Divider section />
-      </div>
+      </Container>
     )
-    
+
   }
 }
 

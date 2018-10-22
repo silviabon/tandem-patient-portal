@@ -32,7 +32,6 @@ class Appointment extends Component {
     return provider
       ? (
         <Container text textAlign='center'>
-          <div>
             <span> <strong>Date: </strong> <span>{appt.date}</span></span>
             <span> <strong>Time: </strong><span>{appt.time}</span> </span>
             <span> <strong>Dr.: </strong> <span>{provider.last_name}</span></span>
@@ -44,7 +43,6 @@ class Appointment extends Component {
                 </span>
               : <Button>Details</Button>
             }
-          </div>
         </Container>
       )
       : <Container text>
