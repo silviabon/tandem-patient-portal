@@ -36,7 +36,7 @@ class Navbar extends Component {
 
     return(
     <nav className="navbar navbar-light bg-light">
-      <a className="navbar-brand" href="#">Navbar</a>
+      <a className="navbar-brand" href="#">Patient Portal</a>
       <h1>Hello, {this.state.patient}</h1>
       <button className="btn btn-danger navbar-btn"> Logout </button>
     </nav>)
