@@ -16,10 +16,23 @@ class App extends Component {
 
     this.state = {
       apptDate: 'your moms house',
-      apptTime: '5pm'
+      apptTime: '5pm',
+      patient: ''
     }
     this.updateApptDate = this.updateApptDate.bind(this);
+    this.getPatients = this.getPatients.bind(this)
+    this.getPatient = this.getPatient.bind(this)
   };
+
+   componentDidMount() {
+     this.getPatients()
+   }
+
+    fetch(endpoint) {
+      return window.fetch(endpoint)
+        .then(response => response.json())
+        .catch(error => console.log(error))
+    }
 
 
   updateApptDate(newDate, newTime) {
@@ -27,13 +40,27 @@ class App extends Component {
     //console.log(this.state)
   }
 
+    getPatients() {
+      this.fetch('/api/patients')
+        .then(patients => {
+          this.getPatient(patients[0].id)
+        })
+    }
+
+    getPatient(id) {
+      this.fetch(`/api/patients/${id}`)
+        .then(patient => this.setState({
+          patient: patient
+        }))
+    }
+
 
 
   render () {
 
 
     return<div>
-    <Navbar />
+    <Navbar patient={this.state.patient}/>
     <Router>
       <Switch>
         <Route path='/' exact component={Home} />
