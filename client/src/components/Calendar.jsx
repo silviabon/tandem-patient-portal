@@ -52,18 +52,24 @@ class Calendar extends Component {
           <ul>
 
             <form onSubmit={onSelectAppt}>
+<<<<<<< HEAD:client/src/components/Calendar.jsx
             <li>{day}: 9AM Appointment 1 <button onClick={onTimeClick} value='9AM'>Select</button></li>
             <li>{day}: 10AM, Appointment 2 <button  onClick={onTimeClick} value='10AM'>Select</button></li>
             <li>{day}: 1PM, Appointment 3 <button  onClick={onTimeClick} value='1PM'>Select</button></li>
             <li>{day}: 2PM, Appointment 4 <button  onClick={onTimeClick} value='2PM'>Select</button></li>
             <button type="submit">Submit</button>
+=======
+            <li>{day}: 9AM Appointment 1 <button type="submit">Select</button></li>x
+            <li>{day}: 9AM, Appointment 2 <button type="submit">Select</button></li>
+            <li>{day}: Appointment 3 <button type="submit">Select</button></li>
+            <li>{day}: Appointment 4 <button type="submit">Select</button></li>
+>>>>>>> feature/emr_form:client/src/components/Calendar.js
             </form>
 
           </ul>
           <Button as={Link} to='/bookingQuestionnaire'>Questionnaire</Button>
         </div>
       </div>)
-
     } else if (today.getDay() === 2 || today.getDay() === 5) {
       return (<div className='row'>
         <div className='col-8 main'>
@@ -78,7 +84,6 @@ class Calendar extends Component {
           </ul>
         </div>
       </div>)
-
     } else {
       return (<div className='row'>
         <div className='col-8 main'>
@@ -92,6 +97,10 @@ class Calendar extends Component {
   }
 }
 
+<<<<<<< HEAD:client/src/components/Calendar.jsx
 
 
 export default Calendar
+=======
+export default Calendar
+>>>>>>> feature/emr_form:client/src/components/Calendar.js

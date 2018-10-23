@@ -24,7 +24,6 @@ class Appointment extends Component {
       .then(provider => this.setState({ provider: provider }))
   }
 
-
   render() {
     const appt = this.props.appointment
     const status = this.props.status
