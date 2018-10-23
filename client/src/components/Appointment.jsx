@@ -11,6 +11,7 @@ class Appointment extends Component {
 
   componentDidMount() {
     this.getProvider(this.props.appointment.provider_id)
+     this.setState({patient: this.props.appointment.patient_id})
   }
 
   fetch(endpoint) {
@@ -27,10 +28,9 @@ class Appointment extends Component {
   render() {
     const appt = this.props.appointment
     const status = this.props.status
-    let { provider } = this.state
-    let link = `/appointment/${this.props.appointment.id}`
-    
-    return provider
+    let { provider, patient } = this.state
+    let link = `appointment/${this.props.appointment.id}`
+    return provider && patient
       ? (
         <Container text textAlign='center'>
             <span> <strong>Date: </strong> <span>{appt.date}</span></span>
@@ -42,7 +42,7 @@ class Appointment extends Component {
                 <Button>Change date</Button>
                 <Button>Cancel</Button> 
                 </span>
-              : <Button as={Link} to={link}>Details</Button>
+              : <Button as={Link} to={{pathname: link, state: {appointment: {appt}, patient: {patient}}}}>Details</Button>
             }
         </Container>
       )
