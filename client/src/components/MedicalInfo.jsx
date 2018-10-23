@@ -28,7 +28,6 @@ class MedicalInfo extends Component {
       .catch(error => console.log(error))
   }
 
-
   getVitalsInfo() {
     this.fetch(`/api/patients/${this.props.patient}/vitals`)
       .then(vitals => {

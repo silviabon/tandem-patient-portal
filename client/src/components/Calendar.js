@@ -46,9 +46,7 @@ class Calendar extends Component {
           <ul>
 
             <form onSubmit={onSelectAppt}>
-            <li>{day}: 9AM Appointment 1 <button type="submit">Select</button></li>
-
-
+            <li>{day}: 9AM Appointment 1 <button type="submit">Select</button></li>x
             <li>{day}: 9AM, Appointment 2 <button type="submit">Select</button></li>
             <li>{day}: Appointment 3 <button type="submit">Select</button></li>
             <li>{day}: Appointment 4 <button type="submit">Select</button></li>
@@ -58,7 +56,6 @@ class Calendar extends Component {
           <Button as={Link} to='/bookingQuestionnaire'>Questionnaire</Button>
         </div>
       </div>)
-
     } else if (today.getDay() === 2 || today.getDay() === 5) {
       return (<div className='row'>
         <div className='col-8 main'>
@@ -73,7 +70,6 @@ class Calendar extends Component {
           </ul>
         </div>
       </div>)
-
     } else {
       return (<div className='row'>
         <div className='col-8 main'>
@@ -87,7 +83,4 @@ class Calendar extends Component {
   }
 }
 
-
-
 export default Calendar
-
