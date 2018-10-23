@@ -11,7 +11,7 @@ class ConditionCal extends Component {
 
 
     return (
-        <li>{condition.name}</li>
+        <option value={condition.name}>{condition.name}</option>
     );
   }
 }

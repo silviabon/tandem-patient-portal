@@ -26,7 +26,7 @@ class Calendar extends Component {
 
     const onSelectAppt = e => {
       e.preventDefault()
-      let apptDate = today
+      let apptDate = today.getFullYear()/today.getMonth()/today.getDate()
       let apptTime = this.state.time
       console.log(this.state.time)
       this.props.updateApptDate(apptDate, apptTime)
