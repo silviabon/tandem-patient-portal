@@ -37,15 +37,15 @@ class App extends Component {
     this.setState({apptDate: newDate, apptTime: newTime});
   }
 
-  newAppointment() {
+  newAppointment(questionnaire) {
     let body = JSON.stringify({appointment: {
       patient_id: this.state.patient.id,
       provider_id: '10',
       date: this.state.apptDate,
       time: this.state.apptTime,
-      concern: this.state.concern,
+      concern: questionnaire.concern,
       condition_id: '8',
-      patient_summary: `Appointment type: ${this.state.apptType}, Main concern: ${this.state.concern}, Concern description: ${this.state.concernDescription}, Symptoms: ${this.state.symptoms}, Other symptoms: ${this.state.otherSymptoms}, Vitals - Temperature: ${this.state.temperature}, Heart Rate: ${this.state.heartrate}, Blood Pressure: ${this.state.bp_s}/${this.state.bp_d}, Question 1: ${this.state.question1}, Question 2: ${this.state.question2}`,
+      patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
       status: 'upcoming'
      }})
 

@@ -3,14 +3,16 @@ import { Container, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class Confirmation extends Component {
+
   render () {
+    const questionnaire = this.props.location.state
     const patient = this.props.patient
     const apptDate = this.props.apptDate
     const apptTime = this.props.apptTime
 
     const onBookingAppt = e => {
       e.preventDefault()
-      this.props.newAppointment()
+      this.props.newAppointment(questionnaire)
     }
 
     return <Container text textAlign='center'>
