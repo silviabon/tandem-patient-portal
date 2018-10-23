@@ -48,7 +48,7 @@ class EMR extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    alert('An form was submitted: ' + event.target.patient_summary.value + event.target.subjective.value + event.target.objective.value + event.target.plan.value + event.target.doctor_summary.value)
+    alert('An form was submitted: ' + event.target.patient_summary.value + ' ' + event.target.subjective.value+ ' ' + event.target.objective.value+ ' ' + event.target.plan.value+ ' ' + event.target.doctor_summary.value)
     let body = JSON.stringify({soap: {doctor_summary: event.target.doctor_summary.value}})
     fetch('http://localhost:3001/api/patients/6/appointments/2/soaps/', {
         method: 'POST',
@@ -79,13 +79,13 @@ class EMR extends Component {
       </Header>
       <textarea id="subjective" name="subjective" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
-      <Header as='h4'>
-        <Header.Content>Objective</Header.Content>
-      </Header>
       {vitals
         ? <Vitals vitals={this.state.vitals} />
         : <Container text> loading... </Container>
       }
+      <Header as='h4'>
+        <Header.Content>Objective</Header.Content>
+      </Header>
       <textarea id="objective" name="objective" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
       <Header as='h4'>
@@ -98,6 +98,7 @@ class EMR extends Component {
       </Header>
       <textarea id="doctor_summary" name="doctor_summary" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
+      <br />
       <input type="submit" value="Submit" />
       </form>
     </Container>

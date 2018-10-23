@@ -17,7 +17,8 @@ class SoapsController < ApplicationController
   def create
     @patient = Patient.find(params[:patient_id])
     @appointment = @patient.appointments.find(params[:appointment_id])
-    # @provider = Provider.find(params[:provider_id])
+    @appointment.status = "completed"
+    @appointment.save
     @soap = Soap.new
     @soap.provider_id = @appointment.provider_id
     @soap.appointment_id = @appointment.id
