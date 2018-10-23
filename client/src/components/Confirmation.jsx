@@ -10,7 +10,7 @@ class Confirmation extends Component {
 
     const onBookingAppt = e => {
       e.preventDefault()
-      this.props.newAppointment(patient, apptDate, apptTime)
+      this.props.newAppointment()
     }
 
     return <Container text textAlign='center'>

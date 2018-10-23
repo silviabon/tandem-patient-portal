@@ -34,16 +34,16 @@ margarita.ingredients.create(description: "½ oz. Grand Marnier or other orange 
 margarita.ingredients.create(description: "Coarse salt, for rimming glass")
 margarita.ingredients.create(description: "Pineapple wedge and peel, for garnish")
 
-
-Provider.destroy_all
-Patient.destroy_all
-Vital.destroy_all
-Immunization.destroy_all
-Prescription.destroy_all
-Condition.destroy_all
-Allergy.destroy_all
-Appointment.destroy_all
 Soap.destroy_all
+Appointment.destroy_all
+Allergy.destroy_all
+Condition.destroy_all
+Prescription.destroy_all
+Immunization.destroy_all
+Vital.destroy_all
+Patient.destroy_all
+Provider.destroy_all
+
 
 kevin = Provider.create!(first_name: 'Kevin', last_name: 'McIntosh', billing_number: 123456)
 maria = Provider.create!(first_name: 'Maria', last_name: 'Brown', billing_number: 122051)

@@ -28,6 +28,7 @@ handleChange(e) {
       const fieldName = e.target.name
       const value = e.target.value
       this.setState({ [fieldName]: value })
+      console.log(this.state)
     //console.log(this.state.apptType, this.state.conditionType, this.state.mainConcern, this.state.concernDescription, this.state.temperature, this.state.heartrate)
   }
 
@@ -39,25 +40,10 @@ handleChange(e) {
       this.props.updateQuestionnaire(questionnaire)
     }
 
-    const handleAppointmentType = e => {
-      e.preventDefault()
-      this.setState({ apptType: e.target.value })
-    }
-    const handleConditionType = e => {
-      e.preventDefault()
-      this.setState({ conditionType: e.target.value })
-      console.log(this.state.conditionType)
-    }
-
-    const handleQuestionSubmit = e => {
-      e.preventDefault();
-      let apptType = this.state.apptType
-    }
-
     const handleSymptoms = e => {
         const symptoms = this.state.symptoms;
           symptoms.push(e.target.name)
-          this.setState({ symptoms })      
+          this.setState({ symptoms })
     console.log(this.state.symptoms)
   }
 
@@ -108,7 +94,7 @@ handleChange(e) {
         <span>Blood Pressure (Systolic): <input name='bp_s' onChange={this.handleChange} />  Blood Pressure (Diastolic): <input name='bp_d' onChange={this.handleChange} /></span>
         Questions for the doctor:
         <span>Question 1: <input name='question1' onChange={this.handleChange} />  Question 2: <input name='question2' onChange={this.handleChange} /></span>
-        
+
         <input type="submit" value="submit"/>
 
       </form>
