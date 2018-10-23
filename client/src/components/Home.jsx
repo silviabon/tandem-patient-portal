@@ -7,7 +7,7 @@ class Home extends Component {
   constructor() {
     super()
     this.state = {
-      patient: 9
+      patient: 7
     }
   }
 
