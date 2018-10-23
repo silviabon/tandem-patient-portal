@@ -107,7 +107,7 @@ class App extends Component {
         <Route path='/' exact component={Home} />
         <Route path='/home' exact component={Home} />
         <Route path='/login' component={Login} />
-        <Route path='/appointment' component={AppointmentPage} />
+        <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' component={EMR} />
         <Route path='/bookingCalendar' render={()=><Calendar apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
         <Route path='/bookingConfirmation' render={(props)=><Confirmation newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />
