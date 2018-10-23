@@ -3,8 +3,15 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments
   def index
-    @patient = Patient.find(params[:patient_id])
-    @appointments = @patient.appointments.all
+    if params[:patient_id] != nil
+      @patient = Patient.find(params[:patient_id])
+      @appointments = @patient.appointments.all
+    end
+
+    if params[:provider_id] != nil
+      @provider = Provider.find(params[:provider_id])
+      @appointments = @provider.appointments.all
+    end
 
     render json: @appointments
   end

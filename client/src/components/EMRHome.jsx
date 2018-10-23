@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
 import AppointmentList from './AppointmentList.jsx';
-import MedicalInfo from './MedicalInfo.jsx';
 
-class Home extends Component {
+class EMRHome extends Component {
   constructor() {
     super()
     this.state = {
-      patient: 6
+      patient: 6,
+      provider: 7
     }
   }
 
   componentDidMount() {
+    console.log('did mount')
     this.getAppointments('upcoming')
     this.getAppointments('completed')
   }
@@ -23,7 +24,8 @@ class Home extends Component {
   }
 
   getAppointments(status) {
-    this.fetch(`/api/patients/${this.state.patient}/appointments/`)
+    console.log('app', status)
+    this.fetch(`http://localhost:3001/api/providers/${this.state.provider}/appointments/`)
       .then(appointments => {
         if (appointments.length) {
           const appts = appointments.filter(app => app.status === status)
@@ -37,12 +39,12 @@ class Home extends Component {
   }
 
   render() {
+    console.log('render')
     let { completedAppointments, upcomingAppointments } = this.state
     return (
       <Container>
         <Container>
           <br />
-          <Button >Book Appointment</Button>
           <Header as='h3' >
             <Header.Content>
               Upcoming Appointments
@@ -60,10 +62,9 @@ class Home extends Component {
             ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
             : <Container textAlign='center'>No appointments found.</Container>}
         </Container>
-            <MedicalInfo patient={this.state.patient} />
       </Container>
     )
   }
 }
 
-export default Home
+export default EMRHome
