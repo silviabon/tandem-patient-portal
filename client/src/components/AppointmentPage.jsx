@@ -11,21 +11,9 @@ class AppointmentPage extends Component {
   }
 
   componentDidMount() {
-    // const { handle } = this.props.match.params
-    // this.getAppointment(handle)
-    this.getAppointment(3)
-  }
-
-
-  getAppointment(id) {
-    this.fetch(`/api/patients/5/appointments/${id}`)
-      .then(appointment => {
-        if (appointment) {
-          this.setState({ appointment: appointment })
-          this.getProvider(this.state.appointment.provider_id)
-          this.getSummary(this.state.appointment.id, this.state.appointment.patient_id)
-        }
-      })
+    this.getSummary(this.props.location.state.appointment.appt.id, this.props.location.state.patient.patient)
+    this.getProvider(this.props.location.state.appointment.appt.provider_id)
+    this.setState({ appointment: this.props.location.state.appointment.appt })
   }
 
   getProvider(provider) {
@@ -53,11 +41,11 @@ class AppointmentPage extends Component {
   }
 
   render() {
-    let { appointment, provider, summary } = this.state
+    let { provider, summary, appointment } = this.state
     return <Container text textAlign='center'>
       <h1>Appointment</h1>
       {
-        appointment && provider && summary
+        provider && summary && appointment
           ? <Container>
             <Container>
               <span>Date: </span><span>{appointment.date}</span><span>Time: </span><span>{appointment.time}</span><span>Dr.: </span><span>{provider.last_name}</span>
@@ -69,7 +57,7 @@ class AppointmentPage extends Component {
                 </Header.Content>
               </Header>
               {appointment.patient_summary}
-              </Container>
+            </Container>
             <Container>
               <Header as='h3'>
                 <Header.Content>
@@ -78,15 +66,11 @@ class AppointmentPage extends Component {
               </Header>
               {summary}</Container>
           </Container>
-
           : <p>Loading...</p>
       }
       <Button as={Link} to='/'>Back to home</Button>
     </Container>
-
   }
 }
 
 export default AppointmentPage
-
-// export appointment, doctor name and soap
