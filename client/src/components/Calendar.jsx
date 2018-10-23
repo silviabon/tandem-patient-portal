@@ -11,7 +11,8 @@ class Calendar extends Component {
     super(props)
 
     this.state = {
-      date: new Date()
+      date: new Date(),
+      time: ''
     }
     this.onClickDay = this.onClickDay.bind(this)
   }
@@ -25,17 +26,22 @@ class Calendar extends Component {
 
     const onSelectAppt = e => {
       e.preventDefault()
-      //let time = e.currentTarget.textContent
-      let apptDate = today
-      let apptTime = '3PM'
+      let apptDate = today.getFullYear()/today.getMonth()/today.getDate()
+      let apptTime = this.state.time
+      console.log(this.state.time)
       this.props.updateApptDate(apptDate, apptTime)
-      
     }
-    
+
+    const onTimeClick = e => {
+      e.preventDefault()
+      let aptTime = e.target.value
+      this.setState( { time: aptTime })
+      console.log(this.state.time)
+    }
+
     let calendar = <Reactcal onClickDay={this.onClickDay} value={this.state.date} />
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const day = daysOfWeek[today.getDay()]
-    //const timesOfDay = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM']
 
     if (today.getDay() === 1 || today.getDay() === 3) {
       return (<div className='row'>
@@ -46,12 +52,11 @@ class Calendar extends Component {
           <ul>
 
             <form onSubmit={onSelectAppt}>
-            <li>{day}: 9AM Appointment 1 <button type="submit">Select</button></li>
-
-
-            <li>{day}: 9AM, Appointment 2 <button type="submit">Select</button></li>
-            <li>{day}: Appointment 3 <button type="submit">Select</button></li>
-            <li>{day}: Appointment 4 <button type="submit">Select</button></li>
+            <li>{day}: 9AM Appointment 1 <button onClick={onTimeClick} value='9AM'>Select</button></li>
+            <li>{day}: 10AM, Appointment 2 <button  onClick={onTimeClick} value='10AM'>Select</button></li>
+            <li>{day}: 1PM, Appointment 3 <button  onClick={onTimeClick} value='1PM'>Select</button></li>
+            <li>{day}: 2PM, Appointment 4 <button  onClick={onTimeClick} value='2PM'>Select</button></li>
+            <button type="submit">Submit</button>
             </form>
 
           </ul>
@@ -90,4 +95,3 @@ class Calendar extends Component {
 
 
 export default Calendar
-

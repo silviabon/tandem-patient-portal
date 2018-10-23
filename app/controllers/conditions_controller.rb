@@ -5,7 +5,6 @@ class ConditionsController < ApplicationController
   def index
     @patient = Patient.find(params[:patient_id])
     @conditions = @patient.conditions.all
-
     render json: @conditions
   end
 
