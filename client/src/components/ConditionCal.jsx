@@ -7,6 +7,7 @@ class ConditionCal extends Component {
 
   render() {
     const condition = this.props.condition 
+    console.log("props from condition cal", this.props)
 
 
 

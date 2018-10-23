@@ -7,7 +7,9 @@ class Questionnaire extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      symptoms: []
+      symptoms: [],
+      date: `${this.props.location.state.date.getFullYear()}/${this.props.location.state.date.getMonth()}/${this.props.location.state.date.getDate()}`, 
+      time: this.props.location.state.time
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -18,7 +20,7 @@ handleChange(e) {
       this.setState({ [fieldName]: value })
  }
   render() {
-
+    const calendar = this.props.location.state
     // const onSubmitQuestionnaire = e => {
     //   e.preventDefault()
     //   let questionnaire = this.state
@@ -38,11 +40,12 @@ handleChange(e) {
 
     return <Container text textAlign='center'>
 
-      {/* <h1>Appointment Date: {this.props.apptDate.toString()}</h1>
-      <h1>Appointment Time: {this.props.apptTime}</h1> */}
+
       <form>
-        <h1>Appointment Date: date</h1>
-        <h1>Appointment Time: time</h1>
+      <h1>Appointment Date: {calendar.date.toString()}</h1>
+      <h1>Appointment Time: {calendar.time}</h1>
+        {/* <h1>Appointment Date: date</h1>
+        <h1>Appointment Time: time</h1> */}
         Please select the type of appointment:
         <select name='apptType' onChange={this.handleChange}>
           <option value="New Concern">New Concern</option>

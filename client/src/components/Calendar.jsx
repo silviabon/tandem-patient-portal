@@ -17,15 +17,20 @@ class Calendar extends Component {
   }
 
   onClickDay(date) {
-    this.setState({ date })
+    this.setState({ date: date })
+    
+    console.log("this is the new date", date)
+    
   }
 
   render() {
     let today = this.state.date
+    console.log("this is today", today)
+    //let apptDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
 
     const onSelectAppt = e => {
       e.preventDefault()
-      let apptDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
+      let apptDate = `${today.getFullYear()}/${today.getMonth()}/${today.getDate()}`
       let apptTime = this.state.time
       console.log(this.state.time)
       this.props.updateApptDate(apptDate, apptTime)
@@ -48,20 +53,18 @@ class Calendar extends Component {
           <h1> Calendar Page </h1>
           {calendar}
           <h1>{day}, {today.getDate()}/{today.getMonth()}/{today.getFullYear()}</h1>
+          <form onSubmit={onSelectAppt}>
           <ul>
-
-            <form onSubmit={onSelectAppt}>
             <li>{day}: 9AM Appointment 1 <button onClick={onTimeClick} value='9AM'>Select</button></li>
             <li>{day}: 10AM, Appointment 2 <button  onClick={onTimeClick} value='10AM'>Select</button></li>
             <li>{day}: 1PM, Appointment 3 <button  onClick={onTimeClick} value='1PM'>Select</button></li>
             <li>{day}: 2PM, Appointment 4 <button  onClick={onTimeClick} value='2PM'>Select</button></li>
-            <button type="submit">Submit</button>
-            </form>
-
           </ul>
-          <Button as={Link} to='/bookingQuestionnaire'>Questionnaire</Button>
+          <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }} ><button type="submit">Continue</button></Link>
+          </form>
         </div>
-      </div>)
+      </div>
+      )
 
     } else if (today.getDay() === 2 || today.getDay() === 5) {
       return (<div className='row'>
@@ -69,12 +72,15 @@ class Calendar extends Component {
           <h1> Calendar Page </h1>
           {calendar}
           <h1>{day}, {today.getDate()}/{today.getMonth()}/{today.getFullYear()}</h1>
+          <form onSubmit={onSelectAppt}>
           <ul>
-            <li>{day}, Appointment 5 <button>Select</button></li>
-            <li>{day}, Appointment 6 <button>Select</button></li>
-            <li>{day}, Appointment 7 <button>Select</button></li>
-            <li>{day}, Appointment 8 <button>Select</button></li>
+            <li>{day}: 9AM Appointment 5 <button onClick={onTimeClick} value='9AM'>Select</button></li>
+            <li>{day}: 10AM, Appointment 6 <button  onClick={onTimeClick} value='10AM'>Select</button></li>
+            <li>{day}: 1PM, Appointment 7 <button  onClick={onTimeClick} value='1PM'>Select</button></li>
+            <li>{day}: 2PM, Appointment 8 <button  onClick={onTimeClick} value='2PM'>Select</button></li>
           </ul>
+          <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }} ><button type="submit">Continue</button></Link>
+          </form>
         </div>
       </div>)
 
@@ -90,7 +96,5 @@ class Calendar extends Component {
     }
   }
 }
-
-
 
 export default Calendar
