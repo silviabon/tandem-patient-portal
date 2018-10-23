@@ -25,7 +25,7 @@ class EMR extends Component {
   }
 
   getVitalsInfo() {
-    this.fetch(`/api/patients/${this.state.patient}/vitals`)
+    this.fetch(`/api/patients/${this.props.location.state.patient.patient}/vitals`)
       .then(vitals => {
         if (vitals.length) {
           const lastVital = vitals[vitals.length - 1]
@@ -42,7 +42,7 @@ class EMR extends Component {
   }
 
   getAppointment() {
-    this.fetch(`/api/patients/6/appointments/2`)
+    this.fetch(`/api/patients/${this.props.location.state.patient.patient}/appointments/${this.props.location.state.appointment.appt.id}`)
       .then(appointment => this.setState({ appointment: appointment }))
   }
 

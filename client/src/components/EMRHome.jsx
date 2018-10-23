@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
-import AppointmentList from './AppointmentList.jsx';
+import ProviderAppointmentList from './ProviderAppointmentList.jsx';
 
 class EMRHome extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       patient: 6,
       provider: 7
@@ -39,7 +39,7 @@ class EMRHome extends Component {
   }
 
   render() {
-    console.log('render')
+    console.log('render', this.props.match.params.provider)
     let { completedAppointments, upcomingAppointments } = this.state
     return (
       <Container>
@@ -51,7 +51,7 @@ class EMRHome extends Component {
             </Header.Content>
           </Header>
           {upcomingAppointments && upcomingAppointments.length
-            ? (<AppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
+            ? (<ProviderAppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
             : <Container textAlign='center'>No appointments found.</Container>}
           <Header as='h3' >
             <Header.Content>
@@ -59,7 +59,7 @@ class EMRHome extends Component {
             </Header.Content>
           </Header>
           {completedAppointments && completedAppointments.length
-            ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
+            ? <ProviderAppointmentList appointments={this.state.completedAppointments} status={'completed'} />
             : <Container textAlign='center'>No appointments found.</Container>}
         </Container>
       </Container>

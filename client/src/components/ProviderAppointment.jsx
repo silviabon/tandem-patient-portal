@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-class Appointment extends Component {
+class ProviderAppointment extends Component {
   constructor() {
     super()
     this.state = {
@@ -29,7 +29,7 @@ class Appointment extends Component {
     const appt = this.props.appointment
     const status = this.props.status
     let { provider, patient } = this.state
-    let link = `appointment/${this.props.appointment.id}`
+    let link = `emr/${this.props.appointment.id}`
     return provider && patient
       ? (
         <Container text textAlign='center'>
@@ -39,8 +39,7 @@ class Appointment extends Component {
             <span> <strong>Concern: </strong> <span>{appt.concern}</span></span>
             {status === "upcoming"
               ? <span>
-                <Button>Change date</Button>
-                <Button>Cancel</Button> 
+                <Button as={Link} to={{pathname: link, state: {appointment: {appt}, patient: {patient}}}}>See patient</Button>
                 </span>
               : <Button as={Link} to={{pathname: link, state: {appointment: {appt}, patient: {patient}}}}>Details</Button>
             }
@@ -52,4 +51,4 @@ class Appointment extends Component {
   }
 }
 
-export default Appointment
+export default ProviderAppointment
