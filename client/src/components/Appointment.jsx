@@ -28,6 +28,8 @@ class Appointment extends Component {
     const appt = this.props.appointment
     const status = this.props.status
     let { provider } = this.state
+    let link = `/appointment/${this.props.appointment.id}`
+    
     return provider
       ? (
         <Container text textAlign='center'>
@@ -40,7 +42,7 @@ class Appointment extends Component {
                 <Button>Change date</Button>
                 <Button>Cancel</Button> 
                 </span>
-              : <Button>Details</Button>
+              : <Button as={Link} to={link}>Details</Button>
             }
         </Container>
       )
