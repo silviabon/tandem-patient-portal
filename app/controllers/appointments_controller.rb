@@ -16,10 +16,12 @@ class AppointmentsController < ApplicationController
 
   # POST /appointments
   def create
-    @appointment = Appointment.new(appointment_params)
+    @patient = Patient.find(params[:patient_id])
+    @appointment = @patient.appointments.new(appointment_params)
 
     if @appointment.save
-      render json: @appointment, status: :created, location: @appointment
+      render json: @appointment, status: :created
+      # location: @appointment
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
@@ -47,6 +49,6 @@ class AppointmentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def appointment_params
-      params.require(:appointment).permit(:provider_id, :patient_id, :condition_id, :date, :patient_summary, :concern, :status)
+      params.require(:appointment).permit(:provider_id, :patient_id, :condition_id, :date, :patient_summary, :concern, :status, :time)
     end
 end

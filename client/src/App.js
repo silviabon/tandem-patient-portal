@@ -15,11 +15,12 @@ class App extends Component {
 
 
     this.state = {
-      apptDate: 'your moms house',
+      apptDate: '2018-10-22',
       apptTime: '5pm',
       patient: ''
     }
-    this.updateApptDate = this.updateApptDate.bind(this);
+    this.updateApptDate = this.updateApptDate.bind(this)
+    this.newAppointment = this.newAppointment.bind(this)
     this.getPatients = this.getPatients.bind(this)
     this.getPatient = this.getPatient.bind(this)
   };
@@ -28,17 +29,32 @@ class App extends Component {
      this.getPatients()
    }
 
-    fetch(endpoint) {
-      return window.fetch(endpoint)
-        .then(response => response.json())
-        .catch(error => console.log(error))
-    }
+  fetch(endpoint) {
+    return window.fetch(endpoint)
+      .then(response => response.json())
+      .catch(error => console.log(error))
+  }
 
 
   updateApptDate(newDate, newTime) {
     this.setState({apptDate: newDate, apptTime: newTime});
-    //console.log(this.state)
   }
+
+  newAppointment(patient, date, time) {
+    console.log('patient', patient)
+    console.log('date', date)
+    console.log('time', time)
+    let body = JSON.stringify({appointment: {patient_id: patient.id, date: date, time: time }})
+
+    fetch(`http://localhost:3001/api/patients/${patient.id}/appointments`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: body,
+    }).then((response) => {return response.json()})
+  }
+
 
     getPatients() {
       this.fetch('/api/patients')
@@ -70,7 +86,7 @@ class App extends Component {
         <Route path='/emr' component={EMR} />
         <Route path='/bookingCalendar' render={()=><Calendar apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
         <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
-        <Route path='/bookingConfirmation' component={Confirmation} />
+        <Route path='/bookingConfirmation' render={(props)=><Confirmation newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />
       </Switch>
     </Router>
     </div>

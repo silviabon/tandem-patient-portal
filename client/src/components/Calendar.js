@@ -29,9 +29,9 @@ class Calendar extends Component {
       let apptDate = today
       let apptTime = '3PM'
       this.props.updateApptDate(apptDate, apptTime)
-      
+
     }
-    
+
     let calendar = <Reactcal onClickDay={this.onClickDay} value={this.state.date} />
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const day = daysOfWeek[today.getDay()]
