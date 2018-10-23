@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Home from './components/Home'
+import Home from './components/Home.jsx'
 import Login from './components/Login'
-import Appointment from './components/Appointment.jsx'
+import AppointmentPage from './components/AppointmentPage.jsx'
 import EMR from './components/EMR'
 import Calendar from './components/Calendar'
 import Questionnaire from './components/Questionnaire'
@@ -66,7 +66,7 @@ class App extends Component {
         <Route path='/' exact component={Home} />
         <Route path='/home' exact component={Home} />
         <Route path='/login' component={Login} />
-        <Route path='/appointment' component={Appointment} />
+        <Route path='/appointment' component={AppointmentPage} />
         <Route path='/emr' component={EMR} />
         <Route path='/bookingCalendar' render={()=><Calendar apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
         <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
