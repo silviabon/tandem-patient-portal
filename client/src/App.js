@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
-import Appointment from './components/Appointment.jsx'
+import Appointment from './components/Appointment'
 import EMR from './components/EMR'
 import Calendar from './components/Calendar'
 import Questionnaire from './components/Questionnaire'
@@ -23,6 +23,7 @@ class App extends Component {
     this.newAppointment = this.newAppointment.bind(this)
     this.getPatients = this.getPatients.bind(this)
     this.getPatient = this.getPatient.bind(this)
+    this.updateQuestionnaire = this.updateQuestionnaire.bind(this)
   };
 
    componentDidMount() {
@@ -60,6 +61,7 @@ class App extends Component {
       this.fetch('/api/patients')
         .then(patients => {
           this.getPatient(patients[0].id)
+          this.getConditions(patients[0].id)
         })
     }
 
@@ -69,6 +71,35 @@ class App extends Component {
           patient: patient
         }))
     }
+
+    getConditions(id) {
+      this.fetch(`/api/patients/${id}/conditions`)
+      .then(conditions => {
+        this.setState({ conditions: conditions })
+      })
+    }
+
+    updateQuestionnaire(questionnaire) {
+      this.setState({ apptType: questionnaire.apptType,
+      conditionType: questionnaire.conditionType,
+      concernDescription: questionnaire.concernDescription,
+      symptoms: questionnaire.symptoms,
+      otherSymptoms: questionnaire.otherSymptoms,
+      temperature: questionnaire.temperature,
+      heartrate: questionnaire.heartrate,
+      bp_s: questionnaire.bp_s,
+      bp_d: questionnaire.bp_d,
+      question1: questionnaire.question1,
+      question2: questionnaire.question2 })
+      console.log(this.state)
+    }
+
+
+    // updateQuestions(type, condition, text) {
+    //   this
+    // }
+
+
 
 
 
@@ -85,8 +116,8 @@ class App extends Component {
         <Route path='/appointment' component={Appointment} />
         <Route path='/emr' component={EMR} />
         <Route path='/bookingCalendar' render={()=><Calendar apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
-        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
         <Route path='/bookingConfirmation' render={(props)=><Confirmation newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />
+        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire handleQuestionChange={this.handleQuestionChange} updateQuestionnaire={this.updateQuestionnaire} handleQuestionSubmit={this.handleQuestionSubmit} conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
       </Switch>
     </Router>
     </div>
