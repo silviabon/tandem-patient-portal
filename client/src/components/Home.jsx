@@ -42,11 +42,11 @@ class Home extends Component {
         <div className='row'>
           <div className='col-8'>
           <a className='btn btn-primary' href='/bookingCalendar' role='button'>Book Appointment</a>
-          <h3>Upcoming Appointments</h3>
+          <h2>Upcoming Appointments</h2>
           {upcomingAppointments && upcomingAppointments.length
             ? (<AppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
             : <div className='container' textAlign='center'>No appointments found.</div>}
-          <h3>Previous Appointments</h3>
+          <h2>Previous Appointments</h2>
           {completedAppointments && completedAppointments.length
             ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
             : <div className='container' textAlign='center'>No appointments found.</div>}
