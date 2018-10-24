@@ -9,7 +9,8 @@ class Questionnaire extends Component {
     this.state = {
       symptoms: [],
       date: `${this.props.location.state.date.getFullYear()}/${this.props.location.state.date.getMonth()}/${this.props.location.state.date.getDate()}`, 
-      time: this.props.location.state.time
+      time: this.props.location.state.time,
+      formattedDate: this.props.formattedDate
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -21,6 +22,7 @@ handleChange(e) {
  }
   render() {
     const calendar = this.props.location.state
+    const date = calendar.date
     // const onSubmitQuestionnaire = e => {
     //   e.preventDefault()
     //   let questionnaire = this.state
@@ -31,7 +33,7 @@ handleChange(e) {
         const symptoms = this.state.symptoms;
           symptoms.push(e.target.name)
           this.setState({ symptoms })
-    console.log(this.state.symptoms)
+    //console.log(this.state.symptoms)
   }
 
     let conditionItems = this.props.conditions.map(condition => (
@@ -42,7 +44,7 @@ handleChange(e) {
 
 
       <form>
-      <h1>Appointment Date: {calendar.date.toString()}</h1>
+      <h1>Appointment Date: {calendar.formattedDate}</h1>
       <h1>Appointment Time: {calendar.time}</h1>
         {/* <h1>Appointment Date: date</h1>
         <h1>Appointment Time: time</h1> */}

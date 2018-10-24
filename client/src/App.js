@@ -19,6 +19,7 @@ class App extends Component {
     this.newAppointment = this.newAppointment.bind(this)
     this.getPatients = this.getPatients.bind(this)
     this.getPatient = this.getPatient.bind(this)
+   // this.renderFormattedDateLabel = this.renderFormattedDateLabel.bind(this)
     //this.updateQuestionnaire = this.updateQuestionnaire.bind(this)
   };
 
@@ -31,6 +32,7 @@ class App extends Component {
       .then(response => response.json())
       .catch(error => console.log(error))
   }
+
 
 
   updateApptDate(newDate, newTime) {
@@ -108,9 +110,9 @@ class App extends Component {
         <Route path='/login' component={Login} />
         <Route path='/appointment' component={Appointment} />
         <Route path='/emr' component={EMR} />
-        <Route path='/bookingCalendar' render={()=><Calendar apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
-        <Route path='/bookingConfirmation' render={(props)=><Confirmation newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />
-        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire handleQuestionChange={this.handleQuestionChange} updateQuestionnaire={this.updateQuestionnaire} handleQuestionSubmit={this.handleQuestionSubmit} conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
+        <Route path='/bookingCalendar' render={()=><Calendar formattedDate={this.formattedDate} renderFormattedDateLabel={this.renderFormattedDateLabel} apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
+        <Route path='/bookingConfirmation' render={(props)=><Confirmation formattedDate={this.formattedDate} newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />
+        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire formattedDate={this.formattedDate} handleQuestionChange={this.handleQuestionChange} updateQuestionnaire={this.updateQuestionnaire} handleQuestionSubmit={this.handleQuestionSubmit} conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
       </Switch>
     </Router>
     </div>
