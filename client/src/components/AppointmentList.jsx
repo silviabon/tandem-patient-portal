@@ -3,6 +3,10 @@ import Appointment from './Appointment.jsx';
 
 class AppointmentList extends Component {
 
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     let appointments = this.props.appointments
     return (
@@ -10,7 +14,7 @@ class AppointmentList extends Component {
       {appointments && appointments.length
         ? <div>
           {appointments.map((appointment) => {
-            return <Appointment appointment={appointment} key={appointment.id} status={this.props.status} />
+            return <Appointment deleteAppointment={this.props.deleteAppointment} appointment={appointment} key={appointment.id} status={this.props.status} />
           })}
         </div>
         : <div className='container'>Loading...</div>
