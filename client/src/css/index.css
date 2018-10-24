@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   font-size: 1.2em;
+  font-family: 'Quicksand';
 }
 
 #root {
@@ -10,6 +10,7 @@ body {
 }
 
 /*Navbar*/
+
 button.navbar-btn {
   float: right;
 }
