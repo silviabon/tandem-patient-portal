@@ -10,11 +10,15 @@ import Questionnaire from './components/Questionnaire.jsx'
 import Confirmation from './components/Confirmation.jsx'
 import Navbar from './components/Navbar.jsx'
 
+import axios from 'axios';
+
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      patient: ''
+      patient: '',
+      redirect: false
     }
     this.updateApptDate = this.updateApptDate.bind(this)
     this.newAppointment = this.newAppointment.bind(this)
@@ -59,6 +63,9 @@ class App extends Component {
       },
       body: body,
     }).then((response) => {return response.json()})
+      window.location = '/'
+   
+    
   }
 
 

@@ -18,9 +18,7 @@ class Confirmation extends Component {
     const onBookingAppt = e => {
       e.preventDefault()
       this.props.newAppointment(questionnaire)
-      //.then(this.props.history.push('/'))
-     
-      //console.log(this.props.location.pathname)
+
     }
 
     return <Container text textAlign='center'>
