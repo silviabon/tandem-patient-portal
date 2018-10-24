@@ -20,7 +20,7 @@ console.log("quest", questionnaire)
       <h1>Patient Name: {patient.first_name}</h1>
       <h1>Appointment Date: {questionnaire.date}</h1>
       <h1>Appointment Time: {questionnaire.time}</h1>
-      <button type='submit'>Book Appointment</button>
+      <Link to={{ pathname: '/' }} ><button type="submit">Confirm Appointment</button></Link>
       </form>
     </Container>
   }
