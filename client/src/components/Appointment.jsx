@@ -31,7 +31,7 @@ class Appointment extends Component {
     let link = `appointment/${this.props.appointment.id}`
     return provider && patient
       ? (
-        <div className='container' text textAlign='center'>
+        <div className='card' textAlign='center'>
             <span> <strong>Date: </strong> <span>{appt.date}</span></span>
             <span> <strong>Time: </strong><span>{appt.time}</span> </span>
             <span> <strong>Dr.: </strong> <span>{provider.last_name}</span></span>

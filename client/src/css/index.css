@@ -8,12 +8,23 @@ body {
   padding: 0;
 }
 
+/*Navbar*/
 button.navbar-btn {
   float: right;
 }
 
+/*Home Page*/
+div.col-8 {
+  margin-top: 20px;
+}
+
+div.col-4 {
+  margin-top: 20px;
+}
+
+
+/*Calendar*/
 div.main {
   margin: 0 auto;
-  
 }
 
