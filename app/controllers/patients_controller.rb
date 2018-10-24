@@ -41,8 +41,9 @@ class PatientsController < ApplicationController
   # login
   def login
     @patient = Patient.find_by(email: params[:email], password: params[:password])
-    pp @patient
+    # pp @patient
     render json: @patient
+    # render json: nil, status: 401
   end
 
   private

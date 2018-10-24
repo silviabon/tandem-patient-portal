@@ -10,8 +10,9 @@ class Navbar extends Component {
     return(
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="/">Patient Portal</a>
-      <span>Hello, {patient.first_name} </span>
-      <button className="btn btn-danger navbar-btn"> Logout </button>
+      {patient
+            ? (<span>Hello, {patient.first_name} &nbsp;&nbsp;<button className="btn btn-danger navbar-btn"> Logout </button></span>)
+            : <div className='container'>Welcome to Patient Portal</div>}
     </nav>)
   }
 }
