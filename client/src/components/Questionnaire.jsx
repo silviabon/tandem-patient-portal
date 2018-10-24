@@ -6,50 +6,35 @@ import ConditionCal from './ConditionCal'
 class Questionnaire extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
-      apptType: "",
-      conditionType: "",
-      concernDescription: "",
       symptoms: [],
-      otherSymptoms: "",
-      temperature: "",
-      heartrate: "",
-      bp_s: "",
-      bp_d: "",
-      question1: "",
-      question2: ""
+      date: `${this.props.location.state.date.getFullYear()}/${this.props.location.state.date.getMonth()}/${this.props.location.state.date.getDate()}`, 
+      time: this.props.location.state.time,
+      formattedDate: this.props.formattedDate
     }
     this.handleChange = this.handleChange.bind(this);
   }
-
 
 handleChange(e) {
       const fieldName = e.target.name
       const value = e.target.value
       this.setState({ [fieldName]: value })
-      console.log(this.state)
-    //console.log(this.state.apptType, this.state.conditionType, this.state.mainConcern, this.state.concernDescription, this.state.temperature, this.state.heartrate)
-  }
-
+ }
   render() {
-
-    const onSubmitQuestionnaire = e => {
-      e.preventDefault()
-      let questionnaire = this.state
-      this.props.updateQuestionnaire(questionnaire)
-    }
+    const calendar = this.props.location.state
+    const date = calendar.date
+    // const onSubmitQuestionnaire = e => {
+    //   e.preventDefault()
+    //   let questionnaire = this.state
+    //   this.props.updateQuestionnaire(questionnaire)
+    // }
 
     const handleSymptoms = e => {
         const symptoms = this.state.symptoms;
           symptoms.push(e.target.name)
           this.setState({ symptoms })
-    console.log(this.state.symptoms)
+    //console.log(this.state.symptoms)
   }
-
-
-
-    //const conditions = this.props.conditions
 
     let conditionItems = this.props.conditions.map(condition => (
       <ConditionCal condition={condition} key={condition.id} />
@@ -57,18 +42,17 @@ handleChange(e) {
 
     return <Container text textAlign='center'>
 
-      {/* <h1>Appointment Date: {this.props.apptDate.toString()}</h1>
-      <h1>Appointment Time: {this.props.apptTime}</h1> */}
-      <form  onSubmit={onSubmitQuestionnaire}>
-        <h1>Appointment Date: date</h1>
-        <h1>Appointment Time: time</h1>
+
+      <form>
+      <h1>Appointment Date: {calendar.formattedDate}</h1>
+      <h1>Appointment Time: {calendar.time}</h1>
+        {/* <h1>Appointment Date: date</h1>
+        <h1>Appointment Time: time</h1> */}
         Please select the type of appointment:
         <select name='apptType' onChange={this.handleChange}>
-
           <option value="New Concern">New Concern</option>
           <option value="Follow-up">Follow-up</option>
-        </select><br />
-
+        </select>
 
         Please select which condition you want to follow-up: <select name='conditionType' onChange={this.handleChange}><option></option>{conditionItems}</select> <br />
 
@@ -95,11 +79,11 @@ handleChange(e) {
         Questions for the doctor:
         <span>Question 1: <input name='question1' onChange={this.handleChange} />  Question 2: <input name='question2' onChange={this.handleChange} /></span>
 
-        <input type="submit" value="submit"/>
-
+        <Link to={{ pathname: '/bookingConfirmation', state: this.state }} >
+        <input type="submit" value="submit"/> 
+        </Link>
       </form>
-
-      <br /><Button as={Link} to='/bookingConfirmation'>Next</Button>
+      <br />
     </Container>
   }
 

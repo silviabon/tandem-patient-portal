@@ -20,7 +20,8 @@ class App extends Component {
     this.newAppointment = this.newAppointment.bind(this)
     this.getPatients = this.getPatients.bind(this)
     this.getPatient = this.getPatient.bind(this)
-    this.updateQuestionnaire = this.updateQuestionnaire.bind(this)
+   // this.renderFormattedDateLabel = this.renderFormattedDateLabel.bind(this)
+    //this.updateQuestionnaire = this.updateQuestionnaire.bind(this)
   };
 
    componentDidMount() {
@@ -34,19 +35,20 @@ class App extends Component {
   }
 
 
+
   updateApptDate(newDate, newTime) {
     this.setState({apptDate: newDate, apptTime: newTime});
   }
 
-  newAppointment() {
+  newAppointment(questionnaire) {
     let body = JSON.stringify({appointment: {
       patient_id: this.state.patient.id,
       provider_id: '13',
-      date: this.state.apptDate,
-      time: this.state.apptTime,
-      concern: this.state.concern,
+      date: questionnaire.date,
+      time: questionnaire.time,
+      concern: questionnaire.concern,
       condition_id: '10',
-      patient_summary: `Appointment type: ${this.state.apptType}, Main concern: ${this.state.concern}, Concern description: ${this.state.concernDescription}, Symptoms: ${this.state.symptoms}, Other symptoms: ${this.state.otherSymptoms}, Vitals - Temperature: ${this.state.temperature}, Heart Rate: ${this.state.heartrate}, Blood Pressure: ${this.state.bp_s}/${this.state.bp_d}, Question 1: ${this.state.question1}, Question 2: ${this.state.question2}`,
+      patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
       status: 'upcoming'
      }})
 
@@ -82,20 +84,20 @@ class App extends Component {
       })
     }
 
-    updateQuestionnaire(questionnaire) {
-      this.setState({ apptType: questionnaire.apptType,
-      conditionType: questionnaire.conditionType,
-      concern: questionnaire.concern,
-      concernDescription: questionnaire.concernDescription,
-      symptoms: questionnaire.symptoms,
-      otherSymptoms: questionnaire.otherSymptoms,
-      temperature: questionnaire.temperature,
-      heartrate: questionnaire.heartrate,
-      bp_s: questionnaire.bp_s,
-      bp_d: questionnaire.bp_d,
-      question1: questionnaire.question1,
-      question2: questionnaire.question2 })
-    }
+    // updateQuestionnaire(questionnaire) {
+    //   this.setState({ apptType: questionnaire.apptType,
+    //   conditionType: questionnaire.conditionType,
+    //   concern: questionnaire.concern,
+    //   concernDescription: questionnaire.concernDescription,
+    //   symptoms: questionnaire.symptoms,
+    //   otherSymptoms: questionnaire.otherSymptoms,
+    //   temperature: questionnaire.temperature,
+    //   heartrate: questionnaire.heartrate,
+    //   bp_s: questionnaire.bp_s,
+    //   bp_d: questionnaire.bp_d,
+    //   question1: questionnaire.question1,
+    //   question2: questionnaire.question2 })
+    // }
 
   render () {
     let provider = 7;
@@ -111,10 +113,9 @@ class App extends Component {
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />
         {/* <Route path='/emr' component={EMR} /> */}
         <Route path='/emrhome' component={EMRHome} />
-        {/* <Route path={`/emrhome/${provider}`} render={(props)=><EMRHome {...props}/>} /> */}
-        <Route path='/bookingCalendar' render={()=><Calendar apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
-        <Route path='/bookingConfirmation' render={(props)=><Confirmation newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />
-        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire handleQuestionChange={this.handleQuestionChange} updateQuestionnaire={this.updateQuestionnaire} handleQuestionSubmit={this.handleQuestionSubmit} conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
+        <Route path='/bookingCalendar' render={()=><Calendar formattedDate={this.formattedDate} renderFormattedDateLabel={this.renderFormattedDateLabel} apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
+        <Route path='/bookingConfirmation' render={(props)=><Confirmation formattedDate={this.formattedDate} newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />
+        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire formattedDate={this.formattedDate} handleQuestionChange={this.handleQuestionChange} updateQuestionnaire={this.updateQuestionnaire} handleQuestionSubmit={this.handleQuestionSubmit} conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
       </Switch>
     </Router>
     </div>

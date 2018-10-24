@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 import Allergy from './Allergy.jsx';
 
 
@@ -12,13 +10,11 @@ class Allergies extends Component {
     ));
 
     return (
-      <Container text>
-        <Header as='h4'>
-          <Header.Content>Allergies</Header.Content>
-        </Header>
+      <div className='container'>
+        <h4>Allergies</h4>
         {allergiesItems}
-        <Divider section />
-      </Container>
+        <br/>
+      </div>
     )
   }
 }

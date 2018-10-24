@@ -1,19 +1,47 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Quicksand';
 }
 
 #root {
   padding: 0;
 }
 
+/*Navbar*/
+
 button.navbar-btn {
   float: right;
 }
 
+/*Home Page*/
+div.col-8 {
+  margin-top: 2em;
+}
+
+div.col-4 {
+  margin-top: 2em;
+}
+
+div.card {
+  margin-bottom: 1.5em;
+}
+
+a.aptbtn {
+  float: right;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+button.aptbtn {
+  float: right;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+
+/*Calendar*/
 div.main {
   margin: 0 auto;
-  
 }
 

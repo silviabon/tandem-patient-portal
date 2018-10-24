@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
 import AppointmentList from './AppointmentList.jsx';
 import MedicalInfo from './MedicalInfo.jsx';
 
@@ -39,29 +38,24 @@ class Home extends Component {
   render() {
     let { completedAppointments, upcomingAppointments } = this.state
     return (
-      <Container>
-        <Container>
-          <br />
-          <Button >Book Appointment</Button>
-          <Header as='h3' >
-            <Header.Content>
-              Upcoming Appointments
-            </Header.Content>
-          </Header>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-8'>
+          <a className='btn btn-primary' href='/bookingCalendar' role='button'>Book Appointment</a>
+          <h3>Upcoming Appointments</h3>
           {upcomingAppointments && upcomingAppointments.length
             ? (<AppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
-            : <Container textAlign='center'>No appointments found.</Container>}
-          <Header as='h3' >
-            <Header.Content>
-              Previous Appointments
-            </Header.Content>
-          </Header>
+            : <div className='container' textAlign='center'>No appointments found.</div>}
+          <h3>Previous Appointments</h3>
           {completedAppointments && completedAppointments.length
             ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
-            : <Container textAlign='center'>No appointments found.</Container>}
-        </Container>
+            : <div className='container' textAlign='center'>No appointments found.</div>}
+          </div>
+          <div className='col-4'>
             <MedicalInfo patient={this.state.patient} />
-      </Container>
+          </div>
+        </div>
+      </div>
     )
   }
 }
