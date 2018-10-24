@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import AppointmentList from './AppointmentList.jsx';
-import MedicalInfo from './MedicalInfo.jsx';
+import ProviderAppointmentList from './ProviderAppointmentList.jsx';
 
-class Home extends Component {
-  constructor() {
-    super()
+class EMRHome extends Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      patient: 6
+      patient: 6,
+      provider: 7
     }
   }
 
   componentDidMount() {
+    console.log('did mount')
     this.getAppointments('upcoming')
     this.getAppointments('completed')
   }
@@ -22,7 +23,8 @@ class Home extends Component {
   }
 
   getAppointments(status) {
-    this.fetch(`/api/patients/${this.state.patient}/appointments/`)
+    console.log('app', status)
+    this.fetch(`http://localhost:3001/api/providers/${this.state.provider}/appointments/`)
       .then(appointments => {
         if (appointments.length) {
           const appts = appointments.filter(app => app.status === status)
@@ -36,6 +38,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log('render', this.props.match.params.provider)
     let { completedAppointments, upcomingAppointments } = this.state
     return (
       <div className='container'>
@@ -44,20 +47,17 @@ class Home extends Component {
           <a className='btn btn-primary' href='/bookingCalendar' role='button'>Book Appointment</a>
           <h3>Upcoming Appointments</h3>
           {upcomingAppointments && upcomingAppointments.length
-            ? (<AppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
+            ? (<ProviderAppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
             : <div className='container' textAlign='center'>No appointments found.</div>}
           <h3>Previous Appointments</h3>
           {completedAppointments && completedAppointments.length
-            ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
+            ? <ProviderAppointmentList appointments={this.state.completedAppointments} status={'completed'} />
             : <div className='container' textAlign='center'>No appointments found.</div>}
-          </div>
-          <div className='col-4'>
-            <MedicalInfo patient={this.state.patient} />
-          </div>
+        </div>
         </div>
       </div>
     )
   }
 }
 
-export default Home
+export default EMRHome

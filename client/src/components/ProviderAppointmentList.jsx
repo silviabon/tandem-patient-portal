@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Appointment from './Appointment.jsx';
+import ProviderAppointment from './ProviderAppointment.jsx';
 
-class AppointmentList extends Component {
+class ProviderAppointmentList extends Component {
 
   render() {
     let appointments = this.props.appointments
@@ -10,7 +10,7 @@ class AppointmentList extends Component {
       {appointments && appointments.length
         ? <div>
           {appointments.map((appointment) => {
-            return <Appointment appointment={appointment} key={appointment.id} status={this.props.status} />
+            return <ProviderAppointment appointment={appointment} key={appointment.id} status={this.props.status} />
           })}
         </div>
         : <div className='container' textAlign='center'>Loading...</div>
@@ -20,4 +20,4 @@ class AppointmentList extends Component {
   }
 }
 
-export default AppointmentList
+export default ProviderAppointmentList

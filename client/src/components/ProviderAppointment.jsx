@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class Appointment extends Component {
+class ProviderAppointment extends Component {
   constructor() {
     super()
     this.state = {
@@ -28,7 +28,7 @@ class Appointment extends Component {
     const appt = this.props.appointment
     const status = this.props.status
     let { provider, patient } = this.state
-    let link = `appointment/${this.props.appointment.id}`
+    let link = `emr/${this.props.appointment.id}`
     return provider && patient
       ? (
         <div className='card'>
@@ -40,10 +40,9 @@ class Appointment extends Component {
           </div>
             {status === "upcoming"
               ? <span>
-                <a className="btn btn-primary aptbtn" href="/" role="button">Change Date</a>
-                <a className="btn btn-primary aptbtn" href="/" role="button">Delete</a>
+                <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>See patient</button></Link>
                 </span>
-            : <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
+              : <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
             }
         </div>
       )
@@ -53,4 +52,4 @@ class Appointment extends Component {
   }
 }
 
-export default Appointment
+export default ProviderAppointment
