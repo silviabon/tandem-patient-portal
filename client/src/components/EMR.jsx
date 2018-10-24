@@ -50,7 +50,7 @@ class EMR extends Component {
     event.preventDefault()
     alert('An form was submitted: ' + event.target.patient_summary.value + ' ' + event.target.subjective.value+ ' ' + event.target.objective.value+ ' ' + event.target.plan.value+ ' ' + event.target.doctor_summary.value)
     let body = JSON.stringify({soap: {doctor_summary: event.target.doctor_summary.value}})
-    fetch('http://localhost:3001/api/patients/1/appointments/1/soaps/', {
+    fetch('http://localhost:3001/api/patients/1/appointments/5/soaps/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
