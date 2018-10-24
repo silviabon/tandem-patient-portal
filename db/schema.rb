@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20181020174706) do
     t.integer  "provider_id"
     t.integer  "patient_id"
     t.integer  "condition_id"
-    t.date     "date"-=
+    t.date     "date"
     t.string   "time"
     t.text     "patient_summary"
     t.string   "concern"
