@@ -10,7 +10,7 @@ class Appointment extends Component {
 
   componentDidMount() {
     this.getProvider(this.props.appointment.provider_id)
-     this.setState({patient: this.props.appointment.patient_id})
+    this.setState({patient: this.props.appointment.patient_id})
   }
 
   fetch(endpoint) {

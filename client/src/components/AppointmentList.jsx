@@ -20,5 +20,4 @@ class AppointmentList extends Component {
   }
 }
 
-
 export default AppointmentList

@@ -100,7 +100,7 @@ class App extends Component {
     // }
 
   render () {
-
+    let provider = 7;
 
     return<div>
     <Navbar patient={this.state.patient}/>
@@ -110,7 +110,8 @@ class App extends Component {
         <Route path='/home' exact component={Home} />
         <Route path='/login' component={Login} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
-        <Route path='/emr' component={EMR} />
+        <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />
+        {/* <Route path='/emr' component={EMR} /> */}
         <Route path='/emrhome' component={EMRHome} />
         <Route path='/bookingCalendar' render={()=><Calendar formattedDate={this.formattedDate} renderFormattedDateLabel={this.renderFormattedDateLabel} apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
         <Route path='/bookingConfirmation' render={(props)=><Confirmation formattedDate={this.formattedDate} newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />

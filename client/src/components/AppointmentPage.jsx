@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 class AppointmentPage extends Component {
   constructor() {
     super()
@@ -32,6 +31,7 @@ class AppointmentPage extends Component {
         }
       })
   }
+
   fetch(endpoint) {
     return window.fetch(endpoint)
       .then(response => response.json())
