@@ -12,7 +12,7 @@ class Conditions extends Component {
 
     return (
       <div className='container'>
-        <h4>Conditions</h4>
+        <h3>Conditions</h3>
         {conditionsItems}
         <br/>
       </div>
