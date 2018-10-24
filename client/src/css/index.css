@@ -15,11 +15,27 @@ button.navbar-btn {
 
 /*Home Page*/
 div.col-8 {
-  margin-top: 20px;
+  margin-top: 2em;
 }
 
 div.col-4 {
-  margin-top: 20px;
+  margin-top: 2em;
+}
+
+div.card {
+  margin-bottom: 1.5em;
+}
+
+a.aptbtn {
+  float: right;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+button.aptbtn {
+  float: right;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
 }
 
 
