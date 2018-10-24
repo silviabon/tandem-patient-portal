@@ -6,6 +6,7 @@ class Appointment extends Component {
     super()
     this.state = {
     }
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
 
   componentDidMount() {
@@ -24,11 +25,22 @@ class Appointment extends Component {
       .then(provider => this.setState({ provider: provider }))
   }
 
+  handlePageChange() {
+    setTimeout(() => {
+      window.location = '/'
+    }, 2000);
+  }
+
   render() {
     const appt = this.props.appointment
     const status = this.props.status
     let { provider, patient } = this.state
     let link = `appointment/${this.props.appointment.id}`
+    const onDeleteAppt = e => {
+      e.preventDefault()
+      let aptid = this.props.appointment.id
+      this.props.deleteAppointment(aptid)
+    }
     return provider && patient
       ? (
         <div className='card'>
@@ -40,8 +52,7 @@ class Appointment extends Component {
           </div>
             {status === "upcoming"
               ? <span>
-                <a className="btn btn-primary aptbtn" href="/" role="button">Change Date</a>
-                <a className="btn btn-primary aptbtn" href="/" role="button">Delete</a>
+                <button className="btn btn-primary aptbtn" onClick={onDeleteAppt}>Delete</button>
                 </span>
             : <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
             }

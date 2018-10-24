@@ -20,8 +20,6 @@ class App extends Component {
     this.newAppointment = this.newAppointment.bind(this)
     this.getPatients = this.getPatients.bind(this)
     this.getPatient = this.getPatient.bind(this)
-   // this.renderFormattedDateLabel = this.renderFormattedDateLabel.bind(this)
-    //this.updateQuestionnaire = this.updateQuestionnaire.bind(this)
   };
 
    componentDidMount() {
@@ -33,8 +31,6 @@ class App extends Component {
       .then(response => response.json())
       .catch(error => console.log(error))
   }
-
-
 
   updateApptDate(newDate, newTime) {
     this.setState({apptDate: newDate, apptTime: newTime});
@@ -61,7 +57,6 @@ class App extends Component {
     }).then((response) => {return response.json()})
   }
 
-
     getPatients() {
       this.fetch('/api/patients')
         .then(patients => {
@@ -84,21 +79,6 @@ class App extends Component {
       })
     }
 
-    // updateQuestionnaire(questionnaire) {
-    //   this.setState({ apptType: questionnaire.apptType,
-    //   conditionType: questionnaire.conditionType,
-    //   concern: questionnaire.concern,
-    //   concernDescription: questionnaire.concernDescription,
-    //   symptoms: questionnaire.symptoms,
-    //   otherSymptoms: questionnaire.otherSymptoms,
-    //   temperature: questionnaire.temperature,
-    //   heartrate: questionnaire.heartrate,
-    //   bp_s: questionnaire.bp_s,
-    //   bp_d: questionnaire.bp_d,
-    //   question1: questionnaire.question1,
-    //   question2: questionnaire.question2 })
-    // }
-
   render () {
     let provider = 7;
 
@@ -106,12 +86,11 @@ class App extends Component {
     <Navbar patient={this.state.patient}/>
     <Router>
       <Switch>
-        <Route path='/' exact component={Home} />
+        <Route path='/' exact render={(props)=><Home deleteAppointment={this.deleteAppointment} patient={this.state.patient} {...props}/>} />
         <Route path='/home' exact component={Home} />
         <Route path='/login' component={Login} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />
-        {/* <Route path='/emr' component={EMR} /> */}
         <Route path='/emrhome' component={EMRHome} />
         <Route path='/bookingCalendar' render={()=><Calendar formattedDate={this.formattedDate} renderFormattedDateLabel={this.renderFormattedDateLabel} apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
         <Route path='/bookingConfirmation' render={(props)=><Confirmation formattedDate={this.formattedDate} newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />

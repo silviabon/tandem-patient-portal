@@ -21,6 +21,16 @@ class Home extends Component {
       .catch(error => console.log(error))
   }
 
+  deleteAppointment = (id) => {
+    fetch(`http://localhost:3001/api/patients/${this.props.patient.id}/appointments/${id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      const appt = this.state.upcomingAppointments
+      const newAppt = appt.filter(app => app.id !== id)
+      this.setState({ upcomingAppointments: newAppt })
+    })
+  }
+
   getAppointments(status) {
     this.fetch(`/api/patients/${this.state.patient}/appointments/`)
       .then(appointments => {
@@ -44,7 +54,7 @@ class Home extends Component {
           <a className='btn btn-primary' href='/bookingCalendar' role='button'>Book Appointment</a>
           <h2>Upcoming Appointments</h2>
           {upcomingAppointments && upcomingAppointments.length
-            ? (<AppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
+              ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.state.upcomingAppointments} patient={this.state.patient} status={'upcoming'} />)
             : <div className='container' textAlign='center'>No appointments found.</div>}
           <h2>Previous Appointments</h2>
           {completedAppointments && completedAppointments.length
