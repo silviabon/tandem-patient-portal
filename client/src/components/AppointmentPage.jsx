@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 
 
 class AppointmentPage extends Component {
@@ -42,34 +40,27 @@ class AppointmentPage extends Component {
 
   render() {
     let { provider, summary, appointment } = this.state
-    return <Container text textAlign='center'>
-      <h1>Appointment</h1>
+    return <div className='container' textAlign='center'>
+      <h3>Appointment</h3>
       {
         provider && summary && appointment
-          ? <Container>
-            <Container>
+          ? <div className='container'>
+            <div className='container'>
               <span>Date: </span><span>{appointment.date}</span><span>Time: </span><span>{appointment.time}</span><span>Dr.: </span><span>{provider.last_name}</span>
-            </Container>
-            <Container>
-              <Header as='h3'>
-                <Header.Content>
-                  Patient Summary:
-                </Header.Content>
-              </Header>
+            </div>
+            <div className='container'>
+              <h3>Patient Summary:</h3>
               {appointment.patient_summary}
-            </Container>
-            <Container>
-              <Header as='h3'>
-                <Header.Content>
-                  Provider Summary and Instructions:
-                </Header.Content>
-              </Header>
-              {summary}</Container>
-          </Container>
+            </div>
+            <div className='container'>
+              <h3>Provider Summary and Instructions:</h3>
+              {summary}
+            </div>
+          </div>
           : <p>Loading...</p>
       }
-      <Button as={Link} to='/'>Back to home</Button>
-    </Container>
+      <a className="btn btn-primary" href="/" role="button">Back Home</a>
+    </div>
   }
 }
 
