@@ -43,11 +43,11 @@ class App extends Component {
   newAppointment(questionnaire) {
     let body = JSON.stringify({appointment: {
       patient_id: this.state.patient.id,
-      provider_id: '13',
+      provider_id: '1',
       date: questionnaire.date,
       time: questionnaire.time,
       concern: questionnaire.concern,
-      condition_id: '10',
+      condition_id: '1',
       patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
       status: 'upcoming'
      }})

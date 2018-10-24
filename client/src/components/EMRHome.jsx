@@ -5,8 +5,8 @@ class EMRHome extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      patient: 6,
-      provider: 7
+      patient: 1,
+      provider: 1
     }
   }
 
