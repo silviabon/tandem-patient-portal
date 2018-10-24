@@ -11,7 +11,7 @@ class Allergies extends Component {
 
     return (
       <div className='container'>
-        <h4>Allergies</h4>
+        <h3>Allergies</h3>
         {allergiesItems}
         <br/>
       </div>

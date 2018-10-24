@@ -32,11 +32,11 @@ class Appointment extends Component {
     return provider && patient
       ? (
         <div className='card'>
-          <h5 className='card-header'>Main Concern:{appt.concern}</h5>
+          <h3 className='card-header'>Main Concern - <b>{appt.concern}</b> </h3>
           <div className='card-body'>
-            <p>Date:{appt.date}</p>
-            <p>Time:{appt.time}</p>
-            <p>Doctor:{provider.last_name}</p>
+            <p>Date: <b>{appt.date}</b></p>
+            <p>Time: <b>{appt.time}</b></p>
+            <p>Doctor: <b>{provider.last_name}</b></p>
           </div>
             {status === "upcoming"
               ? <span>

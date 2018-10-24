@@ -12,7 +12,7 @@ class Prescriptions extends Component {
 
     return (
       <div className='container'>
-        <h4>Prescriptions</h4>
+        <h3>Prescriptions</h3>
         {prescriptionsItems}
         <br />
       </div>

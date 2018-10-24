@@ -12,7 +12,7 @@ class Immunizations extends Component {
 
     return (
       <div className='container'>
-        <h4>Immunizations</h4>
+        <h3>Immunizations</h3>
         {immunizationsItems}
         <br />
       </div>

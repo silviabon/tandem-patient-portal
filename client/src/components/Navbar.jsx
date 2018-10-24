@@ -10,8 +10,11 @@ class Navbar extends Component {
     return(
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="/">Patient Portal</a>
-      <span>Hello, {patient.first_name} </span>
-      <button className="btn btn-danger navbar-btn"> Logout </button>
+        <ul className="nav justify-content-end">
+          <li>Welcome, {patient.first_name}</li>
+          <li><button className="btn btn-danger navbar-btn">Login</button></li>
+          <li><button className="btn btn-danger navbar-btn">Logout</button></li>
+        </ul>
     </nav>)
   }
 }

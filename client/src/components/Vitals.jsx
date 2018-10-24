@@ -8,8 +8,8 @@ class Vitals extends Component {
     const vitals = this.props.vitals
 
     return (
-      <div className='container'>
-        <h4>Vitals</h4>
+      <div className="container">
+        <h3>Vitals</h3>
         <p><span>Blood pressure - systolic: </span> <span>{vitals.bp_s}</span></p>
         <p><span>Blood pressure -  diastolic: </span> <span>{vitals.bp_d}</span></p>
         <p><span>Weight (kg): </span> <span>{vitals.weight_kg}</span></p>
