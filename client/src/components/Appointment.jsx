@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class Appointment extends Component {
@@ -32,23 +31,25 @@ class Appointment extends Component {
     let link = `appointment/${this.props.appointment.id}`
     return provider && patient
       ? (
-        <Container text textAlign='center'>
-            <span> <strong>Date: </strong> <span>{appt.date}</span></span>
-            <span> <strong>Time: </strong><span>{appt.time}</span> </span>
-            <span> <strong>Dr.: </strong> <span>{provider.last_name}</span></span>
-            <span> <strong>Concern: </strong> <span>{appt.concern}</span></span>
+        <div className='card'>
+          <h5 className='card-header'>Main Concern:{appt.concern}</h5>
+          <div className='card-body'>
+            <p>Date:{appt.date}</p>
+            <p>Time:{appt.time}</p>
+            <p>Doctor:{provider.last_name}</p>
+          </div>
             {status === "upcoming"
               ? <span>
-                <Button>Change date</Button>
-                <Button>Cancel</Button> 
+                <a className="btn btn-primary aptbtn" href="/" role="button">Change Date</a>
+                <a className="btn btn-primary aptbtn" href="/" role="button">Delete</a>
                 </span>
-              : <Button as={Link} to={{pathname: link, state: {appointment: {appt}, patient: {patient}}}}>Details</Button>
+            : <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
             }
-        </Container>
+        </div>
       )
-      : <Container text>
+      : <div className='container'>
         <p>Loading...</p>
-      </Container>
+      </div>
   }
 }
 

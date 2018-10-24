@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 import Conditions from './Conditions.jsx';
 import Allergies from './Allergies.jsx';
 import Prescriptions from './Prescriptions.jsx';
@@ -54,33 +52,29 @@ class MedicalInfo extends Component {
   render() {
     let { vitals, conditions, allergies, prescriptions, immunizations } = this.state
 
-    return <Container>
-      <Header as='h3'>
-        <Header.Content>
-          Medical Information
-          </Header.Content>
-      </Header>
+    return <div className='container'>
+        <h3>Medical Information</h3>
       {vitals
         ? <Vitals vitals={this.state.vitals} />
-        : <Container text> loading... </Container>
+        : <div className='container'> loading... </div>
       }
       {conditions
         ? <Conditions conditions={this.state.conditions} />
-        : <Container text> loading... </Container>
+        : <div className='container'> loading... </div>
       }
       {allergies
         ? <Allergies allergies={this.state.allergies} />
-        : <Container text> loading... </Container>
+        : <div className='container'> loading... </div>
       }
       {prescriptions
         ? <Prescriptions prescriptions={this.state.prescriptions} />
-        : <Container text> loading... </Container>
+        : <div className='container'> loading... </div>
       }
       {immunizations
         ? <Immunizations immunizations={this.state.immunizations} />
-        : <Container text> loading... </Container>
+        : <div className='container'> loading... </div>
       }
-    </Container>
+    </div>
 
   }
 }
