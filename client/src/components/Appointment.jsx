@@ -32,23 +32,23 @@ class Appointment extends Component {
     let link = `appointment/${this.props.appointment.id}`
     return provider && patient
       ? (
-        <Container text textAlign='center'>
+        <div className='container' text textAlign='center'>
             <span> <strong>Date: </strong> <span>{appt.date}</span></span>
             <span> <strong>Time: </strong><span>{appt.time}</span> </span>
             <span> <strong>Dr.: </strong> <span>{provider.last_name}</span></span>
             <span> <strong>Concern: </strong> <span>{appt.concern}</span></span>
             {status === "upcoming"
               ? <span>
-                <Button>Change date</Button>
-                <Button>Cancel</Button> 
+                <a className="btn btn-primary" href="/" role="button">Change Date</a>
+                <a className="btn btn-primary" href="/" role="button">Delete</a>
                 </span>
-              : <Button as={Link} to={{pathname: link, state: {appointment: {appt}, patient: {patient}}}}>Details</Button>
+            : <button className='btn btn-primary'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}>Details</Link></button>
             }
-        </Container>
+        </div>
       )
-      : <Container text>
+      : <div className='container'>
         <p>Loading...</p>
-      </Container>
+      </div>
   }
 }
 
