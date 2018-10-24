@@ -63,45 +63,35 @@ class EMR extends Component {
     let { vitals, appointment, upcomingAppointments } = this.state
     let first_name = "PFN"
     let last_name = "PLN"
-    return <Container text textAlign='center'>
+    return <div className='container'>
       <h1>EMR Page</h1>
       <h2>Patient name: {first_name} {last_name}</h2>
-      <Header as='h4'>
-        <Header.Content>Patient summary</Header.Content>
-      </Header>
+      <h3>Patient summary</h3>
       <form onSubmit={this.handleSubmit}>
       {appointment
         ? <textarea id="patient_summary" name="patient_summary" rows="3" cols="33" maxLength="200" wrap="hard" value={this.state.appointment.patient_summary} readOnly></textarea>
-        : <Container text> loading... </Container>
+        : <div className='container' textAlign='center'> loading... </div>
       }
-      <Header as='h4'>
-        <Header.Content>Subjective</Header.Content>
-      </Header>
+      <h3>Subjective</h3>
       <textarea id="subjective" name="subjective" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
       {vitals
         ? <Vitals vitals={this.state.vitals} />
-        : <Container text> loading... </Container>
+        : <div className='container' textAlign='center'> loading... </div>
       }
-      <Header as='h4'>
-        <Header.Content>Objective</Header.Content>
-      </Header>
+      <h3>Objective</h3>
       <textarea id="objective" name="objective" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
-      <Header as='h4'>
-        <Header.Content>Plan</Header.Content>
-      </Header>
+      <h3>Plan</h3>
       <textarea id="plan" name="plan" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
-      <Header as='h4'>
-        <Header.Content>Summary</Header.Content>
-      </Header>
+      <h3>Summary</h3>
       <textarea id="doctor_summary" name="doctor_summary" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
       <br />
-      <input type="submit" value="Submit" />
+      <button className="btn btn-primary"> Submit </button>
       </form>
-    </Container>
+    </div>
   }
 }
 
