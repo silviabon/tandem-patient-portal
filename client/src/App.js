@@ -24,8 +24,9 @@ class App extends Component {
     this.updatePatientInState = this.updatePatientInState.bind(this)
   };
 
+  
   componentDidMount() {
-
+    this.getConditions()
   }
 
   fetch(endpoint) {
@@ -61,7 +62,7 @@ class App extends Component {
       }
     })
 
-    fetch(`http://localhost:3001/api/patients/${this.state.patient.id}/appointments`, {
+    fetch(`http://localhost:3001/api/patients/1/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -88,8 +89,8 @@ class App extends Component {
       }))
   }
 
-  getConditions(id) {
-    this.fetch(`/api/patients/${id}/conditions`)
+  getConditions() {
+    this.fetch(`/api/patients/1/conditions`)
       .then(conditions => {
         this.setState({
           conditions: conditions
