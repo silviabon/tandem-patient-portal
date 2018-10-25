@@ -67,3 +67,6 @@ div.main {
   clear: right;
 }
 
+.textarea {
+  width: 100%;
+}
