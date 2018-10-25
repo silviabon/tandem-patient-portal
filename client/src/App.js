@@ -104,7 +104,7 @@ class App extends Component {
     <Router>
       <Switch>
         <Route path='/' exact render={(props)=><Home deleteAppointment={this.deleteAppointment} patient={this.state.patient} {...props}/>} />
-        <Route path='/home' exact component={Home} />
+        <Route path='/home'render={(props)=><Home patient={this.state.patient} {...props}/>} />
         <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} />} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />

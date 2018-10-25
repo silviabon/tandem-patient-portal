@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import Prescription from './Prescription.jsx';
 
-
 class Prescriptions extends Component {
-
 
   render() {
     const prescriptionsItems = this.props.prescriptions.map(prescription => (
@@ -17,10 +15,7 @@ class Prescriptions extends Component {
         <br />
       </div>
     )
-
   }
 }
 
 export default Prescriptions
-
-

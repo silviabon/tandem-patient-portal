@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class AppointmentPage extends Component {
   constructor() {
@@ -59,7 +60,7 @@ class AppointmentPage extends Component {
           </div>
           : <p>Loading...</p>
       }
-      <a className="btn btn-primary" href="/" role="button">Back Home</a>
+      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Bach Home</button></Link> 
     </div>
   }
 }

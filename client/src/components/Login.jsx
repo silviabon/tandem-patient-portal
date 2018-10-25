@@ -15,8 +15,8 @@ class Login extends Component {
     router: PropTypes.object
   }
 
-  redirectToTarget = () => {
-    this.context.router.history.push(`/`)
+  componentDidMount() {
+
   }
 
   handleSubmit = event => {
@@ -29,11 +29,14 @@ class Login extends Component {
         this.setState({ login_patient: res.data })
         let patient = res.data
         this.props.updatePatientInState(patient)
-        this.redirectToTarget()
+        console.log('Now we do the redirect')
+        this.context.router.history.push(`/home`)
+        // this.redirectToTarget()
       })
   }
 
   render () {
+    let { patient } = this.state
     return <div  className='container'>
       <h1>Login Page</h1>
       <h2>Patient login</h2>

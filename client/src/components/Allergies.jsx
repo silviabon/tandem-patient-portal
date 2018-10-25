@@ -20,5 +20,3 @@ class Allergies extends Component {
 }
 
 export default Allergies
-
-
