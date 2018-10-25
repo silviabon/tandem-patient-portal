@@ -60,7 +60,7 @@ class AppointmentPage extends Component {
           </div>
           : <p>Loading...</p>
       }
-      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Bach Home</button></Link> 
+      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Back Home</button></Link> 
     </div>
   }
 }
