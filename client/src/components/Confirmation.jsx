@@ -24,7 +24,7 @@ class Confirmation extends Component {
     return <Container text textAlign='center'>
       <h1>Confirmation Page</h1>
       <form onSubmit={onBookingAppt}>
-      <h1>Patient Name: {patient.first_name}</h1>
+      <h1>Patient Name: {patient.first_name} {patient.last_name}</h1>
       <h1>Appointment Date: {questionnaire.date}</h1>
       <h1>Appointment Time: {questionnaire.time}</h1>
       <button type="submit">Confirm Appointment</button>
