@@ -29,6 +29,11 @@ class Login extends Component {
         this.setState({ login_patient: res.data })
         let patient = res.data
         this.props.updatePatientInState(patient)
+        axios.get(`/api/patients/${patient.id}/conditions`)
+        .then(res2 => {
+          let conditions = res2.data
+          this.props.updateConditionsInState(conditions)
+          })
         console.log('Now we do the redirect')
         this.context.router.history.push(`/home`)
         // this.redirectToTarget()
