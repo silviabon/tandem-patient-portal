@@ -15,18 +15,21 @@ class App extends Component {
     super(props)
     this.state = {
       patient: '',
+      conditions: '',
       redirect: false
     }
     this.updateApptDate = this.updateApptDate.bind(this)
     this.newAppointment = this.newAppointment.bind(this)
-    this.getPatients = this.getPatients.bind(this)
-    this.getPatient = this.getPatient.bind(this)
+    // this.getPatients = this.getPatients.bind(this)
+    // this.getPatient = this.getPatient.bind(this)
     this.updatePatientInState = this.updatePatientInState.bind(this)
-  };
+    this.updateConditionsInState = this.updateConditionsInState.bind(this)
+  }
 
   
   componentDidMount() {
-    this.getConditions()
+    console.log("cdm on app")
+    // this.getConditions()
   }
 
   fetch(endpoint) {
@@ -48,11 +51,17 @@ class App extends Component {
     });
   }
 
+  updateConditionsInState(conditions) {
+    this.setState({
+      conditions
+    });
+  }
+
   newAppointment(questionnaire) {
     let body = JSON.stringify({
       appointment: {
         patient_id: this.state.patient.id,
-        provider_id: '13',
+        provider_id: this.state.patient.provider_id,
         date: questionnaire.date,
         time: questionnaire.time,
         concern: questionnaire.concern,
@@ -62,7 +71,7 @@ class App extends Component {
       }
     })
 
-    fetch(`http://localhost:3001/api/patients/1/appointments`, {
+    fetch(`/api/patients/${this.state.patient.id}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -71,42 +80,42 @@ class App extends Component {
     }).then((response) => {
       return response.json()
     })
-    window.location = '/'
   }
 
-  getPatients() {
-    this.fetch('/api/patients')
-      .then(patients => {
-        this.getPatient(patients[0].id)
-        this.getConditions(patients[0].id)
-      })
-  }
+  // getPatients() {
+  //   this.fetch('/api/patients')
+  //     .then(patients => {
+  //       this.getPatient(patients[0].id)
+  //       this.getConditions(patients[0].id)
+  //     })
+  // }
 
-  getPatient(id) {
-    this.fetch(`/api/patients/${id}`)
-      .then(patient => this.setState({
-        patient: patient
-      }))
-  }
+  // getPatient(id) {
+  //   this.fetch(`/api/patients/${id}`)
+  //     .then(patient => this.setState({
+  //       patient: patient
+  //     }))
+  // }
 
-  getConditions() {
-    this.fetch(`/api/patients/1/conditions`)
-      .then(conditions => {
-        this.setState({
-          conditions: conditions
-        })
-      })
-  }
+  // getConditions() {
+  //   this.fetch(`/api/patients/${this.state.patient.id}/conditions`)
+  //   // this.fetch(`/api/patients/7/conditions`)
+  //   .then(conditions => {
+  //       this.setState({
+  //         conditions: conditions
+  //       })
+  //     })
+  // }
 
   render () {
-
+    // let cond = this.getConditions() 
     return <div>
     <Navbar patient={this.state.patient}/>
     <Router>
       <Switch>
         <Route path='/' exact render={(props)=><Home deleteAppointment={this.deleteAppointment} patient={this.state.patient} {...props}/>} />
-        <Route path='/home' exact component={Home} />
-        <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} />} />
+        <Route path='/home'render={(props)=><Home patient={this.state.patient} {...props}/>} />
+        <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} />} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />
         <Route path='/emrhome' component={EMRHome} />
