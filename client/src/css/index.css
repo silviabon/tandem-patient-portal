@@ -51,6 +51,28 @@ button.aptbtn {
   margin-right: 0.5em;
 }
 
+div.card-body {
+  padding: 0;
+}
+
+div.time-col {
+  margin: 0.7em;
+}
+
+div.delete-button {
+  margin: 0.5em;
+}
+
+div.detail-button {
+  margin: 0.5em;
+}
+
+p.appt-time {
+  font-size: 1.2em;
+}
+
+
+
 
 /*Calendar*/
 div.main {
@@ -66,4 +88,3 @@ div.main {
   float: right;
   clear: right;
 }
-
