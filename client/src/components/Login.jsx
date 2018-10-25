@@ -53,7 +53,7 @@ class Login extends Component {
       <br />
       <p>Are you a new user? <a href='#'>Learn more</a> about our registration process.</p>
       
-      <button className='btn btn-primary' type="submit" value="Submit">Login</button>
+      <input className='btn btn-primary' type="submit" value="Login" />
       </form>
       </div>
     </div>
