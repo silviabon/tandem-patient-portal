@@ -40,51 +40,64 @@ handleChange(e) {
       <ConditionCal condition={condition} key={condition.id} />
     ));
 
-    return <Container text textAlign='center'>
+    return (
 
-
+      <div className='row'>
       <form>
+      <div className='col-8 main'>
+
       <h1>Appointment Date: {calendar.formattedDate}</h1>
       <h1>Appointment Time: {calendar.time}</h1>
-        {/* <h1>Appointment Date: date</h1>
-        <h1>Appointment Time: time</h1> */}
+      
         Please select the type of appointment:
         <select name='apptType' onChange={this.handleChange}>
           <option value="New Concern">New Concern</option>
           <option value="Follow-up">Follow-up</option>
-        </select>
+        </select><br />
 
         Please select which condition you want to follow-up: <select name='conditionType' onChange={this.handleChange}><option></option>{conditionItems}</select> <br />
+        <br />
+        <div>What is your main concern: <input placeholder="Please Specify" name="concern" onChange={this.handleChange}></input></div><br />
+        <div>Please describe your concern:<textarea placeholder="Describe more..." name="concernDescription" onChange={this.handleChange}></textarea></div><br />
+        
+        <div className='row'>
+        <div className='col-12'>Which of the following conditions are you displaying?</div>
+        <div className='col-6'>
+        
+        <input type="checkbox" name="cough" onChange={handleSymptoms} /> Cough <br /> 
+        <input type="checkbox" name="fever" onChange={handleSymptoms} /> Fever <br />
+        <input type="checkbox" name="pain" onChange={handleSymptoms} /> Pain <br />
+        <input type="checkbox" name="nausea" onChange={handleSymptoms} /> Nausea <br />
+        <input type="checkbox" name="fatique" onChange={handleSymptoms} /> Fatigue <br />
+        <input type="checkbox" name="swelling" onChange={handleSymptoms} /> Swelling <br />
 
-        <span>What is your main concern: <input placeholder="Please Specify" name="concern" onChange={this.handleChange}></input></span><br />
-        <span>Please describe your concern:<textarea placeholder="Describe more..." name="concernDescription" onChange={this.handleChange}></textarea></span><br />
-        Which of the following conditions are you displaying?
-
-        <input type="checkbox" name="cough" onChange={handleSymptoms} /> Cough
-        <input type="checkbox" name="fever" onChange={handleSymptoms} /> Fever
-        <input type="checkbox" name="pain" onChange={handleSymptoms} /> Pain
-        <input type="checkbox" name="nausea" onChange={handleSymptoms} /> Nausea
-        <input type="checkbox" name="fatique" onChange={handleSymptoms} /> Fatigue
-        <input type="checkbox" name="swelling" onChange={handleSymptoms} /> Swelling
-        <input type="checkbox" name="diarrhea" onChange={handleSymptoms} /> Diarrhea
-        <input type="checkbox" name="vomiting" onChange={handleSymptoms} /> Vomiting
-        <input type="checkbox" name="shortness of breath" onChange={handleSymptoms} /> Shortness of Breath
-        <input type="checkbox" name="headache" onChange={handleSymptoms} /> Headache
-        <input type="checkbox" name="rash" onChange={handleSymptoms} /> Rash
-        Other (Please Specify):<input name="otherSymptoms" onChange={this.handleChange}/>
-
-        Please enter any vitals you have measured:
-        <span>Temperature: <input name='temperature' onChange={this.handleChange} />  Heart Rate: <input name='heartrate' onChange={this.handleChange} /></span>
-        <span>Blood Pressure (Systolic): <input name='bp_s' onChange={this.handleChange} />  Blood Pressure (Diastolic): <input name='bp_d' onChange={this.handleChange} /></span>
+        </div>
+        <div className='col-6'>
+        <input type="checkbox" name="diarrhea" onChange={handleSymptoms} /> Diarrhea <br />
+        
+        
+        <input type="checkbox" name="vomiting" onChange={handleSymptoms} /> Vomiting <br />
+        <input type="checkbox" name="shortness of breath" onChange={handleSymptoms} /> Shortness of Breath <br />
+        <input type="checkbox" name="headache" onChange={handleSymptoms} /> Headache <br />
+        <input type="checkbox" name="rash" onChange={handleSymptoms}  /> Rash <br />
+        Other (Please Specify):<input name="otherSymptoms" onChange={this.handleChange}/> <br />
+        </div>
+        </div>
+        Please enter any vitals you have measured: <br />
+        Temperature: <input name='temperature' onChange={this.handleChange} />  
+        Heart Rate: <input name='heartrate' onChange={this.handleChange} />
+        Blood Pressure (Systolic): <input name='bp_s' onChange={this.handleChange} />  
+        Blood Pressure (Diastolic): <input name='bp_d' onChange={this.handleChange} />
         Questions for the doctor:
-        <span>Question 1: <input name='question1' onChange={this.handleChange} />  Question 2: <input name='question2' onChange={this.handleChange} /></span>
+        Question 1: <input name='question1' onChange={this.handleChange} />  
+        Question 2: <input name='question2' onChange={this.handleChange} />
 
         <Link to={{ pathname: '/bookingConfirmation', state: this.state }} >
         <input type="submit" value="submit"/> 
         </Link>
+        </div>
       </form>
-      <br />
-    </Container>
+      </div>)
   }
 
 
