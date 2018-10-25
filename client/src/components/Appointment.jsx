@@ -45,7 +45,7 @@ class Appointment extends Component {
       ? (
         <div className='card'>
           <h3 className='card-header'>{appt.concern}</h3>
-          <div className='card-body'>
+          <div className='card-body appt-card'>
             <div className='row'>
             <div className='col-9 time-col'><p className='appt-time'>{appt.date} at {appt.time}AM with Doctor {provider.last_name}</p></div>
 

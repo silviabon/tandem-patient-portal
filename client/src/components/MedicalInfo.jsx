@@ -52,7 +52,7 @@ class MedicalInfo extends Component {
   render() {
     let { vitals, conditions, allergies, prescriptions, immunizations } = this.state
 
-    return <div><h3>Medical Information</h3>
+    return <div><h2>Medical Information</h2>
     <div className='card'>
       {vitals
         ? <Vitals vitals={this.state.vitals} />

@@ -27,16 +27,24 @@ button.navbar-btn {
 }
 
 /*Home Page*/
-div.col-8 {
+div.col-md-8 {
   margin-top: 2em;
 }
 
-div.col-4 {
+div.col-md-4 {
   margin-top: 2em;
 }
 
 div.card {
   margin-bottom: 1.5em;
+}
+
+div.med-info {
+  padding: 1em;
+}
+
+div.appt-card {
+  padding: 0;
 }
 
 a.aptbtn {
@@ -49,10 +57,6 @@ button.aptbtn {
   float: right;
   margin-bottom: 0.5em;
   margin-right: 0.5em;
-}
-
-div.card-body {
-  padding: 0;
 }
 
 div.time-col {
@@ -70,9 +74,6 @@ div.detail-button {
 p.appt-time {
   font-size: 1.2em;
 }
-
-
-
 
 /*Calendar*/
 div.main {

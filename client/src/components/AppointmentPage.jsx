@@ -41,26 +41,26 @@ class AppointmentPage extends Component {
 
   render() {
     let { provider, summary, appointment } = this.state
-    return <div className='container' textAlign='center'>
-      <h3>Appointment</h3>
+    return <div className='row'>
+      <div className='col-md-8 main'>
+        <div className='row'>
+      <h2>Appointment Summary</h2>
       {
         provider && summary && appointment
-          ? <div className='container'>
-            <div className='container'>
-              <span>Date: </span><span>{appointment.date}</span><span>Time: </span><span>{appointment.time}</span><span>Dr.: </span><span>{provider.last_name}</span>
-            </div>
-            <div className='container'>
+          ? <div className='col-md-12'>
+              <p>Date: {appointment.date}</p>
+              <p>Time: {appointment.time}</p>
+              <p>Doctor: {provider.last_name}</p>
               <h3>Patient Summary:</h3>
               {appointment.patient_summary}
-            </div>
-            <div className='container'>
               <h3>Provider Summary and Instructions:</h3>
               {summary}
             </div>
-          </div>
-          : <p>Loading...</p>
+            : <div className='col-md-12'><p>Loading...</p></div>
       }
-      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Bach Home</button></Link> 
+      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Bach Home</button></Link>
+      </div>
+      </div>
     </div>
   }
 }
