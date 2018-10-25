@@ -14,6 +14,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      patient: '',
+      redirect: false
     }
     this.updateApptDate = this.updateApptDate.bind(this)
     this.newAppointment = this.newAppointment.bind(this)
@@ -23,6 +25,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+
   }
 
   fetch(endpoint) {
@@ -67,6 +70,7 @@ class App extends Component {
     }).then((response) => {
       return response.json()
     })
+    window.location = '/'
   }
 
   getPatients() {
@@ -94,7 +98,6 @@ class App extends Component {
   }
 
   render () {
-    let provider = 7;
 
     return <div>
     <Navbar patient={this.state.patient}/>
