@@ -70,3 +70,12 @@ div.main {
 .textarea {
   width: 100%;
 }
+
+.selector .btn:focus, .selector .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+li {
+  list-style-type: none;
+}
