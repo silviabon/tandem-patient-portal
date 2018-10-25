@@ -14,17 +14,16 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      patient: ''
     }
     this.updateApptDate = this.updateApptDate.bind(this)
     this.newAppointment = this.newAppointment.bind(this)
     this.getPatients = this.getPatients.bind(this)
     this.getPatient = this.getPatient.bind(this)
+    this.updatePatientInState = this.updatePatientInState.bind(this)
   };
 
-   componentDidMount() {
-     this.getPatients()
-   }
+  componentDidMount() {
+  }
 
   fetch(endpoint) {
     return window.fetch(endpoint)
@@ -33,20 +32,31 @@ class App extends Component {
   }
 
   updateApptDate(newDate, newTime) {
-    this.setState({apptDate: newDate, apptTime: newTime});
+    this.setState({
+      apptDate: newDate,
+      apptTime: newTime
+    });
+  }
+
+  updatePatientInState(patient) {
+    this.setState({
+      patient
+    });
   }
 
   newAppointment(questionnaire) {
-    let body = JSON.stringify({appointment: {
-      patient_id: this.state.patient.id,
-      provider_id: '1',
-      date: questionnaire.date,
-      time: questionnaire.time,
-      concern: questionnaire.concern,
-      condition_id: '1',
-      patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
-      status: 'upcoming'
-     }})
+    let body = JSON.stringify({
+      appointment: {
+        patient_id: this.state.patient.id,
+        provider_id: '13',
+        date: questionnaire.date,
+        time: questionnaire.time,
+        concern: questionnaire.concern,
+        condition_id: '10',
+        patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
+        status: 'upcoming'
+      }
+    })
 
     fetch(`http://localhost:3001/api/patients/${this.state.patient.id}/appointments`, {
       method: 'POST',
@@ -54,41 +64,45 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
       body: body,
-    }).then((response) => {return response.json()})
+    }).then((response) => {
+      return response.json()
+    })
   }
 
-    getPatients() {
-      this.fetch('/api/patients')
-        .then(patients => {
-          this.getPatient(patients[0].id)
-          this.getConditions(patients[0].id)
-        })
-    }
-
-    getPatient(id) {
-      this.fetch(`/api/patients/${id}`)
-        .then(patient => this.setState({
-          patient: patient
-        }))
-    }
-
-    getConditions(id) {
-      this.fetch(`/api/patients/${id}/conditions`)
-      .then(conditions => {
-        this.setState({ conditions: conditions })
+  getPatients() {
+    this.fetch('/api/patients')
+      .then(patients => {
+        this.getPatient(patients[0].id)
+        this.getConditions(patients[0].id)
       })
-    }
+  }
+
+  getPatient(id) {
+    this.fetch(`/api/patients/${id}`)
+      .then(patient => this.setState({
+        patient: patient
+      }))
+  }
+
+  getConditions(id) {
+    this.fetch(`/api/patients/${id}/conditions`)
+      .then(conditions => {
+        this.setState({
+          conditions: conditions
+        })
+      })
+  }
 
   render () {
     let provider = 7;
 
-    return<div>
+    return <div>
     <Navbar patient={this.state.patient}/>
     <Router>
       <Switch>
         <Route path='/' exact render={(props)=><Home deleteAppointment={this.deleteAppointment} patient={this.state.patient} {...props}/>} />
         <Route path='/home' exact component={Home} />
-        <Route path='/login' component={Login} />
+        <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} />} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />
         <Route path='/emrhome' component={EMRHome} />
