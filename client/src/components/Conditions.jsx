@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import Condition from './Condition.jsx';
 
-
 class Conditions extends Component {
-
 
   render() {
     const conditionsItems = this.props.conditions.map(condition => (
@@ -22,5 +20,3 @@ class Conditions extends Component {
 }
 
 export default Conditions
-
-
