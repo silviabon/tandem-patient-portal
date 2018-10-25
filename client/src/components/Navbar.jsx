@@ -11,7 +11,7 @@ class Navbar extends Component {
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="/">Patient Portal</a>
       {patient
-            ? (<span>Hello, {patient.first_name} &nbsp;&nbsp;<button className="btn btn-danger navbar-btn"> Logout </button></span>)
+            ? (<span>Hello, {patient.first_name} &nbsp;&nbsp;<button className="btn btn-danger navbar-btn"><a href='/'>Logout</a></button></span>)
             : <div className='container'>Welcome to Patient Portal</div>}
     </nav>)
   }
