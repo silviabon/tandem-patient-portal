@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   scope "/api" do
+    post "/login" => "patients#login"
     resources :drinks
     resources :ingredients
     resources :providers do
