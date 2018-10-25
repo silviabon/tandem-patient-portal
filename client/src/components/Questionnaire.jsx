@@ -51,35 +51,44 @@ handleChange(e) {
       
       <h3>Let's prepare for your appointment for {calendar.formattedDate} at {calendar.time}</h3>
       <hr />
+
       <h3>Appointment Details</h3>
-        <select name='apptType' onChange={this.handleChange} className="form-control">
+      <div className='row'>
+      <div className='col-md-6'>
+        <select name='apptType' onChange={this.handleChange} className="form-control textarea">
         <option selected>Select Appointment Type</option>
           <option value="New Concern">New Concern</option>
           <option value="Follow-up">Follow-up</option>
-        </select> <br />
-
+        </select></div>
+        <div className='col-md-6'>
         <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea'><option selected>Following up? Which Condition?</option>{conditionItems}</select> </p>
+        </div>
+        </div>
         <p><input placeholder="What is your main concern?" name="concern" onChange={this.handleChange} className='form-control textarea'></input></p>
         <p><textarea placeholder="Please describe your main concern. How did it start?" className='form-control textarea' name="concernDescription" onChange={this.handleChange}></textarea></p>
+        
         <hr />
         <div className='row'>
         
         <div className='col-12'>
         <h3>Symptoms</h3>
         Please indicate which symptoms you are displaying</div>
-        <div className='col-md-6'>
+        <div className='col-md-3'>
         <p><input type="checkbox" name="cough" onChange={handleSymptoms} /> Cough  </p>
         <p><input type="checkbox" name="fever" onChange={handleSymptoms} /> Fever </p>
         <p><input type="checkbox" name="pain" onChange={handleSymptoms} /> Pain </p>
+        </div>
+        <div className='col-md-3'>
         <p><input type="checkbox" name="nausea" onChange={handleSymptoms}  /> Nausea </p>
         <p><input type="checkbox" name="fatique" onChange={handleSymptoms}   /> Fatigue </p>
         <p><input type="checkbox" name="swelling" onChange={handleSymptoms}   /> Swelling </p>
         </div>
-
-        <div className='col-md-6'>
+        <div className='col-md-3'>
         <p><input type="checkbox" name="diarrhea" onChange={handleSymptoms} /> Diarrhea </p>
         <p><input type="checkbox" name="vomiting" onChange={handleSymptoms} /> Vomiting </p>
         <p><input type="checkbox" name="shortness of breath" onChange={handleSymptoms} /> Shortness of Breath </p>
+        </div>
+        <div className='col-md-3'>
         <p><input type="checkbox" name="headache" onChange={handleSymptoms} /> Headache </p>
         <p><input type="checkbox" name="rash" onChange={handleSymptoms}  /> Rash </p>
         <p>Other (Please Specify):<input name="otherSymptoms" onChange={this.handleChange} className='textarea form-control'/></p> 
@@ -88,8 +97,6 @@ handleChange(e) {
         </div>
 
         <div className="vq">
-        <br />
-        <br />
         <hr />
         <div className='row'>
         <div className='col-md-6'>

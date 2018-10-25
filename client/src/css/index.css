@@ -69,6 +69,7 @@ div.main {
 
 .textarea {
   width: 100%;
+  margin-top: 1em;
 }
 
 .selector .btn:focus, .selector .btn:active {
@@ -79,3 +80,4 @@ div.main {
 li {
   list-style-type: none;
 }
+
