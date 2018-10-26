@@ -26,7 +26,7 @@ class App extends Component {
     this.updateUpcomingAppointmentsInState = this.updateUpcomingAppointmentsInState.bind(this)
   }
 
-  
+
   componentDidMount() {
     console.log("cdm on app")
   }
@@ -78,6 +78,15 @@ class App extends Component {
         concern: questionnaire.concern,
         condition_id: 1,
         patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
+        apt_type: questionnaire.apptType,
+        concern_desc: questionnaire.concern,
+        symptoms: questionnaire.symptoms,
+        other_symptoms: questionnaire.otherSymptoms,
+        temp: questionnaire.temperature,
+        heart_rate: questionnaire.heartrate,
+        bp: `${questionnaire.bp_s}/${questionnaire.bp_d}`,
+        q1: questionnaire.question1,
+        q2: questionnaire.question2,
         status: 'upcoming'
       }
     }
@@ -91,7 +100,7 @@ class App extends Component {
       let qppt = res.data
       let up = this.state.upcomingAppointments
       up.push(qppt)
-      this.updateUpcomingAppointmentsInState(up)      
+      this.updateUpcomingAppointmentsInState(up)
     })
   }
 
@@ -101,7 +110,7 @@ class App extends Component {
     <Router>
       <Switch>
         <Route path='/' exact render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment} patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments}  {...props}/>} />
-        <Route path='/home'render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment}  patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />  
+        <Route path='/home'render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment}  patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
         <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState}  />} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />
