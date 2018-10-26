@@ -9,6 +9,7 @@ class Home extends Component {
     super(props)
     this.state = {
     }
+    this.deleteAppointment=this.deleteAppointment.bind(this)
   }
 
   static contextTypes = {
@@ -21,10 +22,7 @@ class Home extends Component {
 
   componentDidMount() {
       console.log("props on Home", this.props.patient)
-      if (this.props.patient) {
-        this.getAppointments('upcoming')
-        this.getAppointments('completed')
-      } else {
+      if (!this.props.patient) {
         this.context.router.history.push(`/login`)
       }
   }
@@ -39,28 +37,28 @@ class Home extends Component {
     fetch(`/api/patients/${this.props.patient.id}/appointments/${id}`, {
       method: 'DELETE',
     }).then(() => {
-      const appt = this.state.upcomingAppointments
+      const appt = this.props.upcomingAppointments
       const newAppt = appt.filter(app => app.id !== id)
-      this.setState({ upcomingAppointments: newAppt })
+      this.props.updateUpcomingAppointmentsInState(newAppt)
     })
   }
 
-  getAppointments(status) {
-    this.fetch(`/api/patients/${this.props.patient.id}/appointments/`)
-      .then(appointments => {
-        if (appointments.length) {
-          const appts = appointments.filter(app => app.status === status)
-          if (status === 'completed') {
-            this.setState({ completedAppointments: appts })
-          } else {
-            this.setState({ upcomingAppointments: appts })
-          }
-        }
-      })
-  }
+  // getAppointments(status) {
+  //   this.fetch(`/api/patients/${this.props.patient.id}/appointments/`)
+  //     .then(appointments => {
+  //       if (appointments.length) {
+  //         const appts = appointments.filter(app => app.status === status)
+  //         if (status === 'completed') {
+  //           this.setState({ completedAppointments: appts })
+  //         } else {
+  //           this.setState({ upcomingAppointments: appts })
+  //         }
+  //       }
+  //     })
+  // }
 
   render() {
-    let { completedAppointments, upcomingAppointments } = this.state
+    let { completedAppointments, upcomingAppointments } = this.props
     return (
         <div className='row'>
           <div className='col-md-8 main'>
@@ -69,11 +67,11 @@ class Home extends Component {
           <Link to={{ pathname: '/bookingCalendar' }}><button className='btn btn-primary'>Book Appointment</button></Link>
           <h2>Upcoming Appointments</h2>
           {upcomingAppointments && upcomingAppointments.length
-              ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.state.upcomingAppointments} patient={this.props.patient} status={'upcoming'} />)
+              ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.props.upcomingAppointments} patient={this.props.patient} status={'upcoming'} />)
             : <div className='container'>No appointments found.</div>}
           <h2>Previous Appointments</h2>
           {completedAppointments && completedAppointments.length
-            ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
+            ? <AppointmentList appointments={this.props.completedAppointments} status={'completed'} />
             : <div className='container'>No appointments found.</div>}
           </div>
           <div className='col-md-4'>
