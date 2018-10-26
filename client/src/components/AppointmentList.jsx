@@ -8,7 +8,8 @@ class AppointmentList extends Component {
   }
 
   render() {
-    let appointments = this.props.appointments
+    let appointments = this.props.appointments.sort(function (a, b) { return new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse())})
+    console.log("appointments sorted: ", appointments)
     return (
     <div>
       <div className='row'>
