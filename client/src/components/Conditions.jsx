@@ -4,8 +4,8 @@ import Condition from './Condition.jsx';
 class Conditions extends Component {
 
   render() {
-    const conditionsItems = this.props.conditions.map(condition => (
-      <Condition condition={condition} key = {condition.id} />
+    const conditionsItems =this.props.conditions.map(condition => (
+      <Condition condition={condition} key={condition.id} />
     ));
 
     return (
