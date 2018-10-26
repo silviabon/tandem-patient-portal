@@ -27,6 +27,7 @@ class App extends Component {
     this.updateUpcomingAppointmentsInState = this.updateUpcomingAppointmentsInState.bind(this)
   }
 
+  
   componentDidMount() {
     console.log("cdm on app")
   }
@@ -76,7 +77,7 @@ class App extends Component {
         date: questionnaire.date,
         time: questionnaire.time,
         concern: questionnaire.concern,
-        condition_id: '10',
+        condition_id: 1,
         patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
         status: 'upcoming'
       }

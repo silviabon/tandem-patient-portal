@@ -20,13 +20,17 @@ class Confirmation extends Component {
 
     return (
       <Container text textAlign="center">
-        <h1>Confirmation Page</h1>
-        <form onSubmit={onBookingAppt}>
-          <h1>Patient Name: {patient.first_name}</h1>
-          <h1>Appointment Date: {questionnaire.date}</h1>
-          <h1>Appointment Time: {questionnaire.time}</h1>
-          <button type="submit">Confirm Appointment</button>
+        <div className='row'>
+        <div className='col-md-5 main'>
+        <h3>Confirmation Page</h3>
+        <form onSubmit={onBookingAppt} className='form-group'>
+          <p><b>Patient Name:</b> {patient.first_name}</p>
+          <p><b>Appointment Date:</b> {questionnaire.date}</p>
+          <p><b>Appointment Time:</b> {questionnaire.time}</p>
+        <button className='btn btn-primary' type="submit">Confirm Appointment</button>
         </form>
+        </div>
+        </div>
       </Container>
     );
   }

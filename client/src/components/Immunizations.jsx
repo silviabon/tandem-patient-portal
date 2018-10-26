@@ -11,10 +11,9 @@ class Immunizations extends Component {
     ));
 
     return (
-      <div className='container'>
-        <h3>Immunizations</h3>
+      <div>
+        <h3 className='card-header'>Immunizations</h3>
         {immunizationsItems}
-        <br />
       </div>
     )
 

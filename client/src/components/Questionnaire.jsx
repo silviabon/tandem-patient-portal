@@ -21,6 +21,7 @@ handleChange(e) {
       this.setState({ [fieldName]: value })
  }
   render() {
+    console.log(this.props)
     const calendar = this.props.location.state
     const date = calendar.date
     // const onSubmitQuestionnaire = e => {
@@ -41,62 +42,87 @@ handleChange(e) {
     ));
 
     return (
-
-      <div className='row'>
-      <form>
-      <div className='col-8 main'>
-
-      <h1>Appointment Date: {calendar.formattedDate}</h1>
-      <h1>Appointment Time: {calendar.time}</h1>
       
-        Please select the type of appointment:
-        <select name='apptType' onChange={this.handleChange}>
+      <div className='row'>
+      <div className='col-8 main'>
+      <form className='form-group'>
+      
+      <h1>Appointment Questionnaire</h1>
+      
+      <h3>Let's prepare for your appointment for {calendar.formattedDate} at {calendar.time}</h3>
+      <hr />
+
+      <h3>Appointment Details</h3>
+      <div className='row'>
+      <div className='col-md-6'>
+        <select name='apptType' onChange={this.handleChange} className="form-control textarea">
+        <option selected>Select Appointment Type</option>
           <option value="New Concern">New Concern</option>
           <option value="Follow-up">Follow-up</option>
-        </select><br />
-
-        Please select which condition you want to follow-up: <select name='conditionType' onChange={this.handleChange}><option></option>{conditionItems}</select> <br />
-        <br />
-        <div>What is your main concern: <input placeholder="Please Specify" name="concern" onChange={this.handleChange}></input></div><br />
-        <div>Please describe your concern:<textarea placeholder="Describe more..." name="concernDescription" onChange={this.handleChange}></textarea></div><br />
+        </select></div>
+        <div className='col-md-6'>
+        <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea'><option selected>Following up? Which Condition?</option>{conditionItems}</select> </p>
+        </div>
+        </div>
+        <p><input placeholder="What is your main concern?" name="concern" onChange={this.handleChange} className='form-control textarea'></input></p>
+        <p><textarea placeholder="Please describe your main concern. How did it start?" className='form-control textarea' name="concernDescription" onChange={this.handleChange}></textarea></p>
         
+        <hr />
         <div className='row'>
-        <div className='col-12'>Which of the following conditions are you displaying?</div>
-        <div className='col-6'>
         
-        <input type="checkbox" name="cough" onChange={handleSymptoms} /> Cough <br /> 
-        <input type="checkbox" name="fever" onChange={handleSymptoms} /> Fever <br />
-        <input type="checkbox" name="pain" onChange={handleSymptoms} /> Pain <br />
-        <input type="checkbox" name="nausea" onChange={handleSymptoms} /> Nausea <br />
-        <input type="checkbox" name="fatique" onChange={handleSymptoms} /> Fatigue <br />
-        <input type="checkbox" name="swelling" onChange={handleSymptoms} /> Swelling <br />
+        <div className='col-12'>
+        <h3>Symptoms</h3>
+        Please indicate which symptoms you are displaying</div>
+        <div className='col-md-3'>
+        <p><input type="checkbox" name="cough" onChange={handleSymptoms} /> Cough  </p>
+        <p><input type="checkbox" name="fever" onChange={handleSymptoms} /> Fever </p>
+        <p><input type="checkbox" name="pain" onChange={handleSymptoms} /> Pain </p>
+        </div>
+        <div className='col-md-3'>
+        <p><input type="checkbox" name="nausea" onChange={handleSymptoms}  /> Nausea </p>
+        <p><input type="checkbox" name="fatique" onChange={handleSymptoms}   /> Fatigue </p>
+        <p><input type="checkbox" name="swelling" onChange={handleSymptoms}   /> Swelling </p>
+        </div>
+        <div className='col-md-3'>
+        <p><input type="checkbox" name="diarrhea" onChange={handleSymptoms} /> Diarrhea </p>
+        <p><input type="checkbox" name="vomiting" onChange={handleSymptoms} /> Vomiting </p>
+        <p><input type="checkbox" name="shortness of breath" onChange={handleSymptoms} /> Shortness of Breath </p>
+        </div>
+        <div className='col-md-3'>
+        <p><input type="checkbox" name="headache" onChange={handleSymptoms} /> Headache </p>
+        <p><input type="checkbox" name="rash" onChange={handleSymptoms}  /> Rash </p>
+        <p>Other (Please Specify):<input name="otherSymptoms" onChange={this.handleChange} className='textarea form-control'/></p> 
+        </div>
 
         </div>
-        <div className='col-6'>
-        <input type="checkbox" name="diarrhea" onChange={handleSymptoms} /> Diarrhea <br />
-        
-        
-        <input type="checkbox" name="vomiting" onChange={handleSymptoms} /> Vomiting <br />
-        <input type="checkbox" name="shortness of breath" onChange={handleSymptoms} /> Shortness of Breath <br />
-        <input type="checkbox" name="headache" onChange={handleSymptoms} /> Headache <br />
-        <input type="checkbox" name="rash" onChange={handleSymptoms}  /> Rash <br />
-        Other (Please Specify):<input name="otherSymptoms" onChange={this.handleChange}/> <br />
-        </div>
-        </div>
-        Please enter any vitals you have measured: <br />
-        Temperature: <input name='temperature' onChange={this.handleChange} />  
-        Heart Rate: <input name='heartrate' onChange={this.handleChange} />
-        Blood Pressure (Systolic): <input name='bp_s' onChange={this.handleChange} />  
-        Blood Pressure (Diastolic): <input name='bp_d' onChange={this.handleChange} />
-        Questions for the doctor:
-        Question 1: <input name='question1' onChange={this.handleChange} />  
-        Question 2: <input name='question2' onChange={this.handleChange} />
 
+        <div className="vq">
+        <hr />
+        <div className='row'>
+        <div className='col-md-6'>
+        <h3>Vital Measurements</h3>
+        <p>Please enter any vitals you have measured:</p>
+        <p><input placeholder='Temperature (&#176;C)' name='temperature' onChange={this.handleChange} className='textarea form-control'/></p>  
+        <p><input placeholder='Heart Rate (BPM)' name='heartrate' onChange={this.handleChange} className='textarea form-control'/></p>
+        <p><input placeholder='Blood Pressure (Systolic)' name='bp_s' onChange={this.handleChange} className='textarea form-control'/> </p> 
+        <p><input placeholder='Blood Pressure (Diastolic)' name='bp_d' onChange={this.handleChange} className='textarea form-control'/></p>
+        </div>
+ 
+        <div className='col-md-6'>
+        <h3>Questions for the doctor:</h3>
+        <p>What do you need answered?</p>
+        <p> <input placeholder='First Questions' name='question1' className='textarea form-control' onChange={this.handleChange} />  </p>
+        <p><input placeholder='Second Question' name='question2' className='textarea form-control' onChange={this.handleChange} /></p>
         <Link to={{ pathname: '/bookingConfirmation', state: this.state }} >
-        <input type="submit" value="submit"/> 
+        <button type="submit" value="submit" className='btn btn-primary right'>Submit your health Questionnaire</button>
         </Link>
         </div>
+        </div>
+        </div>
+        
+        
       </form>
+      </div>
       </div>)
   }
 

@@ -10,7 +10,9 @@ class AppointmentList extends Component {
   render() {
     let appointments = this.props.appointments
     return (
-    <div className='container'>
+    <div>
+      <div className='row'>
+        <div className='col-12'>
       {appointments && appointments.length
         ? <div>
           {appointments.map((appointment) => {
@@ -19,6 +21,8 @@ class AppointmentList extends Component {
         </div>
         : <div className='container'>Loading...</div>
       }
+        </div>
+      </div>
     </div>
     )
   }
