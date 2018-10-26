@@ -27,16 +27,24 @@ button.navbar-btn {
 }
 
 /*Home Page*/
-div.col-8 {
+div.col-md-8 {
   margin-top: 2em;
 }
 
-div.col-4 {
+div.col-md-4 {
   margin-top: 2em;
 }
 
 div.card {
   margin-bottom: 1.5em;
+}
+
+div.med-info {
+  padding: 1em;
+}
+
+div.appt-card {
+  padding: 0;
 }
 
 a.aptbtn {
@@ -51,6 +59,21 @@ button.aptbtn {
   margin-right: 0.5em;
 }
 
+div.time-col {
+  margin: 0.7em;
+}
+
+div.delete-button {
+  margin: 0.5em;
+}
+
+div.detail-button {
+  margin: 0.5em;
+}
+
+p.appt-time {
+  font-size: 1.2em;
+}
 
 /*Calendar*/
 div.main {
@@ -66,6 +89,7 @@ div.main {
   float: right;
   clear: right;
 }
+
 
 .textarea {
   width: 100%;

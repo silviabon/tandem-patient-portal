@@ -44,19 +44,21 @@ class Appointment extends Component {
     return provider && patient
       ? (
         <div className='card'>
-          <h3 className='card-header'>Main Concern:  <b>{appt.concern}</b> </h3>
-          <div className='card-body'>
-            <p>Date: <b>{appt.date}</b></p>
-            <p>Time: <b>{appt.time}</b></p>
-            <p>Doctor: <b>{provider.first_name} {provider.last_name} </b></p>
-          </div>
+          <h3 className='card-header'>{appt.concern}</h3>
+          <div className='card-body appt-card'>
+            <div className='row'>
+            <div className='col-9 time-col'><p className='appt-time'>{appt.date} at {appt.time}AM with Doctor {provider.last_name}</p></div>
+
             {status === "upcoming"
-              ? <span>
+              ? <div className='col-2 delete-button'>
                 <button className="btn btn-primary aptbtn" onClick={onDeleteAppt}>Delete</button>
-                </span>
-            : <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
+                </div>
+              : <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link></div>
             }
+         </div>
+          </div>
         </div>
+
       )
       : <div className='container'>
         <p>Loading...</p>
