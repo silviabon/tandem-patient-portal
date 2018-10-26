@@ -10,15 +10,12 @@ class Allergies extends Component {
     ));
 
     return (
-      <div className='container'>
-        <h3>Allergies</h3>
+      <div>
+        <h3 className='card-header'>Allergies</h3>
         {allergiesItems}
-        <br/>
       </div>
     )
   }
 }
 
 export default Allergies
-
-

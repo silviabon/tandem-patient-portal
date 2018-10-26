@@ -1,36 +1,40 @@
-import React, { Component } from 'react'
-import { Container, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+// import React, { Component } from "react"
+// import { Container } from "semantic-ui-react"
+// import PropTypes from 'prop-types'
 
+// class Confirmation extends Component {
 
-import {
-	withRouter
-} from 'react-router-dom';
+//   static contextTypes = {
+//     router: PropTypes.object
+//   }
 
+//   render() {
+//     const questionnaire = this.props.location.state
+//     const patient = this.props.patient
 
+//     const onBookingAppt = e => {
+//       e.preventDefault()
+//       this.props.newAppointment(questionnaire)
+//       this.context.router.history.push(`/home`)
+//     };
 
-class Confirmation extends Component {
+//     return (
+//       <Container text textAlign="center">
+//         <div className='row'>
+//         <div className='col-md-5 main'>
+//         <h3>Confirmation Page</h3>
+//         <form onSubmit={onBookingAppt} className='form-group'>
+//           <p><b>Patient Name:</b> {patient.first_name}</p>
+//           <p><b>Appointment Date:</b> {questionnaire.date}</p>
+//           <p><b>Appointment Time:</b> {questionnaire.time}</p>
+          
+//         <button className='btn btn-primary' type="submit">Confirm Appointment</button>
+//         </form>
+//         </div>
+//         </div>
+//       </Container>
+//     );
+//   }
+// }
 
-  render () {
-    const questionnaire = this.props.location.state
-    const patient = this.props.patient
-
-    const onBookingAppt = e => {
-      e.preventDefault()
-      this.props.newAppointment(questionnaire)
-
-    }
-
-    return <Container text textAlign='center'>
-      <h1>Confirmation Page</h1>
-      <form onSubmit={onBookingAppt}>
-      <h1>Patient Name: {patient.first_name}</h1>
-      <h1>Appointment Date: {questionnaire.date}</h1>
-      <h1>Appointment Time: {questionnaire.time}</h1>
-      <button type="submit">Confirm Appointment</button>
-      </form>
-    </Container>
-  }
-}
-
-export default withRouter(Confirmation)
+// export default Confirmation

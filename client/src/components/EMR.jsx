@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Button, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Vitals from './Vitals.jsx';
+import PropTypes from 'prop-types'
 
 class EMR extends Component {
   constructor() {
@@ -9,7 +10,10 @@ class EMR extends Component {
     this.state = {
       patient: 11
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
   }
 
   componentDidMount() {
@@ -46,9 +50,9 @@ class EMR extends Component {
       .then(appointment => this.setState({ appointment: appointment }))
   }
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault()
-    alert('An form was submitted: ' + event.target.patient_summary.value + ' ' + event.target.subjective.value+ ' ' + event.target.objective.value+ ' ' + event.target.plan.value+ ' ' + event.target.doctor_summary.value)
+    alert('An form was submitted')
     let body = JSON.stringify({soap: {doctor_summary: event.target.doctor_summary.value}})
     fetch('http://localhost:3001/api/patients/1/appointments/5/soaps/', {
         method: 'POST',
@@ -56,7 +60,7 @@ class EMR extends Component {
           'Content-Type': 'application/json'
         },
         body: body,
-      }).then((response) => {return response.json()})
+      }).then((response) => { this.context.router.history.push(`/emrhome`); return response.json()})
   }
 
   render () {
@@ -69,7 +73,17 @@ class EMR extends Component {
       <h3>Patient summary</h3>
       <form onSubmit={this.handleSubmit}>
       {appointment
-        ? <textarea id="patient_summary" name="patient_summary" rows="3" cols="33" maxLength="200" wrap="hard" value={this.state.appointment.patient_summary} readOnly></textarea>
+          ? <div><p>Type: {this.state.appointment.app_type}</p>
+          <p>Concern: {this.state.appointment.concern}</p>
+          <p>Description: {this.state.appointment.concern_desc}</p>
+          <p>Symptoms: {this.state.appointment.symptoms}</p>
+          <p>Other symptoms: {this.state.appointment.other_symptoms}</p>
+          <p>Vitals</p>
+          <p>Temperature: {this.state.appointment.temp}</p>
+          <p>Heart rate: {this.state.appointment.heart_rate}</p>
+          <p>Blood Pressure: {this.state.appointment.bp}</p>
+          <p>Question 1: {this.state.appointment.q1}</p>
+          <p>Question 2: {this.state.appointment.q2}</p></div>
         : <div className='container' textAlign='center'> loading... </div>
       }
       <h3>Subjective</h3>
@@ -89,7 +103,7 @@ class EMR extends Component {
       <textarea id="doctor_summary" name="doctor_summary" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
       <br />
-      <Link to={{ pathname: '/emrhome' }} ><button type="submit" className="btn btn-primary" >Sumbit</button></Link>
+      <button type="submit" className="btn btn-primary">Sumbit</button>
       </form>
     </div>
   }

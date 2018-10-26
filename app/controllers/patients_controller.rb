@@ -38,14 +38,23 @@ class PatientsController < ApplicationController
     @patient.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_patient
-      @patient = Patient.find(params[:id])
-    end
+  # login
+  def login
+    @patient = Patient.find_by(email: params[:email], password: params[:password])
+    # pp @patient
+    render json: @patient
+    # render json: nil, status: 401
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def patient_params
-      params.require(:patient).permit(:provider_id, :first_name, :last_name, :dob, :personal_health_number, :telephone, :email, :password, :sex)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def patient_params
+    params.require(:patient).permit(:provider_id, :first_name, :last_name, :dob, :personal_health_number, :telephone, :email, :password, :sex)
+  end
 end

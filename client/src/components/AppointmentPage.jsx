@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class AppointmentPage extends Component {
   constructor() {
@@ -40,26 +41,39 @@ class AppointmentPage extends Component {
 
   render() {
     let { provider, summary, appointment } = this.state
-    return <div className='container' textAlign='center'>
-      <h3>Appointment</h3>
+    return <div className='row'>
+      <div className='col-md-8 main'>
+        <div className='row'>
+      <h2>Appointment Summary</h2>
       {
         provider && summary && appointment
-          ? <div className='container'>
-            <div className='container'>
-              <span>Date: </span><span>{appointment.date}</span><span>Time: </span><span>{appointment.time}</span><span>Dr.: </span><span>{provider.last_name}</span>
-            </div>
-            <div className='container'>
+          ? <div className='col-md-12'>
+              <p>Date: {appointment.date}</p>
+              <p>Time: {appointment.time}</p>
+              <p>Doctor: {provider.last_name}</p>
               <h3>Patient Summary:</h3>
-              {appointment.patient_summary}
-            </div>
-            <div className='container'>
+              <p>Type: {appointment.app_type}</p>
+              <p>Concern: {appointment.concern}</p>
+              <p>Description: {appointment.concern_desc}</p>
+              <p>Symptoms: {appointment.symptoms}</p>
+              <p>Other symptoms: {appointment.other_symptoms}</p>
+              <p>Vitals</p>
+              <p>Temperature: {appointment.temp}</p>
+              <p>Heart rate: {appointment.heart_rate}</p>
+              <p>Blood Pressure: {appointment.bp}</p>
+              <p>Question 1: {appointment.q1}</p>
+              <p>Question 2: {appointment.q2}</p>
+              {appointment.status === 'completed' && 
+                <div>
               <h3>Provider Summary and Instructions:</h3>
               {summary}
+      </div> }
             </div>
-          </div>
-          : <p>Loading...</p>
+            : <div className='col-md-12'><p>Loading...</p></div>
       }
-      <a className="btn btn-primary" href="/" role="button">Back Home</a>
+      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Back Home</button></Link>
+      </div>
+      </div>
     </div>
   }
 }
