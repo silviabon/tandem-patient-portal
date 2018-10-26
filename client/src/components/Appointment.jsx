@@ -50,8 +50,9 @@ class Appointment extends Component {
             <div className='col-9 time-col'><p className='appt-time'>{appt.date} at {appt.time}AM with Doctor {provider.last_name}</p></div>
 
             {status === "upcoming"
-              ? <div className='col-2 delete-button'>
-                <button className="btn btn-primary aptbtn" onClick={onDeleteAppt}>Delete</button>
+              ? <div>
+                <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'> Details</button></Link></div>
+                 <div className='col-2 delete-button'> <button className="btn btn-primary aptbtn" onClick={onDeleteAppt}>Delete</button> </div>
                 </div>
               : <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link></div>
             }
@@ -67,3 +68,9 @@ class Appointment extends Component {
 }
 
 export default Appointment
+
+
+// <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link></div> 
+//                  <div className='col-2 delete-button'>
+//                 <button className="btn btn-primary aptbtn" onClick={onDeleteAppt}>Delete</button>
+//                 </div>

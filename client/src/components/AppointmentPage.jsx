@@ -44,22 +44,25 @@ class AppointmentPage extends Component {
     return <div className='row'>
       <div className='col-md-8 main'>
         <div className='row'>
-      <h2>Appointment Summary</h2>
-      {
-        provider && summary && appointment
-          ? <div className='col-md-12'>
-              <p>Date: {appointment.date}</p>
-              <p>Time: {appointment.time}</p>
-              <p>Doctor: {provider.last_name}</p>
-              <h3>Patient Summary:</h3>
-              {appointment.patient_summary}
-              <h3>Provider Summary and Instructions:</h3>
-              {summary}
-            </div>
-            : <div className='col-md-12'><p>Loading...</p></div>
-      }
-      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Back Home</button></Link>
-      </div>
+          <h2>Appointment Summary</h2>
+          {
+            provider && summary && appointment
+              ? <div className='col-md-12'>
+                <p>Date: {appointment.date}</p>
+                <p>Time: {appointment.time}</p>
+                <p>Doctor: {provider.last_name}</p>
+                {appointment.status === 'completed' && 
+                <div>
+                  <h3>Patient Summary:</h3>
+                  <h3>Provider Summary and Instructions:</h3>
+                  {summary}
+                </div>
+                }
+              </div>
+              : <div className='col-md-12'><p>Loading...</p></div>
+          }
+          <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Back Home</button></Link>
+        </div>
       </div>
     </div>
   }
