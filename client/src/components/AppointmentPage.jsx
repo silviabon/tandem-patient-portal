@@ -44,25 +44,35 @@ class AppointmentPage extends Component {
     return <div className='row'>
       <div className='col-md-8 main'>
         <div className='row'>
-          <h2>Appointment Summary</h2>
-          {
-            provider && summary && appointment
-              ? <div className='col-md-12'>
-                <p>Date: {appointment.date}</p>
-                <p>Time: {appointment.time}</p>
-                <p>Doctor: {provider.last_name}</p>
-                {appointment.status === 'completed' && 
+      <h2>Appointment Summary</h2>
+      {
+        provider && summary && appointment
+          ? <div className='col-md-12'>
+              <p>Date: {appointment.date}</p>
+              <p>Time: {appointment.time}</p>
+              <p>Doctor: {provider.last_name}</p>
+              <h3>Patient Summary:</h3>
+              <p>Type: {appointment.app_type}</p>
+              <p>Concern: {appointment.concern}</p>
+              <p>Description: {appointment.concern_desc}</p>
+              <p>Symptoms: {appointment.symptoms}</p>
+              <p>Other symptoms: {appointment.other_symptoms}</p>
+              <p>Vitals</p>
+              <p>Temperature: {appointment.temp}</p>
+              <p>Heart rate: {appointment.heart_rate}</p>
+              <p>Blood Pressure: {appointment.bp}</p>
+              <p>Question 1: {appointment.q1}</p>
+              <p>Question 2: {appointment.q2}</p>
+              {appointment.status === 'completed' && 
                 <div>
-                  <h3>Patient Summary:</h3>
-                  <h3>Provider Summary and Instructions:</h3>
-                  {summary}
-                </div>
-                }
-              </div>
-              : <div className='col-md-12'><p>Loading...</p></div>
-          }
-          <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Back Home</button></Link>
-        </div>
+              <h3>Provider Summary and Instructions:</h3>
+              {summary}
+      </div> }
+            </div>
+            : <div className='col-md-12'><p>Loading...</p></div>
+      }
+      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Back Home</button></Link>
+      </div>
       </div>
     </div>
   }
