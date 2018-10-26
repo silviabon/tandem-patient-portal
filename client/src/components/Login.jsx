@@ -25,7 +25,6 @@ class Login extends Component {
       .then(res => {
         console.log(res)
         console.log(res.data)
-        this.setState({ login_patient: res.data })
         let patient = res.data
         this.props.updatePatientInState(patient)
         axios.get(`/api/patients/${patient.id}/conditions`)
@@ -33,11 +32,21 @@ class Login extends Component {
           let conditions = res2.data
           this.props.updateConditionsInState(conditions)
           })
+        axios.get(`/api/patients/${patient.id}/appointments/`)
+        .then(res3  => {
+          let appointments = res3.data
+          if (appointments.length) {
+            const appts = appointments.filter(app => app.status === 'completed')
+            this.props.updateCompletedAppointmentsInState(appts)
+            appts = appointments.filter(app => app.status === 'upcoming')
+            this.props.updateUpcomingAppointmentsInState(appts)
+          }
+        })
         console.log('Now we do the redirect')
         this.context.router.history.push(`/home`)
         // this.redirectToTarget()
       })
-  }
+}
 
   render () {
     let { patient } = this.state
