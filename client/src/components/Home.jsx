@@ -9,6 +9,7 @@ class Home extends Component {
     super(props)
     this.state = {
     }
+    this.deleteAppointment=this.deleteAppointment.bind(this)
   }
 
   static contextTypes = {
@@ -21,10 +22,7 @@ class Home extends Component {
 
   componentDidMount() {
       console.log("props on Home", this.props.patient)
-      if (this.props.patient) {
-        this.getAppointments('upcoming')
-        this.getAppointments('completed')
-      } else {
+      if (!this.props.patient) {
         this.context.router.history.push(`/login`)
       }
   }
@@ -39,25 +37,25 @@ class Home extends Component {
     fetch(`/api/patients/${this.props.patient.id}/appointments/${id}`, {
       method: 'DELETE',
     }).then(() => {
-      const appt = this.state.upcomingAppointments
+      const appt = this.props.upcomingAppointments
       const newAppt = appt.filter(app => app.id !== id)
-      this.setState({ upcomingAppointments: newAppt })
+      this.props.updateUpcomingAppointmentsInState(newAppt)
     })
   }
 
-  getAppointments(status) {
-    this.fetch(`/api/patients/${this.props.patient.id}/appointments/`)
-      .then(appointments => {
-        if (appointments.length) {
-          const appts = appointments.filter(app => app.status === status)
-          if (status === 'completed') {
-            this.setState({ completedAppointments: appts })
-          } else {
-            this.setState({ upcomingAppointments: appts })
-          }
-        }
-      })
-  }
+  // getAppointments(status) {
+  //   this.fetch(`/api/patients/${this.props.patient.id}/appointments/`)
+  //     .then(appointments => {
+  //       if (appointments.length) {
+  //         const appts = appointments.filter(app => app.status === status)
+  //         if (status === 'completed') {
+  //           this.setState({ completedAppointments: appts })
+  //         } else {
+  //           this.setState({ upcomingAppointments: appts })
+  //         }
+  //       }
+  //     })
+  // }
 
   render() {
     let { completedAppointments, upcomingAppointments } = this.props

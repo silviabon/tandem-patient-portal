@@ -21,8 +21,6 @@ class App extends Component {
     }
     this.updateApptDate = this.updateApptDate.bind(this)
     this.newAppointment = this.newAppointment.bind(this)
-    // this.getPatients = this.getPatients.bind(this)
-    // this.getPatient = this.getPatient.bind(this)
     this.updatePatientInState = this.updatePatientInState.bind(this)
     this.updateConditionsInState = this.updateConditionsInState.bind(this)
     this.updateCompletedAppointmentsInState = this.updateCompletedAppointmentsInState.bind(this)
@@ -31,7 +29,6 @@ class App extends Component {
 
   componentDidMount() {
     console.log("cdm on app")
-    // this.getConditions()
   }
 
   fetch(endpoint) {
@@ -72,18 +69,6 @@ class App extends Component {
   }
 
   newAppointment(questionnaire) {
-    // let body = JSON.stringify({
-    //   appointment: {
-    //     patient_id: this.state.patient.id,
-    //     provider_id: this.state.patient.provider_id,
-    //     date: questionnaire.date,
-    //     time: questionnaire.time,
-    //     concern: questionnaire.concern,
-    //     condition_id: '10',
-    //     patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
-    //     status: 'upcoming'
-    //   }
-    // })
     let body = {
       appointment: {
         patient_id: this.state.patient.id,
@@ -111,13 +96,12 @@ class App extends Component {
   }
 
   render () {
-    // let cond = this.getConditions() 
     return <div>
     <Navbar patient={this.state.patient}/>
     <Router>
       <Switch>
-        <Route path='/' exact render={(props)=><Home deleteAppointment={this.deleteAppointment} patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments}  {...props}/>} />
-        <Route path='/home'render={(props)=><Home patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />  
+        <Route path='/' exact render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment} patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments}  {...props}/>} />
+        <Route path='/home'render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment}  patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />  
         <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState}  />} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />

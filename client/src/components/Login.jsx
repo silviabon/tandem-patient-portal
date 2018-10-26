@@ -26,7 +26,6 @@ class Login extends Component {
       .then(res => {
         console.log(res)
         console.log(res.data)
-        this.setState({ login_patient: res.data })
         let patient = res.data
         this.props.updatePatientInState(patient)
         axios.get(`/api/patients/${patient.id}/conditions`)
@@ -34,7 +33,6 @@ class Login extends Component {
           let conditions = res2.data
           this.props.updateConditionsInState(conditions)
           })
-        let status = 'completed'
         axios.get(`/api/patients/${patient.id}/appointments/`)
         .then(res3  => {
           let appointments = res3.data
