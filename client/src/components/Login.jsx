@@ -43,13 +43,20 @@ class Login extends Component {
   render () {
     let { patient } = this.state
     return <div  className='container'>
-      <h1>Login Page</h1>
-      <h2>Patient login</h2>
-      <form onSubmit={this.handleSubmit}>
-      <input type="text" name="email" placeholder="Type your email"></input>
-      <input type="password" name="password" placeholder="Type your password"></input>
-      <input type="submit" value="Submit" />
+    <div className='row'>
+    <div className='col-md-5 main'>
+      <h2>Please login</h2>
+      
+      <form onSubmit={this.handleSubmit} className='form-group'>
+      <input className='form-control textarea' type="text" name="email" placeholder="example@example.com"></input>
+      <input className='form-control textarea' type="password" name="password" placeholder="Type your password"></input>
+      <br />
+      <p>Are you a new user? <a href='#'>Learn more</a> about our registration process.</p>
+      
+      <input className='btn btn-primary' type="submit" value="Login" />
       </form>
+      </div>
+    </div>
     </div>
   }
 }

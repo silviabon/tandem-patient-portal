@@ -90,6 +90,18 @@ div.main {
   clear: right;
 }
 
+
 .textarea {
   width: 100%;
+  margin-top: 1em;
 }
+
+.selector .btn:focus, .selector .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+li {
+  list-style-type: none;
+}
+
