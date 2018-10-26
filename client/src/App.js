@@ -7,7 +7,6 @@ import EMR from './components/EMR.jsx'
 import EMRHome from './components/EMRHome.jsx'
 import Calendar from './components/Calendar.jsx'
 import Questionnaire from './components/Questionnaire.jsx'
-import Confirmation from './components/Confirmation.jsx'
 import Navbar from './components/Navbar.jsx'
 
 class App extends Component {
@@ -115,12 +114,11 @@ class App extends Component {
       <Switch>
         <Route path='/' exact render={(props)=><Home deleteAppointment={this.deleteAppointment} patient={this.state.patient} {...props}/>} />
         <Route path='/home'render={(props)=><Home patient={this.state.patient} {...props}/>} />
-        <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} />} />
+        <Route path='/login' render={()=> <Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} />}/>
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />
         <Route path='/emrhome' component={EMRHome} />
         <Route path='/bookingCalendar' render={()=><Calendar formattedDate={this.formattedDate} renderFormattedDateLabel={this.renderFormattedDateLabel} apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
-        <Route path='/bookingConfirmation' render={(props)=><Confirmation formattedDate={this.formattedDate} newAppointment={this.newAppointment} patient={this.state.patient} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/> />
         <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire formattedDate={this.formattedDate} newAppointment={this.newAppointment} handleQuestionChange={this.handleQuestionChange} updateQuestionnaire={this.updateQuestionnaire} handleQuestionSubmit={this.handleQuestionSubmit} conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
       </Switch>
     </Router>
