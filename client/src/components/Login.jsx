@@ -34,24 +34,35 @@ class Login extends Component {
           let conditions = res2.data
           this.props.updateConditionsInState(conditions)
           })
+        let status = 'completed'
+        axios.get(`/api/patients/${patient.id}/appointments/`)
+        .then(res3  => {
+          let appointments = res3.data
+          if (appointments.length) {
+            const appts = appointments.filter(app => app.status === 'completed')
+            this.props.updateCompletedAppointmentsInState(appts)
+            appts = appointments.filter(app => app.status === 'upcoming')
+            this.props.updateUpcomingAppointmentsInState(appts)
+          }
+        })
         console.log('Now we do the redirect')
         this.context.router.history.push(`/home`)
         // this.redirectToTarget()
       })
-  }
+}
 
-  render () {
-    let { patient } = this.state
-    return <div  className='container'>
-      <h1>Login Page</h1>
-      <h2>Patient login</h2>
-      <form onSubmit={this.handleSubmit}>
-      <input type="text" name="email" placeholder="Type your email"></input>
-      <input type="password" name="password" placeholder="Type your password"></input>
-      <input type="submit" value="Submit" />
-      </form>
-    </div>
-  }
+render () {
+  let { patient } = this.state
+  return <div  className='container'>
+    <h1>Login Page</h1>
+    <h2>Patient login</h2>
+    <form onSubmit={this.handleSubmit}>
+    <input type="text" name="email" placeholder="Type your email"></input>
+    <input type="password" name="password" placeholder="Type your password"></input>
+    <input type="submit" value="Submit" />
+    </form>
+  </div>
+}
 }
 
 export default Login

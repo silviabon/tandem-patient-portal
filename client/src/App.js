@@ -9,6 +9,7 @@ import Calendar from './components/Calendar.jsx'
 import Questionnaire from './components/Questionnaire.jsx'
 import Confirmation from './components/Confirmation.jsx'
 import Navbar from './components/Navbar.jsx'
+import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +25,8 @@ class App extends Component {
     // this.getPatient = this.getPatient.bind(this)
     this.updatePatientInState = this.updatePatientInState.bind(this)
     this.updateConditionsInState = this.updateConditionsInState.bind(this)
+    this.updateCompletedAppointmentsInState = this.updateCompletedAppointmentsInState.bind(this)
+    this.updateUpcomingAppointmentsInState = this.updateUpcomingAppointmentsInState.bind(this)
   }
 
   componentDidMount() {
@@ -56,8 +59,32 @@ class App extends Component {
     });
   }
 
+  updateCompletedAppointmentsInState(completedAppointments) {
+    this.setState({
+      completedAppointments
+    });
+  }
+
+  updateUpcomingAppointmentsInState(upcomingAppointments) {
+    this.setState({
+      upcomingAppointments
+    });
+  }
+
   newAppointment(questionnaire) {
-    let body = JSON.stringify({
+    // let body = JSON.stringify({
+    //   appointment: {
+    //     patient_id: this.state.patient.id,
+    //     provider_id: this.state.patient.provider_id,
+    //     date: questionnaire.date,
+    //     time: questionnaire.time,
+    //     concern: questionnaire.concern,
+    //     condition_id: '10',
+    //     patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
+    //     status: 'upcoming'
+    //   }
+    // })
+    let body = {
       appointment: {
         patient_id: this.state.patient.id,
         provider_id: this.state.patient.provider_id,
@@ -68,43 +95,20 @@ class App extends Component {
         patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
         status: 'upcoming'
       }
-    })
+    }
 
-    fetch(`/api/patients/${this.state.patient.id}/appointments`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: body,
-    }).then((response) => {
-      return response.json()
+    console.log("mi cuerpito", body )
+
+    axios.post(`/api/patients/${this.state.patient.id}/appointments`, body )
+    .then(res => {
+      console.log("res in app newApp", res)
+      console.log("data", res.data)
+      let qppt = res.data
+      let up = this.state.upcomingAppointments
+      up.push(qppt)
+      this.updateUpcomingAppointmentsInState(up)      
     })
   }
-
-  // getPatients() {
-  //   this.fetch('/api/patients')
-  //     .then(patients => {
-  //       this.getPatient(patients[0].id)
-  //       this.getConditions(patients[0].id)
-  //     })
-  // }
-
-  // getPatient(id) {
-  //   this.fetch(`/api/patients/${id}`)
-  //     .then(patient => this.setState({
-  //       patient: patient
-  //     }))
-  // }
-
-  // getConditions() {
-  //   this.fetch(`/api/patients/${this.state.patient.id}/conditions`)
-  //   // this.fetch(`/api/patients/7/conditions`)
-  //   .then(conditions => {
-  //       this.setState({
-  //         conditions: conditions
-  //       })
-  //     })
-  // }
 
   render () {
     // let cond = this.getConditions() 
@@ -112,9 +116,9 @@ class App extends Component {
     <Navbar patient={this.state.patient}/>
     <Router>
       <Switch>
-        <Route path='/' exact render={(props)=><Home deleteAppointment={this.deleteAppointment} patient={this.state.patient} {...props}/>} />
-        <Route path='/home'render={(props)=><Home patient={this.state.patient} {...props}/>} />
-        <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} />} />
+        <Route path='/' exact render={(props)=><Home deleteAppointment={this.deleteAppointment} patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments}  {...props}/>} />
+        <Route path='/home'render={(props)=><Home patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />  
+        <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState}  />} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} {...props}/>} />
         <Route path='/emrhome' component={EMRHome} />

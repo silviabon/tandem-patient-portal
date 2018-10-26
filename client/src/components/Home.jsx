@@ -60,7 +60,7 @@ class Home extends Component {
   }
 
   render() {
-    let { completedAppointments, upcomingAppointments } = this.state
+    let { completedAppointments, upcomingAppointments } = this.props
     return (
       <div className='container'>
         <div className='row'>
@@ -68,11 +68,11 @@ class Home extends Component {
           <Link to={{ pathname: '/bookingCalendar' }}><button className='btn btn-primary'>Book Appointment</button></Link>
           <h2>Upcoming Appointments</h2>
           {upcomingAppointments && upcomingAppointments.length
-              ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.state.upcomingAppointments} patient={this.props.patient} status={'upcoming'} />)
+              ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.props.upcomingAppointments} patient={this.props.patient} status={'upcoming'} />)
             : <div className='container'>No appointments found.</div>}
           <h2>Previous Appointments</h2>
           {completedAppointments && completedAppointments.length
-            ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
+            ? <AppointmentList appointments={this.props.completedAppointments} status={'completed'} />
             : <div className='container'>No appointments found.</div>}
           </div>
           <div className='col-4'>
