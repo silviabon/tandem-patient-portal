@@ -14,17 +14,11 @@ class Login extends Component {
     router: PropTypes.object
   }
 
-  componentDidMount() {
-
-  }
-
   handleSubmit = event => {
     event.preventDefault()
 
     axios.post(`/api/login/`, { email: event.target.email.value, password: event.target.password.value })
       .then(res => {
-        console.log(res)
-        console.log(res.data)
         let patient = res.data
         this.props.updatePatientInState(patient)
         axios.get(`/api/patients/${patient.id}/conditions`)
@@ -42,7 +36,6 @@ class Login extends Component {
             this.props.updateUpcomingAppointmentsInState(appts)
           }
         })
-        console.log('Now we do the redirect')
         this.context.router.history.push(`/home`)
         // this.redirectToTarget()
       })
