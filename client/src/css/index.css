@@ -105,3 +105,21 @@ li {
   list-style-type: none;
 }
 
+div.backgroundImgContainer img {
+z-index: 50;
+position: fixed;
+width: 100%;
+height: 100%;
+}
+
+.tofront {
+  z-index: 50;
+  position: relative;
+}
+
+.opacity {
+  background-color: white;
+  background: rgba(255,255,255,0.7);
+  
+}
+

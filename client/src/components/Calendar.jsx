@@ -32,21 +32,18 @@ class Calendar extends Component {
   
   renderFormattedDateLabel(date) {
     this.setState({ formattedDate: `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`})
-    console.log('formattedStringFunction:', this.state)
   }
 
   onClickDay(date) {
     this.setState({ date })
-    let today = this.state.date
-    console.log("this is the new date", date)
-    this.renderFormattedDateLabel(today)
+    this.renderFormattedDateLabel(date)
+
   }
 
   createCalendarAppointnments = () => {
     let calendarAppts = []
     this.state.appConfig.listItems.map((item, index) => {
       const day = this.state.daysOfWeek[this.state.date.getDay()]
-      console.log("this is the day", day)
       if (day === 'Monday' || day === 'Tuesday' || day === 'Wednesday'|| day === 'Thursday'|| day === 'Friday')
       calendarAppts.push(<p><button className='btn selector' onClick={this.onTimeClick} value={item}>Book on {day}, at {item}</button></p>)
     }) 

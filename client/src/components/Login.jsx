@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
 
-
 class Login extends Component {
   constructor(props) {
     super(props)
@@ -15,17 +14,11 @@ class Login extends Component {
     router: PropTypes.object
   }
 
-  componentDidMount() {
-
-  }
-
   handleSubmit = event => {
     event.preventDefault()
 
     axios.post(`/api/login/`, { email: event.target.email.value, password: event.target.password.value })
       .then(res => {
-        console.log(res)
-        console.log(res.data)
         let patient = res.data
         this.props.updatePatientInState(patient)
         axios.get(`/api/patients/${patient.id}/conditions`)
@@ -43,7 +36,6 @@ class Login extends Component {
             this.props.updateUpcomingAppointmentsInState(appts)
           }
         })
-        console.log('Now we do the redirect')
         this.context.router.history.push(`/home`)
         // this.redirectToTarget()
       })
@@ -51,12 +43,15 @@ class Login extends Component {
 
   render () {
     let { patient } = this.state
-    return <div  className='container'>
-    <div className='row'>
-    <div className='col-md-5 main'>
+    
+    return <div><div  className='backgroundImgContainer'>
+    <img src='https://images.pexels.com/photos/905874/pexels-photo-905874.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' />
+    <div className='row tofront'>
+    <div className='opacity col-md-5 main'>
+    <br />
       <h2>Please login</h2>
       
-      <form onSubmit={this.handleSubmit} className='form-group'>
+      <form onSubmit={this.handleSubmit} className='form-group opaque'>
       <input className='form-control textarea' type="text" name="email" placeholder="example@example.com"></input>
       <input className='form-control textarea' type="password" name="password" placeholder="Type your password"></input>
       <br />
@@ -67,7 +62,7 @@ class Login extends Component {
       </div>
     </div>
     </div>
+    </div>
   }
 }
-
 export default Login
