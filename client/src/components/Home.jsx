@@ -3,7 +3,7 @@ import AppointmentList from './AppointmentList.jsx'
 import MedicalInfo from './MedicalInfo.jsx'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
- 
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -62,9 +62,10 @@ class Home extends Component {
   render() {
     let { completedAppointments, upcomingAppointments } = this.state
     return (
-      <div className='container'>
         <div className='row'>
-          <div className='col-8'>
+          <div className='col-md-8 main'>
+          <div className='row'>
+            <div className='col-md-8'>
           <Link to={{ pathname: '/bookingCalendar' }}><button className='btn btn-primary'>Book Appointment</button></Link>
           <h2>Upcoming Appointments</h2>
           {upcomingAppointments && upcomingAppointments.length
@@ -75,11 +76,12 @@ class Home extends Component {
             ? <AppointmentList appointments={this.state.completedAppointments} status={'completed'} />
             : <div className='container'>No appointments found.</div>}
           </div>
-          <div className='col-4'>
+          <div className='col-md-4'>
             <MedicalInfo patient={this.props.patient.id} />
+            </div>
+          </div>
           </div>
         </div>
-      </div>
     )
   }
 }

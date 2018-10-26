@@ -9,10 +9,9 @@ class Conditions extends Component {
     ));
 
     return (
-      <div className='container'>
-        <h3>Conditions</h3>
+      <div>
+        <h3 className='card-header'>Conditions</h3>
         {conditionsItems}
-        <br/>
       </div>
     )
 
