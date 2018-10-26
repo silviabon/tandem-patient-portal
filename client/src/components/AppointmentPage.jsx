@@ -52,7 +52,18 @@ class AppointmentPage extends Component {
               <p>Time: {appointment.time}</p>
               <p>Doctor: {provider.last_name}</p>
               <h3>Patient Summary:</h3>
-              {appointment.patient_summary}
+              <p>Type: {appointment.app_type}</p>
+              <p>Concern: {appointment.concern}</p>
+              <p>Description: {appointment.concern_desc}</p>
+              <p>Symptoms: {appointment.symptoms}</p>
+              <p>Other symptoms: {appointment.other_symptoms}</p>
+              <p>Vitals</p>
+              <p>Temperature: {appointment.temp}</p>
+              <p>Heart rate: {appointment.heart_rate}</p>
+              <p>Blood Pressure: {appointment.bp}</p>
+              <p>Question 1: {appointment.q1}</p>
+              <p>Question 2: {appointment.q2}</p>
+
               <h3>Provider Summary and Instructions:</h3>
               {summary}
             </div>
