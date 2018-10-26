@@ -63,9 +63,11 @@ class AppointmentPage extends Component {
               <p>Blood Pressure: {appointment.bp}</p>
               <p>Question 1: {appointment.q1}</p>
               <p>Question 2: {appointment.q2}</p>
-
+              {appointment.status === 'completed' && 
+                <div>
               <h3>Provider Summary and Instructions:</h3>
               {summary}
+      </div> }
             </div>
             : <div className='col-md-12'><p>Loading...</p></div>
       }
