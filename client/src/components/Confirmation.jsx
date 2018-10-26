@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Container } from "semantic-ui-react"
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 class Confirmation extends Component {
 
@@ -15,7 +16,7 @@ class Confirmation extends Component {
     const onBookingAppt = e => {
       e.preventDefault()
       this.props.newAppointment(questionnaire)
-      this.context.router.history.push(`/home`)
+      //this.context.router.history.push(`/home`)
     };
 
     return (
@@ -27,7 +28,7 @@ class Confirmation extends Component {
           <p><b>Patient Name:</b> {patient.first_name}</p>
           <p><b>Appointment Date:</b> {questionnaire.date}</p>
           <p><b>Appointment Time:</b> {questionnaire.time}</p>
-        <button className='btn btn-primary' type="submit">Confirm Appointment</button>
+          <Link to={{ pathname: '/', state: this.state }}><button className='btn btn-primary' type="submit">Confirm and Book Appointment</button></Link>
         </form>
         </div>
         </div>

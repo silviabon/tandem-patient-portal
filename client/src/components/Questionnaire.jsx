@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
-import { Container, Button, Dropdown } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 import ConditionCal from './ConditionCal'
+import PropTypes from 'prop-types'
 
 class Questionnaire extends Component {
+
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
+
   constructor(props) {
     super(props)
     this.state = {
@@ -21,9 +26,20 @@ handleChange(e) {
       this.setState({ [fieldName]: value })
  }
   render() {
-    console.log(this.props)
+
     const calendar = this.props.location.state
-    const date = calendar.date
+    const questionnaire = this.state
+    const patient = this.props.patient
+
+    const onBookingAppt = e => {
+      e.preventDefault()
+      this.props.newAppointment(calendar, questionnaire)
+      console.log(this)
+      this.context.router.history.push(`/home`)
+    };
+
+    //const date = calendar.date
+
     // const onSubmitQuestionnaire = e => {
     //   e.preventDefault()
     //   let questionnaire = this.state
@@ -45,7 +61,7 @@ handleChange(e) {
       
       <div className='row'>
       <div className='col-8 main'>
-      <form className='form-group'>
+      <form className='form-group'  onSubmit={onBookingAppt}>
       
       <h1>Appointment Questionnaire</h1>
       
@@ -113,9 +129,9 @@ handleChange(e) {
         <p>What do you need answered?</p>
         <p> <input placeholder='First Questions' name='question1' className='textarea form-control' onChange={this.handleChange} />  </p>
         <p><input placeholder='Second Question' name='question2' className='textarea form-control' onChange={this.handleChange} /></p>
-        <Link to={{ pathname: '/bookingConfirmation', state: this.state }} >
+        
         <button type="submit" value="submit" className='btn btn-primary right'>Submit your health Questionnaire</button>
-        </Link>
+        
         </div>
         </div>
         </div>
