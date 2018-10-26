@@ -35,9 +35,9 @@ class Calendar extends Component {
   }
 
   onClickDay(date) {
+
     this.setState({ date })
     this.renderFormattedDateLabel(date)
-
   }
 
   createCalendarAppointnments = () => {
