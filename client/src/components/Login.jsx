@@ -64,8 +64,8 @@ class Login extends Component {
       </div>
 
     <div className='col-md-6 '>
-    <h1 className='tagline'>Better<br />
-    together.</h1>
+    <h1 className='tagline'>Better</h1>
+    <h1 className='tagline2'>together.</h1>
     </div>
     </div>
       </div>

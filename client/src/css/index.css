@@ -232,10 +232,16 @@ div.opacity {
 h1.tagline {
   font-size: 8em;
   color: white;
-  padding: 0px;
-  margin: 0px;
+  margin-top: 0.1em;
+  
+
 }
 
+h1.tagline2 {
+  font-size: 8em;
+  color: white;
+  margin-top: -0.59em;
+}
 
 nav.navbar {
   box-shadow: 3px 2px 30px 1px darkgray;
