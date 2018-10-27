@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import ConditionCal from './ConditionCal'
 import PropTypes from 'prop-types'
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 class Questionnaire extends Component {
-
   static contextTypes = {
     router: PropTypes.object
   }
-
 
   constructor(props) {
     super(props)
@@ -25,17 +25,33 @@ class Questionnaire extends Component {
     const value = e.target.value
     this.setState({ [fieldName]: value })
   }
-  render() {
 
+  render() {
     const calendar = this.props.location.state
     const questionnaire = this.state
     const patient = this.props.patient
 
     const onBookingAppt = e => {
       e.preventDefault()
-      this.props.newAppointment(calendar, questionnaire)
-      console.log(this)
-      this.context.router.history.push(`/home`)
+      confirmAlert({
+        title: 'Please confirm',
+        message: 'Would you like to book this appointment?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => {
+              this.props.newAppointment(calendar, questionnaire)
+              console.log(this)
+              this.context.router.history.push(`/home`)
+            }
+          },
+          {
+            label: 'No',
+            onClick: () => {}
+          }
+        ]
+      })
+
     };
 
     //const date = calendar.date
@@ -57,10 +73,10 @@ class Questionnaire extends Component {
       <ConditionCal condition={condition} key={condition.id} />
     ));
 
-    const { concern} = this.state
-    const isEnabled = concern != undefined && concern.trim() != "" 
+    const { concern } = this.state
+    const isEnabled = concern != undefined && concern.trim() != ""
 
-    const requiredStyle = { color: 'red'}
+    const requiredStyle = { color: 'red' }
     return (
 
       <div className='row'>
@@ -76,12 +92,12 @@ class Questionnaire extends Component {
             <div className='row'>
               <div className='col-md-6'>
                 <select name='apptType' onChange={this.handleChange} className="form-control textarea"  >
-                <option  selected value="" disabled >Select Appointment Type</option>
+                  <option selected value="" disabled >Select Appointment Type</option>
                   <option value="New Concern">New Concern</option>
                   <option value="Follow-up">Follow-up</option>
                 </select> </div>
               <div className='col-md-6'>
-                <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea'><option selected value=""  disabled>Following up? Which Condition?</option>{conditionItems}</select> </p>
+                <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea'><option selected value="" disabled>Following up? Which Condition?</option>{conditionItems}</select> </p>
               </div>
             </div>
             <p><input placeholder="What is your main concern?  *** Required field ***" name="concern" onChange={this.handleChange} className='form-control textarea' ></input></p>
