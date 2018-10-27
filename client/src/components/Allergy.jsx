@@ -8,8 +8,8 @@ class Allergy extends Component {
     const allergy = this.props.allergy
 
     return (
-      <div className='card-body med-info'>
-      <p> <span>{allergy.name}</span></p>
+      <div>
+      {allergy.name}
       </div>
     );
   }

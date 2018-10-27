@@ -27,7 +27,7 @@ class MedicalInfo extends Component {
   }
 
   getVitalsInfo() {
-    this.fetch(`/api/patients/${this.props.patient}/vitals`)
+    this.fetch(`/api/patients/${this.props.patient.id}/vitals`)
       .then(vitals => {
         if (vitals.length) {
           const lastVital = vitals[vitals.length - 1]
@@ -39,7 +39,7 @@ class MedicalInfo extends Component {
   }
 
   getMedicalInfo(info) {
-    this.fetch(`/api/patients/${this.props.patient}/${info}`)
+    this.fetch(`/api/patients/${this.props.patient.id}/${info}`)
       .then(infor => {
         if (infor.length) {
           this.setState({ [info]: infor })
@@ -51,9 +51,11 @@ class MedicalInfo extends Component {
   }
   render() {
     let { vitals, conditions, allergies, prescriptions, immunizations } = this.state
+    let patient = this.props.patient
+    console.log(patient)
 
-    return <div><h2>Medical Information</h2>
-    <div className='card'>
+    return <div><h2>{this.props.patient.first_name} {this.props.patient.last_name}</h2>
+    <div className='card med-info-card'>
       {vitals
         ? <Vitals vitals={this.state.vitals} />
         : <div className='container'> loading... </div>

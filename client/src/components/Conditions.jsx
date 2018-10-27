@@ -11,7 +11,9 @@ class Conditions extends Component {
     return (
       <div>
         <h3 className='card-header'>Conditions</h3>
-        {conditionsItems}
+        <div className='card-body med-info'>
+          <p>{conditionsItems}</p>
+        </div>
       </div>
     )
 
