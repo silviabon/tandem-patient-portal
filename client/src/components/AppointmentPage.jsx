@@ -49,12 +49,14 @@ class AppointmentPage extends Component {
         provider && summary && appointment
           ? <div className='col-xs-12 card apptDetails'>
               <h2>Appointment details</h2>
+              <hr />
               <p>Your appointment is on {appointment.date} at {appointment.time} with Dr.{provider.last_name} </p>
-              <h3>Your Appointment Summary:</h3>
+              <h3>Your Appointment Summary</h3>
               <p><b>Type:</b> {appointment.app_type}</p>
               <p><b>Concern:</b> {appointment.concern}</p>
               <p><b>Description:</b> {appointment.concern_desc}</p>
               <p><b>Symptoms:</b> {appointment.symptoms} {appointment.other_symptoms}</p>
+              <hr />
               <h3>Vitals</h3>
               <p><b>Temperature:</b> {appointment.temp}</p>
               <p><b>Heart rate:</b> {appointment.heart_rate}</p>
@@ -63,7 +65,8 @@ class AppointmentPage extends Component {
               <p><b>Question 2:</b> {appointment.q2}</p>
               {appointment.status === 'completed' && 
                 <div>
-              <h3>Provider Summary and Instructions:</h3>
+                  <hr />
+              <h3>Your Doctor's Summary and Instructions</h3>
               {summary}
       </div> }
             </div>

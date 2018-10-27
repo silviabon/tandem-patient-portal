@@ -144,14 +144,14 @@ p.appt-time {
   font-size: 1em;
 }
 
-input.login {
+.login {
   border-radius: 5px;
   background-color: #F39801;
   border-color: #F48302;
   color: white;
 }
 
-input.login:hover {
+.login:hover {
   background-color: #F48302;
   color: white;
   border-color: #F48302;
@@ -181,6 +181,7 @@ h3.card-header {
 /*Calendar*/
 div.main {
   margin: 0 auto;
+  margin-bottom: 3em;
 }
 
 .left {
@@ -280,4 +281,5 @@ h2.logintitle {
 .apptDetails {
   margin-top: 3em;
   padding: 1.5em;
+  width: 100%;
 }

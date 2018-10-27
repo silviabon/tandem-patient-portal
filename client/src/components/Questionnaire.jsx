@@ -97,10 +97,10 @@ class Questionnaire extends Component {
                   <option value="Follow-up">Follow-up</option>
                 </select> </div>
               <div className='col-md-6'>
-                <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea'><option selected value="" disabled>Following up? Which Condition?</option>{conditionItems}</select> </p>
+                <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea '><option selected value="" disabled>Following up? Which Condition?</option>{conditionItems}</select> </p>
               </div>
             </div>
-            <p><input placeholder="What is your main concern?  *** Required field ***" name="concern" onChange={this.handleChange} className='form-control textarea' ></input></p>
+            <p><input placeholder="What is your main concern?" required="true" name="concern" onChange={this.handleChange} className='form-control textarea' ></input></p>
             <p><textarea placeholder="Please describe your main concern. How did it start?" className='form-control textarea' name="concernDescription" onChange={this.handleChange}></textarea></p>
 
             <hr />
@@ -150,8 +150,8 @@ class Questionnaire extends Component {
                   <p> <input placeholder='First Questions' name='question1' className='textarea form-control' onChange={this.handleChange} />  </p>
                   <p><input placeholder='Second Question' name='question2' className='textarea form-control' onChange={this.handleChange} /></p>
 
-                  <button type="submit" value="submit" className='btn btn-primary right' disabled={!isEnabled}>Submit your health Questionnaire</button>
-                  <p style={requiredStyle}> * Fill out all the required fields before proceeding</p>
+                  <button type="submit" value="submit" className='btn login right' >Submit your health Questionnaire</button>
+                  
                 </div>
               </div>
             </div>
