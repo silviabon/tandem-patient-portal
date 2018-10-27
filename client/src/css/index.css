@@ -207,11 +207,18 @@ height: 100%;
   position: relative;
 }
 
-.opacity {
+div.opacity {
   background-color: white;
   background: rgba(255,255,255,0.7);
-
+  margin-top: 12%;
 }
+
+h1.tagline {
+  margin-top: 50%;
+  font-size: 8em;
+  color: white;
+}
+
 
 nav.navbar {
   box-shadow: 3px 2px 30px 1px darkgray;

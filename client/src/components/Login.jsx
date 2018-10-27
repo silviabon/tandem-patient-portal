@@ -43,20 +43,24 @@ class Login extends Component {
 
   render () {
     let { patient } = this.state
-    
+
     return <div><div  className='backgroundImgContainer'>
     <img src='https://images.pexels.com/photos/905874/pexels-photo-905874.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' />
     <div className='row tofront'>
-    <div className='opacity col-md-5 main'>
+    <div className='col-md-3 main '>
+    <h1 className='tagline'>Better<br/>
+    together.</h1>
+    </div>
+    <div className='opacity col-md-3 main'>
     <br />
       <h2>Please login</h2>
-      
+
       <form onSubmit={this.handleSubmit} className='form-group opaque'>
       <input className='form-control textarea' type="text" name="email" placeholder="example@example.com"></input>
       <input className='form-control textarea' type="password" name="password" placeholder="Type your password"></input>
       <br />
       <p>Are you a new patient to our clinic? <a href='#'>Contact us</a> to learn more about our registration process.</p>
-      
+
       <input className='btn btn-primary' type="submit" value="Login" />
       </form>
       </div>
