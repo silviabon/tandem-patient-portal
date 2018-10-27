@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './components/Home.jsx'
+import EMR from './components/EMR.jsx'
 import Login from './components/Login.jsx'
-import AppointmentPage from './components/AppointmentPage.jsx'
-import Calendar from './components/Calendar.jsx'
-import Questionnaire from './components/Questionnaire.jsx'
 import Navbar from './components/Navbar.jsx'
 import axios from 'axios'
 
@@ -13,8 +11,7 @@ class App extends Component {
     super(props)
     this.state = {
       patient: '',
-      conditions: '',
-      redirect: false
+      provider: 1
     }
     this.updateApptDate = this.updateApptDate.bind(this)
     this.newAppointment = this.newAppointment.bind(this)
@@ -23,7 +20,6 @@ class App extends Component {
     this.updateCompletedAppointmentsInState = this.updateCompletedAppointmentsInState.bind(this)
     this.updateUpcomingAppointmentsInState = this.updateUpcomingAppointmentsInState.bind(this)
   }
-
 
   componentDidMount() {
     console.log("cdm on app")
@@ -76,9 +72,9 @@ class App extends Component {
         concern: questionnaire.concern,
         condition_id: 1,
         patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
-        app_type: questionnaire.apptType,
+        apt_type: questionnaire.apptType,
         concern_desc: questionnaire.concern,
-        symptoms: `${questionnaire.symptoms}`,
+        symptoms: questionnaire.symptoms,
         other_symptoms: questionnaire.otherSymptoms,
         temp: questionnaire.temperature,
         heart_rate: questionnaire.heartrate,
@@ -107,12 +103,13 @@ class App extends Component {
     <Navbar patient={this.state.patient}/>
     <Router>
       <Switch>
-        <Route path='/' exact render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment} patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments}  {...props}/>} />
+        {/* <Route path='/' exact render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment} patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments}  {...props}/>} />
         <Route path='/home'render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment}  patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
         <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState}  />} />
-        <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
-        <Route path='/bookingCalendar' render={()=><Calendar formattedDate={this.formattedDate} renderFormattedDateLabel={this.renderFormattedDateLabel} apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
-        <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire formattedDate={this.formattedDate} newAppointment={this.newAppointment} handleQuestionChange={this.handleQuestionChange} updateQuestionnaire={this.updateQuestionnaire} handleQuestionSubmit={this.handleQuestionSubmit} conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
+        <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} /> */}
+        <Route path='/emr' render={(props)=><EMR patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
+        <Route path='/home' render={(props)=><Home provider={this.state.provider}  updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState} {...props} />} />
+        <Route path='/login' component={Login} />
       </Switch>
     </Router>
     </div>

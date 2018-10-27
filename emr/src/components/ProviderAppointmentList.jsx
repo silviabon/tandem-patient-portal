@@ -6,14 +6,14 @@ class ProviderAppointmentList extends Component {
   render() {
     let appointments = this.props.appointments
     return (
-    <div className='container' text>
+    <div className='container'>
       {appointments && appointments.length
         ? <div>
           {appointments.map((appointment) => {
             return <ProviderAppointment appointment={appointment} key={appointment.id} status={this.props.status} />
           })}
         </div>
-        : <div className='container' textAlign='center'>Loading...</div>
+        : <div className='container'>Loading...</div>
       }
     </div>
     )

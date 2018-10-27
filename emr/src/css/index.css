@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#root {
+  padding: 0;
+}
+
+/*Navbar*/
+span.patient-name-nav {
+  float: right;
+}
+
+p.patient-name-nav {
+  font-size: 1.5em;
+}
+
+li {
+  margin: 0.5em;
+}
+
+button.navbar-btn {
+  float: right;
+}
+
+/*Home Page*/
+div.col-md-8 {
+  margin-top: 2em;
+}
+
+div.col-md-4 {
+  margin-top: 2em;
+}
+
+div.card {
+  margin-bottom: 1.5em;
+}
+
+div.med-info {
+  padding: 1em;
+}
+
+div.appt-card {
+  padding: 0;
+}
+
+a.aptbtn {
+  float: right;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+button.aptbtn {
+  float: right;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+}
+
+div.time-col {
+  margin: 0.7em;
+}
+
+div.delete-button {
+  margin: 0.5em;
+}
+
+div.detail-button {
+  margin: 0.5em;
+}
+
+p.appt-time {
+  font-size: 1.2em;
+}
+
+/*Calendar*/
+div.main {
+  margin: 0 auto;
+}
+
+.left {
+  float: left;
+  clear: left;
+}
+
+.right {
+  float: right;
+  clear: right;
+}
+
+
+.textarea {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.selector .btn:focus, .selector .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+li {
+  list-style-type: none;
+}
+
+div.backgroundImgContainer img {
+z-index: 50;
+position: fixed;
+width: 100%;
+height: 100%;
+}
+
+.tofront {
+  z-index: 50;
+  position: relative;
+}
+
+.opacity {
+  background-color: white;
+  background: rgba(255,255,255,0.7);
+  
+}
+
