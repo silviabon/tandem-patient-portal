@@ -23,6 +23,7 @@ class Calendar extends Component {
     this.renderFormattedDateLabel = this.renderFormattedDateLabel.bind(this)
     this.createCalendarAppointnments = this.createCalendarAppointnments.bind(this)
     this.onTimeClick = this.onTimeClick.bind(this)
+    //this.tileDisabled = this.tileDisabled.bind(this)
   }
 
   componentDidMount() {
@@ -35,17 +36,26 @@ class Calendar extends Component {
   }
 
   onClickDay(date) {
-
     this.setState({ date })
     this.renderFormattedDateLabel(date)
   }
 
+  // tileDisabled() {
+  //   let noAppts = "Sorry, we are closed over the weekend"
+  //   console.log(noAppts)
+  // }
+
   createCalendarAppointnments = () => {
     let calendarAppts = []
+    let noAppts = []
     this.state.appConfig.listItems.map((item, index) => {
       const day = this.state.daysOfWeek[this.state.date.getDay()]
       if (day === 'Monday' || day === 'Tuesday' || day === 'Wednesday'|| day === 'Thursday'|| day === 'Friday')
       calendarAppts.push(<p><button className='btn selector' onClick={this.onTimeClick} value={item}>Book on {day}, at {item}</button></p>)
+      else {        
+        noAppts.push("sorry")
+        console.log(noAppts)
+      }
     }) 
     return calendarAppts;
   }
