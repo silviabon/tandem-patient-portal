@@ -49,9 +49,9 @@ class Appointment extends Component {
               <div className='col-md-7 time-col'><p>{appt.concern}</p><p className='appt-time'>{appt.date} at {appt.time} with Doctor {provider.last_name}</p></div>
 
             {status === "upcoming"
-              ? <div className='col-md-4 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn'> Details</button></Link>
-                <button className="btn aptbtn" onClick={onDeleteAppt}>Delete</button> </div>
-              : <div className='col-md-4 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn'>Details</button></Link></div>
+              ? <div className='col-md-4 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn-details'> Details</button></Link>
+                <button className="btn aptbtn-delete" onClick={onDeleteAppt}>Delete</button> </div>
+              : <div className='col-md-4 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn-details'>Details</button></Link></div>
             }
          </div>
           </div>
