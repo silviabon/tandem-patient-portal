@@ -5,8 +5,12 @@ import Reactcal, { DecadeView } from 'react-calendar'
 import Redirect from 'react-router-dom/Redirect';
 import { Container, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import ReactDOM from 'react-dom'
 
 class Calendar extends Component {
+
+
+
   constructor(props) {
     super(props)
 
@@ -17,18 +21,26 @@ class Calendar extends Component {
         title: 'Choose an Appointment',
         instructions: 'Simply click the day of your desired appointment, lock in your time-slow by clicking Select, and hit "Continue"',
         listItems: ['9:00am', '10:15am', '1:10pm', '2:20pm'],
+        closed: 'Sorry, our clinic is closed over the Weekend!'
       }
+      
     }
+
+    
     this.onClickDay = this.onClickDay.bind(this)
     this.renderFormattedDateLabel = this.renderFormattedDateLabel.bind(this)
     this.createCalendarAppointnments = this.createCalendarAppointnments.bind(this)
     this.onTimeClick = this.onTimeClick.bind(this)
+    this.isDisabled = this.isDisabled.bind(this)
     //this.tileDisabled = this.tileDisabled.bind(this)
   }
 
   componentDidMount() {
     let date = this.state.date
     this.renderFormattedDateLabel(date)
+    //this.tileDisabled()
+
+    
   }
   
   renderFormattedDateLabel(date) {
@@ -36,9 +48,18 @@ class Calendar extends Component {
   }
 
   onClickDay(date) {
+
     this.setState({ date })
     this.renderFormattedDateLabel(date)
+    
   }
+
+//   onClosedDayClick(date) {
+//     const day = this.state.daysOfWeek[this.state.date.getDay()]
+//     if (day === 'Saturday' || day === 'Sunday') {
+//       this.tileDisabled()
+//   }
+// }
 
   // tileDisabled() {
   //   let noAppts = "Sorry, we are closed over the weekend"
@@ -47,15 +68,13 @@ class Calendar extends Component {
 
   createCalendarAppointnments = () => {
     let calendarAppts = []
-    let noAppts = []
     this.state.appConfig.listItems.map((item, index) => {
       const day = this.state.daysOfWeek[this.state.date.getDay()]
       if (day === 'Monday' || day === 'Tuesday' || day === 'Wednesday'|| day === 'Thursday'|| day === 'Friday')
       calendarAppts.push(<p><button className='btn selector' onClick={this.onTimeClick} value={item}>Book on {day}, at {item}</button></p>)
-      else {        
-        noAppts.push("sorry")
-        console.log(noAppts)
-      }
+      // else {   
+      //   this.tileDisabled()
+      // }
     }) 
     return calendarAppts;
   }
@@ -63,7 +82,18 @@ class Calendar extends Component {
   onTimeClick = e => {
     e.preventDefault()
     let aptTime = e.target.value
-    this.setState( { time: aptTime })
+    //console.log(e.target.value)
+    // if (this.state.aptTime === "") {
+    //   return;
+    // }
+    this.setState( { time: aptTime,  })
+  }
+
+  isDisabled() {
+    let today = this.state.date
+    const day = this.state.daysOfWeek[today.getDay()]
+    if (day === 'Sunday' || day === 'Saturday')
+    return true;
   }
 
   render() {
@@ -75,9 +105,11 @@ class Calendar extends Component {
       this.props.updateApptDate(apptDate, apptTime)
   }
 
-    let calendar = <Reactcal onClickDay={this.onClickDay} value={this.state.date} />
+
+    let calendar = <Reactcal onClickDay={this.onClickDay} value={this.state.date} onClosedDayClick={this.onClosedDayClick}/>
     const day = this.state.daysOfWeek[today.getDay()]
     const formattedDate = this.state.formattedDate
+    
       return (<div className='row'>
       <div className='col-md-8 main'>
       <div className='row'>
@@ -87,13 +119,14 @@ class Calendar extends Component {
 
           <div className='col-md-6'>
           {calendar}
-          <p>Sorry! Our office is closed Saturdays and Sundays</p>
+         
           </div>
           <div className='col-md-6'><form onSubmit={onSelectAppt}>
           <h3>Available appointments on {day}, {formattedDate}</h3>
           <p>Please select one of the slots below: </p>
           {this.createCalendarAppointnments()}
-          <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='btn btn-primary right' type="submit">Continue</button></Link>
+
+          <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='btn btn-primary right' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
           </form>
          </div>
          </div>
