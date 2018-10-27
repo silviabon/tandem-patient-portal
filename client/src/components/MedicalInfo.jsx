@@ -54,7 +54,7 @@ class MedicalInfo extends Component {
     let patient = this.props.patient
     console.log(patient)
 
-    return <div><h2>{this.props.patient.first_name} {this.props.patient.last_name}</h2>
+    return <div>
     <div className='card med-info-card'>
       {vitals
         ? <Vitals vitals={this.state.vitals} />

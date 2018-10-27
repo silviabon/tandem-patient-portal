@@ -16,7 +16,7 @@ class Navbar extends Component {
     </a>
       {patient
           ? (<span className='nav-name justify-content-end'>
-          <button className="btn navbar-btn d-inline-block align-top"><a href='/'>Logout</a></button>Hello, {patient.first_name}</span>)
+          <button className="btn navbar-btn d-inline-block align-top"><a href='/'>Logout</a></button>{patient.first_name} {patient.last_name}</span>)
             : <div></div>}
     </nav>)
   }
