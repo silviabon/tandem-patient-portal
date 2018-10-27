@@ -144,6 +144,19 @@ p.appt-time {
   font-size: 1em;
 }
 
+input.login {
+  border-radius: 5px;
+  background-color: #F39801;
+  border-color: #F48302;
+  color: white;
+}
+
+input.login:hover {
+  background-color: #F48302;
+  color: white;
+  border-color: #F48302;
+}
+
 button.book-apt {
   padding: 1em;
   font-size: 1em;
@@ -209,14 +222,18 @@ height: 100%;
 
 div.opacity {
   background-color: white;
-  background: rgba(255,255,255,0.7);
-  margin-top: 12%;
+  background: rgba(255,255,255,0.8);
+
+  float: left;
+  position: relative;
+ 
 }
 
 h1.tagline {
-  margin-top: 50%;
   font-size: 8em;
   color: white;
+  padding: 0px;
+  margin: 0px;
 }
 
 
@@ -225,3 +242,10 @@ nav.navbar {
 
 }
 
+div.logincont {
+  margin-top: 23%;
+}
+
+h2.logintitle {
+  padding-top: 1.5em;
+}

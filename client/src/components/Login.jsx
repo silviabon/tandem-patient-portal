@@ -47,13 +47,11 @@ class Login extends Component {
     return <div><div  className='backgroundImgContainer'>
     <img src='https://images.pexels.com/photos/905874/pexels-photo-905874.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' />
     <div className='row tofront'>
-    <div className='col-md-3 main '>
-    <h1 className='tagline'>Better<br/>
-    together.</h1>
-    </div>
-    <div className='opacity col-md-3 main'>
-    <br />
-      <h2>Please login</h2>
+    <div className='col-6 main'>
+  <div className='row logincont'>
+    <div className='opacity col-md-6'>
+
+      <h2 className="logintitle">Please login</h2>
 
       <form onSubmit={this.handleSubmit} className='form-group opaque'>
       <input className='form-control textarea' type="text" name="email" placeholder="example@example.com"></input>
@@ -61,8 +59,15 @@ class Login extends Component {
       <br />
       <p>Are you a new patient to our clinic? <a href='#'>Contact us</a> to learn more about our registration process.</p>
 
-      <input className='btn btn-primary' type="submit" value="Login" />
+      <input className='btn btn-primary login' type="submit" value="Login" />
       </form>
+      </div>
+
+    <div className='col-md-6 '>
+    <h1 className='tagline'>Better<br />
+    together.</h1>
+    </div>
+    </div>
       </div>
     </div>
     </div>
