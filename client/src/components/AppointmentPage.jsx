@@ -42,27 +42,25 @@ class AppointmentPage extends Component {
   render() {
     let { provider, summary, appointment } = this.state
     return <div className='row'>
-      <div className='col-md-8 main'>
+      <div className='col-8 main'>
         <div className='row'>
-      <h2>Appointment Summary</h2>
+      
       {
         provider && summary && appointment
-          ? <div className='col-md-12'>
-              <p>Date: {appointment.date}</p>
-              <p>Time: {appointment.time}</p>
-              <p>Doctor: {provider.last_name}</p>
-              <h3>Patient Summary:</h3>
-              <p>Type: {appointment.app_type}</p>
-              <p>Concern: {appointment.concern}</p>
-              <p>Description: {appointment.concern_desc}</p>
-              <p>Symptoms: {appointment.symptoms}</p>
-              <p>Other symptoms: {appointment.other_symptoms}</p>
-              <p>Vitals</p>
-              <p>Temperature: {appointment.temp}</p>
-              <p>Heart rate: {appointment.heart_rate}</p>
-              <p>Blood Pressure: {appointment.bp}</p>
-              <p>Question 1: {appointment.q1}</p>
-              <p>Question 2: {appointment.q2}</p>
+          ? <div className='col-xs-12 card apptDetails'>
+              <h2>Appointment details</h2>
+              <p>Your appointment is on {appointment.date} at {appointment.time} with Dr.{provider.last_name} </p>
+              <h3>Your Appointment Summary:</h3>
+              <p><b>Type:</b> {appointment.app_type}</p>
+              <p><b>Concern:</b> {appointment.concern}</p>
+              <p><b>Description:</b> {appointment.concern_desc}</p>
+              <p><b>Symptoms:</b> {appointment.symptoms} {appointment.other_symptoms}</p>
+              <h3>Vitals</h3>
+              <p><b>Temperature:</b> {appointment.temp}</p>
+              <p><b>Heart rate:</b> {appointment.heart_rate}</p>
+              <p><b>Blood Pressure:</b> {appointment.bp}</p>
+              <p><b>Question 1:</b> {appointment.q1}</p>
+              <p><b>Question 2:</b> {appointment.q2}</p>
               {appointment.status === 'completed' && 
                 <div>
               <h3>Provider Summary and Instructions:</h3>
@@ -71,7 +69,7 @@ class AppointmentPage extends Component {
             </div>
             : <div className='col-md-12'><p>Loading...</p></div>
       }
-      <Link to={{ pathname: '/' }}><button className='btn btn-primary'>Back Home</button></Link>
+      <Link to={{ pathname: '/' }}><button className='btn aptbtn-details'>Back Home</button></Link>
       </div>
       </div>
     </div>

@@ -49,7 +49,7 @@ class Login extends Component {
     <div className='row tofront'>
     <div className='col-6 main'>
   <div className='row logincont'>
-    <div className='opacity col-md-6'>
+    <div className='opacity col-md-5'>
 
       <h2 className="logintitle">Please login</h2>
 

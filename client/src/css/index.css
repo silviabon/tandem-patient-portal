@@ -204,6 +204,12 @@ div.main {
   box-shadow: none !important;
 }
 
+.selector {
+  margin: 0.8em;
+  padding: 0.7em;
+  border-color: lightgray;
+}
+
 li {
   list-style-type: none;
 }
@@ -223,9 +229,9 @@ height: 100%;
 div.opacity {
   background-color: white;
   background: rgba(255,255,255,0.8);
-
   float: left;
   position: relative;
+  margin-right: 1em;
  
 }
 
@@ -248,10 +254,30 @@ nav.navbar {
 
 }
 
+.cal {
+  margin-top: 3em;
+}
+
+.calendar {
+  float: left;
+  clear: right;
+  margin-right: 2em;
+}
+
+div.appts {
+  float: left;
+  
+}
+
 div.logincont {
   margin-top: 23%;
 }
 
 h2.logintitle {
   padding-top: 1.5em;
+}
+
+.apptDetails {
+  margin-top: 3em;
+  padding: 1.5em;
 }
