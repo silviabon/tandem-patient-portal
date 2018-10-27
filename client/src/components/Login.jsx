@@ -55,7 +55,7 @@ class Login extends Component {
       <input className='form-control textarea' type="text" name="email" placeholder="example@example.com"></input>
       <input className='form-control textarea' type="password" name="password" placeholder="Type your password"></input>
       <br />
-      <p>Are you a new user? <a href='#'>Learn more</a> about our registration process.</p>
+      <p>Are you a new patient to our clinic? <a href='#'>Contact us</a> to learn more about our registration process.</p>
       
       <input className='btn btn-primary' type="submit" value="Login" />
       </form>
