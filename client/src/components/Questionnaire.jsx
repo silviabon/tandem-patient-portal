@@ -75,20 +75,16 @@ class Questionnaire extends Component {
             <h3>Appointment Details</h3>
             <div className='row'>
               <div className='col-md-6'>
-              {/* <label><span style={requiredStyle}> * </span> Appointment type:</label> */}
-                <select name='apptType' onChange={this.handleChange} className="form-control textarea" placeholder={"Select Appointment Type" }  >
-                <option selected value="" disabled >Select Appointment Type</option>
+                <select name='apptType' onChange={this.handleChange} className="form-control textarea"  >
+                <option  selected value="" disabled >Select Appointment Type</option>
                   <option value="New Concern">New Concern</option>
                   <option value="Follow-up">Follow-up</option>
                 </select> </div>
               <div className='col-md-6'>
-              {/* <label>Condition:</label> */}
                 <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea'><option selected value=""  disabled>Following up? Which Condition?</option>{conditionItems}</select> </p>
               </div>
             </div>
-            {/* <label><span style={requiredStyle}> * </span> Main concern:</label> */}
             <p><input placeholder="What is your main concern?  *** Required field ***" name="concern" onChange={this.handleChange} className='form-control textarea' ></input></p>
-            {/* <label>Concern description:</label> */}
             <p><textarea placeholder="Please describe your main concern. How did it start?" className='form-control textarea' name="concernDescription" onChange={this.handleChange}></textarea></p>
 
             <hr />
