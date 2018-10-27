@@ -44,17 +44,14 @@ class Appointment extends Component {
     return provider && patient
       ? (
         <div className='card'>
-          <h3 className='card-header'>{appt.concern}</h3>
           <div className='card-body appt-card'>
             <div className='row'>
-            <div className='col-9 time-col'><p className='appt-time'>{appt.date} at {appt.time} with Doctor {provider.last_name}</p></div>
+              <div className='col-md-7 time-col'><p>{appt.concern}</p><p className='appt-time'>{appt.date} at {appt.time} with Doctor {provider.last_name}</p></div>
 
             {status === "upcoming"
-              ? <div>
-                <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'> Details</button></Link></div>
-                 <div className='col-2 delete-button'> <button className="btn btn-primary aptbtn" onClick={onDeleteAppt}>Delete</button> </div>
-                </div>
-              : <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link></div>
+              ? <div className='col-md-4 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn-details'> Details</button></Link>
+                <button className="btn aptbtn-delete" onClick={onDeleteAppt}>Delete</button> </div>
+              : <div className='col-md-4 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn-details'>Details</button></Link></div>
             }
          </div>
           </div>

@@ -64,7 +64,7 @@ class Home extends Component {
           <div className='col-md-8 main'>
           <div className='row'>
             <div className='col-md-8'>
-          <Link to={{ pathname: '/bookingCalendar' }}><button className='btn btn-primary'>Book Appointment</button></Link>
+          <Link to={{ pathname: '/bookingCalendar' }}><button className='btn book-apt'>Book Appointment</button></Link>
           <h2>Upcoming Appointments</h2>
           {upcomingAppointments && upcomingAppointments.length
               ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.props.upcomingAppointments} patient={this.props.patient} status={'upcoming'} />)
@@ -75,7 +75,7 @@ class Home extends Component {
             : <div className='container'>No appointments found.</div>}
           </div>
           <div className='col-md-4'>
-            <MedicalInfo patient={this.props.patient.id} />
+            <MedicalInfo patient={this.props.patient} />
             </div>
           </div>
           </div>

@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.2em;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #root {
@@ -24,23 +24,50 @@ li {
 
 button.navbar-btn {
   float: right;
+  margin-left: 15px;
+  color: white;
 }
+
+span.nav-name {
+  font-size: 1.2em;
+  line-height: 1.7em;
+  color: white;
+}
+
+img#logo{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+a.nav-brand {
+  font-size: 1.7em;
+  color: white;
+}
+
+nav.navbar {
+  background-color: #92B7BF;
+}
+
 
 /*Home Page*/
 div.col-md-8 {
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 div.col-md-4 {
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 div.card {
   margin-bottom: 1.5em;
 }
 
+div.med-info-card {
+  border-color: transparent;
+}
+
 div.med-info {
-  padding: 1em;
+  padding-left: 1em;
 }
 
 div.appt-card {
@@ -55,8 +82,50 @@ a.aptbtn {
 
 button.aptbtn {
   float: right;
+  margin-top: 1.2em;
   margin-bottom: 0.5em;
-  margin-right: 0.5em;
+  background-color: #F39801;
+  border-color: #F48302;
+  margin-left: 0.5em;
+  color: white;
+}
+
+button.aptbtn:hover {
+  background-color: #F48302;
+  color: white;
+  border-color: #F48302;
+}
+
+button.aptbtn-delete {
+  float: right;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  background-color: #65bace;
+  border-color: #5ba8ba;
+  margin-left: 0.5em;
+  color: white;
+}
+
+button.aptbtn-delete:hover {
+  background-color: #5ba8ba;
+  color: white;
+  border-color: #5ba8ba;
+}
+
+button.aptbtn-details {
+  float: right;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  background-color: #5ba8ba;
+  border-color: #498999;
+  margin-left: 0.5em;
+  color: white;
+}
+
+button.aptbtn-details:hover {
+  background-color: #498999;
+  color: white;
+  border-color: #498999;
 }
 
 div.time-col {
@@ -72,7 +141,28 @@ div.detail-button {
 }
 
 p.appt-time {
-  font-size: 1.2em;
+  font-size: 1em;
+}
+
+button.book-apt {
+  padding: 1em;
+  font-size: 1em;
+  border-radius: 5px;
+  background-color: #F39801;
+  border-color: #F48302;
+  color: white;
+}
+
+button.book-apt:hover {
+  background-color: #F48302;
+  color: white;
+  border-color: #F48302;
+}
+
+
+h3.card-header {
+  background-color: white;
+  color: black;
 }
 
 /*Calendar*/
@@ -120,6 +210,11 @@ height: 100%;
 .opacity {
   background-color: white;
   background: rgba(255,255,255,0.7);
-  
+
+}
+
+nav.navbar {
+  box-shadow: 3px 2px 30px 1px darkgray;
+
 }
 

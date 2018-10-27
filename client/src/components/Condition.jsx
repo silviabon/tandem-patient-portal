@@ -6,9 +6,10 @@ class Condition extends Component {
     const condition = this.props.condition
 
     return (
-      <div className='card-body med-info'>
-      <p> <span>{condition.name}</span></p>
+      <div>
+      {condition.name}
       </div>
+
     );
   }
 }
