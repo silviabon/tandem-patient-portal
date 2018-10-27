@@ -78,7 +78,7 @@ class App extends Component {
         concern: questionnaire.concern,
         condition_id: 1,
         patient_summary: `Appointment type: ${questionnaire.apptType}, Main concern: ${questionnaire.concern}, Concern description: ${questionnaire.concernDescription}, Symptoms: ${questionnaire.symptoms}, Other symptoms: ${questionnaire.otherSymptoms}, Vitals - Temperature: ${questionnaire.temperature}, Heart Rate: ${questionnaire.heartrate}, Blood Pressure: ${questionnaire.bp_s}/${questionnaire.bp_d}, Question 1: ${questionnaire.question1}, Question 2: ${questionnaire.question2}`,
-        apt_type: questionnaire.apptType,
+        app_type: questionnaire.apptType,
         concern_desc: questionnaire.concern,
         symptoms: `${questionnaire.symptoms}`,
         other_symptoms: questionnaire.otherSymptoms,
