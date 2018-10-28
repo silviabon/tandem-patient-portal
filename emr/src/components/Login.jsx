@@ -1,11 +1,28 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
     }
+  }
+
+  componentDidMount() {
+    console.log('emr login component did mount')
+    this.getPatients()
+  }
+
+  getPatients() {
+    axios.get(`/api/patients/`)
+          .then(res  => {
+            let patients = res.data
+            console.log("patients[]", patients)
+            if (patients.length) {
+              this.props.updatePatientsInState(patients)
+            }
+          })
   }
 
   render () {

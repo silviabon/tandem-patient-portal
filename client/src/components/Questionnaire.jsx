@@ -18,12 +18,20 @@ class Questionnaire extends Component {
       formattedDate: this.props.formattedDate,
     }
     this.handleChange = this.handleChange.bind(this);
+    this.readFile = this.readFile.bind(this)
   }
 
   handleChange(e) {
     const fieldName = e.target.name
     const value = e.target.value
     this.setState({ [fieldName]: value })
+  }
+
+  readFile(e) {
+    const fieldName = e.target.name
+    const file = document.getElementById('file').files[0]
+    this.setState({ [fieldName]: file })
+    console.log(file)
   }
 
   render() {
@@ -149,8 +157,11 @@ class Questionnaire extends Component {
                   <p> <input placeholder='First Questions' name='question1' className='textarea form-control' onChange={this.handleChange} />  </p>
                   <p><input placeholder='Second Question' name='question2' className='textarea form-control' onChange={this.handleChange} /></p>
 
-                  <button type="submit" value="submit" className='btn login right' >Submit your health Questionnaire</button>
                   
+                  <label for="exampleFormControlFile1">Please upload your file</label>
+                  <input type="file" class="form-control-file" id="file" name="file" onChange={this.readFile}></input>
+                  <button type="submit" value="submit" className='btn login right' >Submit your health Questionnaire</button>
+                  <p style={requiredStyle}> * Fill out all the required fields before proceeding</p>
                 </div>
               </div>
             </div>
