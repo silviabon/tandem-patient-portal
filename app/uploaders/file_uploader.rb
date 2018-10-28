@@ -1,7 +1,7 @@
 class FileUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -28,9 +28,14 @@ class FileUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  process :process_image, if: :image?
+  process :process_pdf, if: :pdf?
+
+  # process resize_to_fit: [800, 800]
+
   # Create different versions of your uploaded files:
   # version :thumb do
-  #   process resize_to_fit: [50, 50]
+  #   process resize_to_fit: [200, 200]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -44,4 +49,26 @@ class FileUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+    protected
+
+  def image?(new_file)
+    new_file.content_type.start_with? 'image'
+  end
+
+  def pdf?(new_file)
+    new_file.content_type.start_with? 'application'
+  end
+
+  def process_image
+    process resize_to_fit: [800, 800]
+    version :thumb do
+      process resize_to_fit: [200, 200]
+    end
+  end
+
+  def process_pdf
+    # I process pdf here
+  end
+e
 end

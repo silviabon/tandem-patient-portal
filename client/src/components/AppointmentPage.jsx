@@ -5,8 +5,6 @@ class AppointmentPage extends Component {
   constructor() {
     super()
     this.state = {
-      numPages: null,
-      pageNumber: 1,
     }
   }
 
@@ -16,9 +14,6 @@ class AppointmentPage extends Component {
     this.setState({ appointment: this.props.location.state.appointment.appt })
   }
 
-  onDocumentLoadSuccess = ({ numPages }) => {
-    this.setState({ numPages });
-  }
 
   getProvider(provider) {
     this.fetch(`/api/providers/${provider}`)
@@ -51,7 +46,7 @@ class AppointmentPage extends Component {
     return <div className='row'>
       <div className='col-8 main'>
         <div className='row'>
-      
+
       {
         provider && summary && appointment
           ? <div className='col-xs-12 card apptDetails'>
@@ -70,7 +65,9 @@ class AppointmentPage extends Component {
               <p><b>Blood Pressure:</b> {appointment.bp}</p>
               <p><b>Question 1:</b> {appointment.q1}</p>
               <p><b>Question 2:</b> {appointment.q2}</p>
-              {appointment.status === 'completed' && 
+              <p><b>Document Upload</b></p>
+              <p><b><img src={appointment.file.thumb.url} /></b></p>
+              {appointment.status === 'completed' &&
                 <div>
                   <hr />
               <h3>Your Doctor's Summary and Instructions</h3>
