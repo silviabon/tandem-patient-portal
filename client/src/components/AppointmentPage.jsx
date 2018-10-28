@@ -5,6 +5,8 @@ class AppointmentPage extends Component {
   constructor() {
     super()
     this.state = {
+      numPages: null,
+      pageNumber: 1,
     }
   }
 
@@ -12,6 +14,10 @@ class AppointmentPage extends Component {
     this.getSummary(this.props.location.state.appointment.appt.id, this.props.location.state.patient.patient)
     this.getProvider(this.props.location.state.appointment.appt.provider_id)
     this.setState({ appointment: this.props.location.state.appointment.appt })
+  }
+
+  onDocumentLoadSuccess = ({ numPages }) => {
+    this.setState({ numPages });
   }
 
   getProvider(provider) {
@@ -40,6 +46,7 @@ class AppointmentPage extends Component {
   }
 
   render() {
+    const { pageNumber, numPages } = this.state;
     let { provider, summary, appointment } = this.state
     return <div className='row'>
       <div className='col-md-8 main'>
@@ -63,7 +70,8 @@ class AppointmentPage extends Component {
               <p>Blood Pressure: {appointment.bp}</p>
               <p>Question 1: {appointment.q1}</p>
               <p>Question 2: {appointment.q2}</p>
-              {appointment.status === 'completed' && 
+              <p>Document Uploads: </p>
+              {appointment.status === 'completed' &&
                 <div>
               <h3>Provider Summary and Instructions:</h3>
               {summary}
