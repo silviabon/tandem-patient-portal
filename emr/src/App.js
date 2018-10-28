@@ -56,6 +56,7 @@ class App extends Component {
         <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState}  />} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} /> */}
         {/* <Route path='/' render={(props)=><Login updatePatientsInState={this.updatePatientsInState} {...props} />} /> */}
+        <Route path='/'  exact  render={(props)=><Login updatePatientsInState={this.updatePatientsInState} {...props} />} />
         <Route path='/emr' render={(props)=><EMR patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
         <Route path='/emrp' render={(props)=><EMRPrevious patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
         <Route path='/home' render={(props)=><Home provider={this.state.provider} patients={this.state.patients} updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState} {...props} />} />

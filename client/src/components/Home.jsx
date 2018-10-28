@@ -43,20 +43,6 @@ class Home extends Component {
     })
   }
 
-  // getAppointments(status) {
-  //   this.fetch(`/api/patients/${this.props.patient.id}/appointments/`)
-  //     .then(appointments => {
-  //       if (appointments.length) {
-  //         const appts = appointments.filter(app => app.status === status)
-  //         if (status === 'completed') {
-  //           this.setState({ completedAppointments: appts })
-  //         } else {
-  //           this.setState({ upcomingAppointments: appts })
-  //         }
-  //       }
-  //     })
-  // }
-
   render() {
     let { completedAppointments, upcomingAppointments } = this.props
     return (

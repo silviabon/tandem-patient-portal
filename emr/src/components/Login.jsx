@@ -15,7 +15,7 @@ class Login extends Component {
   }
 
   getPatients() {
-    axios.get(`/api/patients/`)
+    axios.get(`http://localhost:3001/api/patients/`)
           .then(res  => {
             let patients = res.data
             console.log("patients[]", patients)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026211305) do
+ActiveRecord::Schema.define(version: 20181027205450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20181026211305) do
     t.string   "bp"
     t.string   "q1"
     t.string   "q2"
+    t.string   "file"
     t.index ["condition_id"], name: "index_appointments_on_condition_id", using: :btree
     t.index ["patient_id"], name: "index_appointments_on_patient_id", using: :btree
     t.index ["provider_id"], name: "index_appointments_on_provider_id", using: :btree
