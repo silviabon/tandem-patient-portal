@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       patient: '',
       conditions: '',
+      appointment: '',
       redirect: false
     }
     this.updateApptDate = this.updateApptDate.bind(this)
@@ -22,6 +23,7 @@ class App extends Component {
     this.updateConditionsInState = this.updateConditionsInState.bind(this)
     this.updateCompletedAppointmentsInState = this.updateCompletedAppointmentsInState.bind(this)
     this.updateUpcomingAppointmentsInState = this.updateUpcomingAppointmentsInState.bind(this)
+    this.updateAppointmentInState = this.updateAppointmentInState.bind(this)
   }
 
 
@@ -63,6 +65,12 @@ class App extends Component {
   updateUpcomingAppointmentsInState(upcomingAppointments) {
     this.setState({
       upcomingAppointments
+    });
+  }
+
+  updateAppointmentInState(appointment) {
+    this.setState({
+      appointment
     });
   }
 
@@ -108,10 +116,10 @@ class App extends Component {
     <Router>
       <Switch>
         <Route path='/' exact render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment} patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments}  {...props}/>} />
-        <Route path='/home'render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment}  patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
+        <Route path='/home'render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateAppointmentInState={this.updateAppointmentInState} deleteAppointment={this.deleteAppointment}  patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
         <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState}  />} />
         <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} />
-        <Route path='/bookingCalendar' render={()=><Calendar formattedDate={this.formattedDate} renderFormattedDateLabel={this.renderFormattedDateLabel} apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate}/>}/>
+        <Route path='/bookingCalendar' render={()=><Calendar formattedDate={this.formattedDate} renderFormattedDateLabel={this.renderFormattedDateLabel} apptDate={this.state.apptDate} apptTime={this.state.apptTime} updateApptDate={this.updateApptDate} patient={this.state.patient} appointment = {this.state.appointment}/>}/>
         <Route path='/bookingQuestionnaire' render={(props)=><Questionnaire formattedDate={this.formattedDate} newAppointment={this.newAppointment} handleQuestionChange={this.handleQuestionChange} updateQuestionnaire={this.updateQuestionnaire} handleQuestionSubmit={this.handleQuestionSubmit} conditions={this.state.conditions} apptDate={this.state.apptDate} apptTime={this.state.apptTime} {...props}/>}/>
       </Switch>
     </Router>

@@ -22,9 +22,7 @@ class Calendar extends Component {
         closed: 'Sorry, our clinic is closed on Saturdays and Sundays'
       },
       time: ""
-
     }
-
     this.onClickDay = this.onClickDay.bind(this)
     this.renderFormattedDateLabel = this.renderFormattedDateLabel.bind(this)
     this.createCalendarAppointnments = this.createCalendarAppointnments.bind(this)
@@ -35,6 +33,22 @@ class Calendar extends Component {
   componentDidMount() {
     let date = this.state.date
     this.renderFormattedDateLabel(date)
+    this.setUpdateData();
+  }
+
+  setUpdateData() {
+    console.log("inside update data:", this.props)
+    const dateProps = (this.props.appointment.date).split('-')
+    const year = dateProps[0]
+    const month = dateProps[1]
+    const day = dateProps[2]
+    if (this.props.appointment != undefined) {
+      this.setState({
+        date: new Date(year, month - 1, day, 0, 0, 0),
+        time: this.props.appointment.time
+      })
+      this.renderFormattedDateLabel(new Date(year, month - 1, day, 0, 0, 0))
+    }
   }
 
   renderFormattedDateLabel(date) {
@@ -66,7 +80,7 @@ class Calendar extends Component {
   onTimeClick = e => {
     e.preventDefault()
     let aptTime = e.target.value
-    this.setState({ time: aptTime, })
+    this.setState({ time: aptTime })
   }
 
   isDisabled() {
@@ -108,6 +122,7 @@ class Calendar extends Component {
             {this.createCalendarAppointnments()}
 
             <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='btn btn-primary right' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
+            <Link to={{ pathname: '/home', state: this.state }}><button className='btn btn-primary right'  >Cancel</button></Link>
           </form>
           </div>
         </div>
