@@ -30,6 +30,7 @@ class ProviderAppointment extends Component {
     const patientName = this.props.patientName
     let { provider, patient } = this.state
     let link = `emr/${this.props.appointment.id}`
+    let linkp = `emrp/${this.props.appointment.id}`
     return provider && patient
       ? (
         <div className='card'>
@@ -43,7 +44,7 @@ class ProviderAppointment extends Component {
               ? <span>
                 <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>See patient</button></Link>
                 </span>
-              : <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
+              : <Link to={{ pathname: linkp, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
             }
         </div>
       )
