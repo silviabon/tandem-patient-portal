@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20181027205450) do
     t.string   "bp"
     t.string   "q1"
     t.string   "q2"
+    t.text     "file_upload"
     t.string   "file"
     t.index ["condition_id"], name: "index_appointments_on_condition_id", using: :btree
     t.index ["patient_id"], name: "index_appointments_on_patient_id", using: :btree
