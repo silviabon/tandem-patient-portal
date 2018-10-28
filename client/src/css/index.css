@@ -27,6 +27,11 @@ button.navbar-btn {
   margin-left: 15px;
   color: white;
 }
+/* 
+button.navbar-btn:hover {
+  background-color: #F39801;
+  border-color: #F39801;
+} */
 
 span.nav-name {
   font-size: 1.2em;
@@ -144,6 +149,34 @@ p.appt-time {
   font-size: 1em;
 }
 
+.login {
+  border-radius: 5px;
+  background-color: #F39801;
+  border-color: #F48302;
+  color: white;
+}
+
+a.logoutlink:link {
+  color: #92B7BF
+}
+
+a.logoutlink:visited  {
+  color: #92B7BF
+}
+
+a.logoutlink:active  {
+  color: #92B7BF
+}
+
+
+
+
+.login:hover {
+  background-color: #F48302;
+  color: white;
+  border-color: #F48302;
+}
+
 button.book-apt {
   padding: 1em;
   font-size: 1em;
@@ -168,6 +201,8 @@ h3.card-header {
 /*Calendar*/
 div.main {
   margin: 0 auto;
+  margin-bottom: 3em;
+  margin-top: 3em;
 }
 
 .left {
@@ -191,6 +226,12 @@ div.main {
   box-shadow: none !important;
 }
 
+.selector {
+  margin: 0.8em;
+  padding: 0.7em;
+  border-color: lightgray;
+}
+
 li {
   list-style-type: none;
 }
@@ -209,19 +250,57 @@ height: 100%;
 
 div.opacity {
   background-color: white;
-  background: rgba(255,255,255,0.7);
-  margin-top: 12%;
+  background: rgba(255,255,255,0.8);
+  float: left;
+  position: relative;
+  margin-right: 1em;
+ 
 }
 
 h1.tagline {
-  margin-top: 50%;
   font-size: 8em;
   color: white;
+  margin-top: 0.1em;
+  
+
 }
 
+h1.tagline2 {
+  font-size: 8em;
+  color: white;
+  margin-top: -0.59em;
+}
 
 nav.navbar {
   box-shadow: 3px 2px 30px 1px darkgray;
 
 }
 
+.cal {
+  margin-top: 3em;
+}
+
+.calendar {
+  float: left;
+  clear: right;
+  margin-right: 2em;
+}
+
+div.appts {
+  float: left;
+  
+}
+
+div.logincont {
+  margin-top: 23%;
+}
+
+h2.logintitle {
+  padding-top: 1.5em;
+}
+
+.apptDetails {
+  margin-top: 3em;
+  padding: 1.5em;
+  width: 100%;
+}

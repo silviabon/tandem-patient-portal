@@ -55,7 +55,7 @@ class MedicalInfo extends Component {
     console.log(patient)
 
     return <div>
-    <div className='card med-info-card'>
+    <div className='med-info-card'>
       {vitals
         ? <Vitals vitals={this.state.vitals} />
         : <div className='container'> loading... </div>
