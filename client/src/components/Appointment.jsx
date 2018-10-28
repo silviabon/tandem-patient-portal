@@ -47,7 +47,7 @@ class Appointment extends Component {
           <h3 className='card-header'>{appt.concern}</h3>
           <div className='card-body appt-card'>
             <div className='row'>
-            <div className='col-9 time-col'><p className='appt-time'>{appt.date} at {appt.time}AM with Doctor {provider.last_name}</p></div>
+            <div className='col-9 time-col'><p className='appt-time'>{appt.date} at {appt.time} with Doctor {provider.last_name}</p></div>
 
             {status === "upcoming"
               ? <div>
@@ -70,7 +70,7 @@ class Appointment extends Component {
 export default Appointment
 
 
-// <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link></div> 
+// <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link></div>
 //                  <div className='col-2 delete-button'>
 //                 <button className="btn btn-primary aptbtn" onClick={onDeleteAppt}>Delete</button>
 //                 </div>

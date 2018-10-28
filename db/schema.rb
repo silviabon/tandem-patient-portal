@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20181026211305) do
     t.string   "status"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.text     "file_upload"
     t.string   "app_type"
     t.text     "concern_desc"
     t.text     "symptoms"
