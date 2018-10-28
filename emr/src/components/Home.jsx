@@ -10,7 +10,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log('did mount')
+    console.log('home component did mount')
     this.getAppointments('upcoming')
     this.getAppointments('completed')
   }
@@ -23,6 +23,8 @@ class Home extends Component {
 
   getAppointments(status) {
     console.log('app', status)
+    this.setState({ patients: this.props.patients })
+    this.setState({ hell: true })
     axios.get(`/api/providers/${this.props.provider}/appointments/`)
     .then(res3  => {
       let appointments = res3.data
@@ -35,28 +37,9 @@ class Home extends Component {
         this.setState({ upcomingAppointments: appts })
       }
     })
-
-    // this.fetch(`/api/providers/${this.props.provider}/appointments/`)
-    //   .then(appointments => {
-    //     // if (appointments.length) {
-    //     //   const appts = appointments.filter(app => app.status === 'completed')
-    //     //   this.props.updateCompletedAppointmentsInState(appts)
-    //     //   appts = appointments.filter(app => app.status === 'upcoming')
-    //     //   this.props.updateUpcomingAppointmentsInState(appts)
-    //     // }
-    //     if (appointments.length) {
-    //       const appts = appointments.filter(app => app.status === status)
-    //       if (status === 'completed') {
-    //         this.setState({ completedAppointments: appts })
-    //       } else {
-    //         this.setState({ upcomingAppointments: appts })
-    //       }
-    //     }
-    //   })
   }
 
   render() {
-    console.log('render', this.props.match.params.provider)
     let { completedAppointments, upcomingAppointments } = this.state
     return (
       <div className='container'>
@@ -64,11 +47,11 @@ class Home extends Component {
           <div className='col-8'>
           <h3>Upcoming Patients</h3>
           {upcomingAppointments && upcomingAppointments.length
-            ? (<ProviderAppointmentList appointments={this.state.upcomingAppointments} status={'upcoming'} />)
+            ? (<ProviderAppointmentList appointments={this.state.upcomingAppointments} patients={this.state.patients} status={'upcoming'} />)
             : <div className='container'>No appointments found.</div>}
           <h3>Previous Patients</h3>
           {completedAppointments && completedAppointments.length
-            ? <ProviderAppointmentList appointments={this.state.completedAppointments} status={'completed'} />
+            ? <ProviderAppointmentList appointments={this.state.completedAppointments} patients={this.state.patients} status={'completed'} />
             : <div className='container'>No appointments found.</div>}
         </div>
         </div>

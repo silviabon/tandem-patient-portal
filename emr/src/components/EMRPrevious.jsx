@@ -129,7 +129,6 @@ class EMR extends Component {
       <textarea id="doctor_summary" name="doctor_summary" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
       <br />
-      <button type="submit" className="btn btn-primary">Save appointment information</button>
       </form>
       <br />
       <Link to={{ pathname: '/home' }}><button className='btn'>Home</button></Link>
