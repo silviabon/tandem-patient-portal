@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ProviderAppointmentList from './ProviderAppointmentList.jsx'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List } from 'semantic-ui-react'
 import axios from 'axios'
 
 class Home extends Component {
@@ -42,20 +43,22 @@ class Home extends Component {
   render() {
     let { completedAppointments, upcomingAppointments } = this.state
     return (
-      <div className='container'>
+      <Container>
+        <br /><br />
         <div className='row'>
           <div className='col-8'>
-          <h3>Upcoming Patients</h3>
+          <Header as='h3' dividing>Upcoming Patients</Header>
           {upcomingAppointments && upcomingAppointments.length
             ? (<ProviderAppointmentList appointments={this.state.upcomingAppointments} patients={this.state.patients} status={'upcoming'} />)
-            : <div className='container'>No appointments found.</div>}
-          <h3>Previous Patients</h3>
+            : <Container>No appointments found.</Container>}
+          <Header as='h3' dividing>Previous Patients</Header>
           {completedAppointments && completedAppointments.length
             ? <ProviderAppointmentList appointments={this.state.completedAppointments} patients={this.state.patients} status={'completed'} />
-            : <div className='container'>No appointments found.</div>}
+            : <Container>No appointments found.</Container>}
         </div>
         </div>
-      </div>
+        <br /><br />
+      </Container>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Button, Header } from 'semantic-ui-react'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List, Loader, TextArea } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Vitals from './Vitals.jsx';
 import PropTypes from 'prop-types'
@@ -8,7 +8,6 @@ class EMR extends Component {
   constructor() {
     super()
     this.state = {
-      patient: 11
     }
   }
 
@@ -89,51 +88,54 @@ class EMR extends Component {
 
   render () {
     let { vitals, appointment, patient } = this.state
-    return <div className='container'>
-      {patient
-        ? <h2>Patient name: {patient.first_name} {patient.last_name}</h2>
-        : <div className='container'> loading... </div>
-      }
-      <h3>Patient summary</h3>
-      <form onSubmit={this.handleSubmit}>
-      {appointment
-          ? <div><p>Type: {this.state.appointment.app_type}</p>
-          <p>Concern: {this.state.appointment.concern}</p>
-          <p>Description: {this.state.appointment.concern_desc}</p>
-          <p>Symptoms: {this.state.appointment.symptoms}</p>
-          <p>Other symptoms: {this.state.appointment.other_symptoms}</p>
-          <p>Vitals</p>
-          <p>Temperature: {this.state.appointment.temp}</p>
-          <p>Heart rate: {this.state.appointment.heart_rate}</p>
-          <p>Blood Pressure: {this.state.appointment.bp}</p>
-          <p>Question 1: {this.state.appointment.q1}</p>
-          <p>Question 2: {this.state.appointment.q2}</p>
-          <input type="hidden" name='appt_num' value={this.state.appointment.id}></input>
-          </div>
-        : <div className='container'> loading... </div>
-      }
-      <h3>Subjective</h3>
-      <textarea id="subjective" name="subjective" rows="3" cols="33" maxLength="200" wrap="hard">
-      </textarea>
-      {vitals
-        ? <Vitals vitals={this.state.vitals} />
-        : <div className='container'> loading... </div>
-      }
-      <h3>Objective</h3>
-      <textarea id="objective" name="objective" rows="3" cols="33" maxLength="200" wrap="hard">
-      </textarea>
-      <h3>Plan</h3>
-      <textarea id="plan" name="plan" rows="3" cols="33" maxLength="200" wrap="hard">
-      </textarea>
-      <h3>Summary</h3>
-      <textarea id="doctor_summary" name="doctor_summary" rows="3" cols="33" maxLength="200" wrap="hard">
-      </textarea>
-      <br />
-      <button type="submit" className="btn btn-primary">Save appointment information</button>
-      </form>
-      <br />
-      <Link to={{ pathname: '/home' }}><button className='btn'>Home</button></Link>
-    </div>
+    return (
+      <Container>
+        <br />
+        {patient
+          ? <Header as='h2'>Patient name: {patient.first_name} {patient.last_name}</Header>
+          : <Container><Loader active inline /></Container>
+        }
+        <Header as='h3' dividing>Patient summary</Header>
+        <Form onSubmit={this.handleSubmit}>
+        {appointment
+            ? <Container>
+                <Segment>
+                  <p><Label horizontal>Appointment type:</Label> {this.state.appointment.app_type}</p>
+                  <p><Label horizontal>Concern:</Label> {this.state.appointment.concern}</p>
+                  <p><Label horizontal>Description:</Label> {this.state.appointment.concern_desc}</p>
+                  <p><Label horizontal>Symptoms:</Label> {this.state.appointment.symptoms}</p>
+                  <p><Label horizontal>Other symptoms:</Label> {this.state.appointment.other_symptoms}</p>
+                  <p><Label horizontal>Question 1:</Label> {this.state.appointment.q1}</p>
+                  <p><Label horizontal>Question 2:</Label> {this.state.appointment.q2}</p>
+                  <input type="hidden" name='appt_num' value={this.state.appointment.id}></input>
+                </Segment>
+            </Container>
+          : <Container><Loader active inline /></Container>
+        }
+        <Header as='h3' dividing>Patient Vitals</Header>
+        {vitals
+          ? <Vitals vitals={this.state.vitals} />
+          : <Container><Loader active inline /></Container>
+        }
+        <Header as='h3' dividing>Subjective</Header>
+        <textarea id="subjective" name="subjective" rows="3" cols="33" maxLength="200" wrap="hard">
+        </textarea>
+        <Header as='h3' dividing>Objective</Header>
+        <textarea id="objective" name="objective" rows="3" cols="33" maxLength="200" wrap="hard">
+        </textarea>
+        <Header as='h3' dividing>Plan</Header>
+        <textarea id="plan" name="plan" rows="3" cols="33" maxLength="200" wrap="hard">
+        </textarea>
+        <Header as='h3' dividing>Summary</Header>
+        <TextArea name='doctor_summary'></TextArea>
+        <br /><br />
+        <Button primary type="submit">Save patient visit information</Button>
+        </Form>
+        <br />
+        <Link to={{ pathname: '/home' }} ><Button color='olive'>Back</Button></Link>
+        <br /><br />
+      </Container>
+    )
   }
 }
 

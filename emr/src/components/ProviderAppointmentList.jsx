@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import ProviderAppointment from './ProviderAppointment.jsx';
+import ProviderAppointment from './ProviderAppointment.jsx'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List } from 'semantic-ui-react'
 
 class ProviderAppointmentList extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class ProviderAppointmentList extends Component {
   render() {
     let appointments = this.props.appointments
     return (
-    <div className='container'>
+    <Container>
       {appointments && appointments.length
         ? <div>
           {appointments.map((appointment) => {
@@ -19,9 +20,9 @@ class ProviderAppointmentList extends Component {
             return <ProviderAppointment patientName={patientName} patients={this.props.patients} appointment={appointment} key={appointment.id} status={this.props.status} />
           })}
         </div>
-        : <div className='container'>Loading...</div>
+        : <Container>Loading...</Container>
       }
-    </div>
+    </Container>
     )
   }
 }
