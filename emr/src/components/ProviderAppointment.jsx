@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Button, Input, Form, Label, Header, Segment, Grid, List } from 'semantic-ui-react'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List, Loader } from 'semantic-ui-react'
 
 class ProviderAppointment extends Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class ProviderAppointment extends Component {
         </Container>
       )
       : <Container>
-        <p>Loading...</p>
+        <Loader active inline />
         </Container>
   }
 }

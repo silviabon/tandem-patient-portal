@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Button, Input, Form, Label, Header, Segment, Grid, List } from 'semantic-ui-react'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List, Loader } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Vitals from './Vitals.jsx';
 import PropTypes from 'prop-types'
@@ -93,7 +93,7 @@ class EMR extends Component {
         <br />
         {patient
           ? <Header as='h2'>Patient name: {patient.first_name} {patient.last_name}</Header>
-          : <Container>Loading... </Container>
+          : <Container><Loader active inline /></Container>
         }
         <Header as='h3' dividing>Patient summary</Header>
         <Form onSubmit={this.handleSubmit}>
@@ -107,11 +107,11 @@ class EMR extends Component {
             <p>Question 2: {this.state.appointment.q2}</p>
             <input type="hidden" name='appt_num' value={this.state.appointment.id}></input>
             </div>
-          : <div className='container'> loading... </div>
+          : <Container><Loader active inline /></Container>
         }
         {vitals
           ? <Vitals vitals={this.state.vitals} />
-          : <div className='container'> loading... </div>
+          : <Container><Loader active inline /></Container>
         }
         <Header as='h3' dividing>Subjective</Header>
         <textarea id="subjective" name="subjective" rows="3" cols="33" maxLength="200" wrap="hard">

@@ -44,6 +44,7 @@ class Home extends Component {
     let { completedAppointments, upcomingAppointments } = this.state
     return (
       <Container>
+        <br /><br />
         <div className='row'>
           <div className='col-8'>
           <Header as='h3' dividing>Upcoming Patients</Header>
