@@ -103,7 +103,7 @@ class Calendar extends Component {
           <div className='col-md-4 appts'>
           <form onSubmit={onSelectAppt}>
             <h3>Available appointments on {day}, {formattedDate}</h3>
-            <p>{this.createCalendarAppointnments()}</p>
+            {this.createCalendarAppointnments()}
             <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-details btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
           </form>
           </div>

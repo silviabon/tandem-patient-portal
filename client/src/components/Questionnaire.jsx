@@ -159,7 +159,7 @@ class Questionnaire extends Component {
 
                   
                   <label for="exampleFormControlFile1">Please upload your file</label>
-                  <input type="file" class="form-control-file" id="file" name="file" onChange={this.readFile}></input>
+                  <input type="file" className="form-control-file" id="file" name="file" onChange={this.readFile}></input>
                   <button type="submit" value="submit" className='btn login right' >Submit your health Questionnaire</button>
                 </div>
               </div>
