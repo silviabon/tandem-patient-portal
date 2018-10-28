@@ -27,6 +27,11 @@ button.navbar-btn {
   margin-left: 15px;
   color: white;
 }
+/* 
+button.navbar-btn:hover {
+  background-color: #F39801;
+  border-color: #F39801;
+} */
 
 span.nav-name {
   font-size: 1.2em;
@@ -150,6 +155,21 @@ p.appt-time {
   border-color: #F48302;
   color: white;
 }
+
+a.logoutlink:link {
+  color: #92B7BF
+}
+
+a.logoutlink:visited  {
+  color: #92B7BF
+}
+
+a.logoutlink:active  {
+  color: #92B7BF
+}
+
+
+
 
 .login:hover {
   background-color: #F48302;

@@ -59,7 +59,7 @@ class Login extends Component {
       <br />
       <p>Are you a new patient to our clinic? <a href='#'>Contact us</a> to learn more about our registration process.</p>
 
-      <input className='btn btn-primary login' type="submit" value="Login" />
+      <input className='btn login' type="submit" value="Login" />
       </form>
       </div>
 

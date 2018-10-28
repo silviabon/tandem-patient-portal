@@ -73,10 +73,9 @@ class Questionnaire extends Component {
       <ConditionCal condition={condition} key={condition.id} />
     ));
 
-    const { concern } = this.state
-    const isEnabled = concern != undefined && concern.trim() != ""
+    // const { concern } = this.state
+    // const isEnabled = concern != undefined && concern.trim() != ""
 
-    const requiredStyle = { color: 'red' }
     return (
 
       <div className='row'>
