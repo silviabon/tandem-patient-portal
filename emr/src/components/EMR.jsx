@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Button, Input, Form, Label, Header, Segment, Grid, List, Loader } from 'semantic-ui-react'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List, Loader, TextArea } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Vitals from './Vitals.jsx';
 import PropTypes from 'prop-types'
@@ -98,17 +98,21 @@ class EMR extends Component {
         <Header as='h3' dividing>Patient summary</Header>
         <Form onSubmit={this.handleSubmit}>
         {appointment
-            ? <div><p>Type: {this.state.appointment.app_type}</p>
-            <p>Concern: {this.state.appointment.concern}</p>
-            <p>Description: {this.state.appointment.concern_desc}</p>
-            <p>Symptoms: {this.state.appointment.symptoms}</p>
-            <p>Other symptoms: {this.state.appointment.other_symptoms}</p>
-            <p>Question 1: {this.state.appointment.q1}</p>
-            <p>Question 2: {this.state.appointment.q2}</p>
-            <input type="hidden" name='appt_num' value={this.state.appointment.id}></input>
-            </div>
+            ? <Container>
+                <Segment>
+                  <p><Label horizontal>Appointment type:</Label> {this.state.appointment.app_type}</p>
+                  <p><Label horizontal>Concern:</Label> {this.state.appointment.concern}</p>
+                  <p><Label horizontal>Description:</Label> {this.state.appointment.concern_desc}</p>
+                  <p><Label horizontal>Symptoms:</Label> {this.state.appointment.symptoms}</p>
+                  <p><Label horizontal>Other symptoms:</Label> {this.state.appointment.other_symptoms}</p>
+                  <p><Label horizontal>Question 1:</Label> {this.state.appointment.q1}</p>
+                  <p><Label horizontal>Question 2:</Label> {this.state.appointment.q2}</p>
+                  <input type="hidden" name='appt_num' value={this.state.appointment.id}></input>
+                </Segment>
+            </Container>
           : <Container><Loader active inline /></Container>
         }
+        <Header as='h3' dividing>Patient Vitals</Header>
         {vitals
           ? <Vitals vitals={this.state.vitals} />
           : <Container><Loader active inline /></Container>
@@ -123,13 +127,12 @@ class EMR extends Component {
         <textarea id="plan" name="plan" rows="3" cols="33" maxLength="200" wrap="hard">
         </textarea>
         <Header as='h3' dividing>Summary</Header>
-        <textarea id="doctor_summary" name="doctor_summary" rows="3" cols="33" maxLength="200" wrap="hard">
-        </textarea>
+        <TextArea name='doctor_summary'></TextArea>
         <br /><br />
         <Button primary type="submit">Save patient visit information</Button>
         </Form>
         <br />
-        <Link to={{ pathname: '/home' }} ><Button color='teal'>Back</Button></Link>
+        <Link to={{ pathname: '/home' }} ><Button color='olive'>Back</Button></Link>
         <br /><br />
       </Container>
     )

@@ -8,9 +8,9 @@ class Navbar extends Component {
     const patient = this.props.patient
     return(
     <nav className="navbar navbar-light bg-light">
-      <Link to={{ pathname: '/home' }} ><Button color='teal'>EMR Portal</Button></Link>
+      <Link to={{ pathname: '/home' }} ><Button color='olive'>EMR Portal</Button></Link>
       {patient
-            ? (<span>Hello, {patient.first_name} &nbsp;&nbsp;<button className="btn btn-danger navbar-btn"><a href='/'>Logout</a></button></span>)
+            ? (<span>Hello, {patient.first_name} &nbsp;&nbsp;<Button color='red'><a href='/'>Logout</a></Button></span>)
             : <Container>Welcome to EMR Portal</Container>}
     </nav>)
   }

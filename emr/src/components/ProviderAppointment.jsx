@@ -37,11 +37,11 @@ class ProviderAppointment extends Component {
         <Container>
           <br />
           <Segment>
-          <Header as='h5' block>Main Concern:{appt.concern}</Header>
+          <Header as='h5' attached='top' inverted>Main Concern: <em>{appt.concern}</em></Header>
               <div className='card-body'>
-                <p>Date:{appt.date}</p>
-                <p>Time:{appt.time}</p>
-                <p>Patient:{patientName}</p>
+                <p><Label horizontal>Date:</Label> {appt.date}</p>
+                <p><Label horizontal>Time:</Label> {appt.time}</p>
+                <p><Label horizontal>Patient:</Label> {patientName}</p>
               </div>
                 {status === "upcoming"
                   ? <span>
