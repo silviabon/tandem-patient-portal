@@ -47,7 +47,7 @@ class Appointment extends Component {
       let aptid = this.props.appointment.id
       this.props.deleteAppointment(aptid)
     }
-    const onUpdateAppt = e =>{
+    const onUpdateAppt = e => {
       e.preventDefault()
       this.props.updateAppointmentInState(this.props.appointment)
        this.context.router.history.push(`/bookingCalendar`)
