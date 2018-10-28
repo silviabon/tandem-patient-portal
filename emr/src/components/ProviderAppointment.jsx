@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class ProviderAppointment extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
     }
   }
@@ -27,8 +27,8 @@ class ProviderAppointment extends Component {
   render() {
     const appt = this.props.appointment
     const status = this.props.status
+    const patientName = this.props.patientName
     let { provider, patient } = this.state
-    // let { provider, patient } = this.state
     let link = `emr/${this.props.appointment.id}`
     return provider && patient
       ? (
@@ -37,7 +37,7 @@ class ProviderAppointment extends Component {
           <div className='card-body'>
             <p>Date:{appt.date}</p>
             <p>Time:{appt.time}</p>
-            {/* <p>Patient:{patient.last_name}, {patient.first_name}</p> */}
+            <p>Patient:{patientName}</p>
           </div>
             {status === "upcoming"
               ? <span>
