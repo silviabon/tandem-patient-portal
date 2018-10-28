@@ -26,7 +26,7 @@ class App extends Component {
 
 
   componentDidMount() {
-    console.log("cdm on app")
+    console.log("client cdm on app")
   }
 
   fetch(endpoint) {
