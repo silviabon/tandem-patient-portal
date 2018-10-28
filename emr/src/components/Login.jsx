@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Container, Button, Input, Form, Label, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -26,21 +27,24 @@ class Login extends Component {
   }
 
   render () {
-    return <div><div className='backgroundImgContainer'>
-    <div className='row tofront'>
-    <div className='opacity col-md-5 main'>
-    <br />
-      <h2>Please login</h2>
-      <form className='form-group opaque'>
-      <input className='form-control textarea' type="text" name="email" placeholder="example@example.com" defaultValue="drmcintosh@gmail.com"></input>
-      <input className='form-control textarea' type="password" name="password" placeholder="Type your password" defaultValue="123"></input>
+    return (
+    <Container fluid>
       <br />
-      <Link to={{ pathname: '/home' }} ><button type="submit" className="btn btn-primary" >Login</button></Link>
-      </form>
-      </div>
-    </div>
-    </div>
-    </div>
+      <Header as='h3' block>Please login</Header>
+      <Form>
+        <Form.Field>
+        <Label color='teal' pointing='below'>Please enter your email</Label>
+        <Input focus autoFocus placeholder='example@example.com' type='email' name='email' defaultValue='drmcintosh@gmail.com' />
+        </Form.Field>
+        <Form.Field>
+        <Label color='teal' pointing='below'>Type your password</Label>
+        <Input focus placeholder='Type your password' type="password" name="password" defaultValue="123345353453453" />
+        </Form.Field>
+        <br />
+        <Link to={{ pathname: '/home' }} ><Button color='teal'>Login</Button></Link>
+      </Form>
+    </Container>
+    )
   }
 }
 
