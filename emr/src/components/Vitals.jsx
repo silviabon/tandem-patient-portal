@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
-
 class Vitals extends Component {
-
 
   render() {
     const vitals = this.props.vitals
@@ -24,4 +22,5 @@ class Vitals extends Component {
     );
   }
 }
+
 export default Vitals;

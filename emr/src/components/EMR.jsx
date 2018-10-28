@@ -89,12 +89,10 @@ class EMR extends Component {
 
   render () {
     let { vitals, appointment, patient } = this.state
-    let first_name = "PFN"
-    let last_name = "PLN"
     return <div className='container'>
       <h1>EMR Page</h1>
       {patient
-        ? <h2>Patient name: {patient.first_name} {patient.last_name} ({patient.id})</h2>
+        ? <h2>Patient name: {patient.first_name} {patient.last_name}</h2>
         : <div className='container'> loading... </div>
       }
       <h3>Patient summary</h3>
@@ -135,6 +133,7 @@ class EMR extends Component {
       <button type="submit" className="btn btn-primary">Save appointment information</button>
       </form>
       <br />
+      <Link to={{ pathname: '/home' }}><button className='btn'>Home</button></Link>
     </div>
   }
 }

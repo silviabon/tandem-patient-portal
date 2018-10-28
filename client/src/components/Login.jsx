@@ -39,7 +39,7 @@ class Login extends Component {
         this.context.router.history.push(`/home`)
         // this.redirectToTarget()
       })
-}
+  }
 
   render () {
     let { patient } = this.state
@@ -69,4 +69,5 @@ class Login extends Component {
     </div>
   }
 }
+
 export default Login
