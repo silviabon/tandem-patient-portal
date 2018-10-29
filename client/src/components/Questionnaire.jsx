@@ -43,8 +43,8 @@ class Questionnaire extends Component {
     const onBookingAppt = e => {
       e.preventDefault()
       confirmAlert({
-        title: 'Please confirm',
-        message: 'Are you sure you book this appointment?',
+        title: 'New appointment',
+        message: 'Are you sure you want to book this appointment?',
         buttons: [
           {
             label: 'Yes',
