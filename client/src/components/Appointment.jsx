@@ -62,16 +62,17 @@ class Appointment extends Component {
             {status === "upcoming"
                 
               ? <div className='col-sm-4 detail-button'>
-                  
+
                   
                   <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}>
                   <button className='btn aptbtn-more'> Details</button>
+                  
                   </Link>
                   <button className="btn aptbtn-more" onClick={onUpdateAppt}>Update</button>
+                  
                   <a className='btn' onClick={onDeleteAppt}>
                     <img src="https://cdn4.iconfinder.com/data/icons/devine_icons/128/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" width='30' height='30' className='trash' />
                   </a>
-                  
 
                 </div>
 
