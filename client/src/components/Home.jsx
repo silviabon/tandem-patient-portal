@@ -44,7 +44,6 @@ class Home extends Component {
     })
   }
 
-
   render() {
     let { completedAppointments, upcomingAppointments } = this.props
     const onNewAppt = e =>{

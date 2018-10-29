@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List, Loader } from 'semantic-ui-react'
 
 class ProviderAppointment extends Component {
   constructor(props) {
@@ -30,27 +31,31 @@ class ProviderAppointment extends Component {
     const patientName = this.props.patientName
     let { provider, patient } = this.state
     let link = `emr/${this.props.appointment.id}`
-    let linkp = `emrp/${this.props.appointment.id}`
+    // let linkp = `emrp/${this.props.appointment.id}`
     return provider && patient
       ? (
-        <div className='card'>
-          <h5 className='card-header'>Main Concern:{appt.concern}</h5>
-          <div className='card-body'>
-            <p>Date:{appt.date}</p>
-            <p>Time:{appt.time}</p>
-            <p>Patient:{patientName}</p>
-          </div>
-            {status === "upcoming"
-              ? <span>
-                <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>See patient</button></Link>
-                </span>
-              : <Link to={{ pathname: linkp, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
-            }
-        </div>
+        <Container>
+          <br />
+          <Segment>
+          <Header as='h5' attached='top' inverted>Main Concern: <em>{appt.concern}</em></Header>
+              <div className='card-body'>
+                <p><Label horizontal>Date:</Label> {appt.date}</p>
+                <p><Label horizontal>Time:</Label> {appt.time}</p>
+                <p><Label horizontal>Patient:</Label> {patientName}</p>
+              </div>
+                {status === "upcoming"
+                  ? <span>
+                    <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><Button primary>See patient</Button></Link>
+                    </span>
+                  : <div>&nbsp;</div>
+                  // : <Link to={{ pathname: linkp, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link>
+                }
+            </Segment>
+        </Container>
       )
-      : <div className='container'>
-        <p>Loading...</p>
-      </div>
+      : <Container>
+        <Loader active inline />
+        </Container>
   }
 }
 

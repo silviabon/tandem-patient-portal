@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { Container, Button, Header } from 'semantic-ui-react'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Vitals from './Vitals.jsx';
 import PropTypes from 'prop-types'
 
-class EMR extends Component {
+class EMRPrevious extends Component {
   constructor() {
     super()
     this.state = {
-      patient: 11
     }
   }
 
@@ -89,12 +88,13 @@ class EMR extends Component {
 
   render () {
     let { vitals, appointment, patient } = this.state
-    return <div className='container'>
+    return (
+      <Container>
       {patient
-        ? <h2>Patient name: {patient.first_name} {patient.last_name}</h2>
-        : <div className='container'> loading... </div>
+        ? <Header as='h2'>Patient name: {patient.first_name} {patient.last_name}</Header>
+        : <Container>Loading... </Container>
       }
-      <h3>Patient summary</h3>
+      <Header as='h3' dividing>Patient summary</Header>
       <form onSubmit={this.handleSubmit}>
       {appointment
           ? <div><p>Type: {this.state.appointment.app_type}</p>
@@ -102,38 +102,26 @@ class EMR extends Component {
           <p>Description: {this.state.appointment.concern_desc}</p>
           <p>Symptoms: {this.state.appointment.symptoms}</p>
           <p>Other symptoms: {this.state.appointment.other_symptoms}</p>
-          <p>Vitals</p>
-          <p>Temperature: {this.state.appointment.temp}</p>
-          <p>Heart rate: {this.state.appointment.heart_rate}</p>
-          <p>Blood Pressure: {this.state.appointment.bp}</p>
           <p>Question 1: {this.state.appointment.q1}</p>
           <p>Question 2: {this.state.appointment.q2}</p>
           <input type="hidden" name='appt_num' value={this.state.appointment.id}></input>
           </div>
         : <div className='container'> loading... </div>
       }
-      <h3>Subjective</h3>
-      <textarea id="subjective" name="subjective" rows="3" cols="33" maxLength="200" wrap="hard">
-      </textarea>
       {vitals
         ? <Vitals vitals={this.state.vitals} />
         : <div className='container'> loading... </div>
       }
-      <h3>Objective</h3>
-      <textarea id="objective" name="objective" rows="3" cols="33" maxLength="200" wrap="hard">
-      </textarea>
-      <h3>Plan</h3>
-      <textarea id="plan" name="plan" rows="3" cols="33" maxLength="200" wrap="hard">
-      </textarea>
-      <h3>Summary</h3>
+      <Header as='h3' dividing>Summary</Header>
       <textarea id="doctor_summary" name="doctor_summary" rows="3" cols="33" maxLength="200" wrap="hard">
       </textarea>
       <br />
       </form>
       <br />
-      <Link to={{ pathname: '/home' }}><button className='btn'>Home</button></Link>
-    </div>
+      <Link to={{ pathname: '/home' }} ><Button color='teal'>Back</Button></Link>
+      </Container>
+    )
   }
 }
 
-export default EMR
+export default EMRPrevious
