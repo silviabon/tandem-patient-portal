@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import Immunization from './Immunization.jsx';
 
-
 class Immunizations extends Component {
-
 
   render() {
     const immunizationsItems = this.props.immunizations.map(immunization => (
       <Immunization immunization={immunization} key={immunization.id} />
-    ));
+    ))
 
     return (
       <div>
@@ -16,7 +14,6 @@ class Immunizations extends Component {
         {immunizationsItems}
       </div>
     )
-
   }
 }
 

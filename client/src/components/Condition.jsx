@@ -9,8 +9,7 @@ class Condition extends Component {
       <div>
       {condition.name}
       </div>
-
-    );
+    )
   }
 }
-export default Condition;
+export default Condition
