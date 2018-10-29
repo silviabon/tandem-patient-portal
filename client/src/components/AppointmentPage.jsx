@@ -41,7 +41,7 @@ class AppointmentPage extends Component {
             }
           })
           console.log("lSum", lSum)
-          this.setState({ summary: lSum.doctor_summary })
+          this.setState({ summary: lSum.doctor_summary, doctorfile: lSum.doctorfile.url})
         } else {
           this.setState({ summary: "Empty" })
         }
@@ -55,7 +55,7 @@ class AppointmentPage extends Component {
   }
 
   render() {
-    let { provider, summary, appointment } = this.state
+    let { provider, summary, doctorfile, appointment } = this.state
     return <div className='row'>
       <div className='col-8 main'>
         <div className='row'>
@@ -86,8 +86,14 @@ class AppointmentPage extends Component {
                   <div>
                     <hr />
                     {summary
-                      ? <div><h3>Your Doctor's Summary and Instructions</h3>{summary}</div>
-                      : <div></div>
+                    ? <div>
+                      <h3>Your Doctor's Summary and Instructions</h3>{summary}
+                      {doctorfile
+                        ? <div>Attachment: <p><a href={'http://localhost:3001/' + doctorfile} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
+                        : <div></div>
+                      }
+                      </div>
+                    : <div></div>
                     }
                   </div>}
               </div>
