@@ -142,7 +142,7 @@ button.aptbtn:hover {
   border-color: #F48302;
 }
 
-button.aptbtn-delete {
+button.aptbtn-more {
   float: right;
   margin-top: 1.2em;
   margin-bottom: 0.5em;
@@ -152,13 +152,13 @@ button.aptbtn-delete {
   color: white;
 }
 
-button.aptbtn-delete:hover {
+button.aptbtn-more:hover {
   background-color: #5ba8ba;
   color: white;
   border-color: #5ba8ba;
 }
 
-button.aptbtn-details {
+button.aptbtn-more {
   float: right;
   margin-top: 1.2em;
   margin-bottom: 0.5em;
@@ -168,7 +168,7 @@ button.aptbtn-details {
   color: white;
 }
 
-button.aptbtn-details:hover {
+button.aptbtn-more:hover {
   background-color: #498999;
   color: white;
   border-color: #498999;
@@ -346,6 +346,15 @@ h2.logintitle {
   width: 100%;
 }
 
-.btn {
+a.btn {
+  margin: 0px;
+  padding: 0px;
+  line-height: 60px;
+  float: right;
+
 }
 
+img.trash {
+  padding: 0px;
+  margin: 0px;
+}

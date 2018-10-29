@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ConditionCal from './ConditionCal'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
@@ -42,8 +43,8 @@ class Questionnaire extends Component {
     const onBookingAppt = e => {
       e.preventDefault()
       confirmAlert({
-        title: 'Please confirm',
-        message: 'Would you like to book this appointment?',
+        title: 'New appointment',
+        message: 'Are you sure you want to book this appointment?',
         buttons: [
           {
             label: 'Yes',
@@ -160,6 +161,7 @@ class Questionnaire extends Component {
 
                   <label for="exampleFormControlFile1">Please upload your file</label>
                   <input type="file" className="form-control-file" id="file" name="file" onChange={this.readFile}></input>
+                  <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-details btn right' >Cancel</button></Link>
                   <button type="submit" value="submit" className='btn login right' >Submit your health Questionnaire</button>
                 </div>
               </div>

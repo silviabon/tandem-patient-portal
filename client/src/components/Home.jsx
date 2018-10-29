@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import AppointmentList from './AppointmentList.jsx'
 import MedicalInfo from './MedicalInfo.jsx'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
     }
-    this.deleteAppointment=this.deleteAppointment.bind(this)
-
+    this.deleteAppointment = this.deleteAppointment.bind(this)
   }
 
   static contextTypes = {
@@ -22,10 +22,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
-      console.log("props on Home", this.props.patient)
-      if (!this.props.patient) {
-        this.context.router.history.push(`/login`)
-      }
+    console.log("props on Home", this.props.patient)
+    if (!this.props.patient) {
+      this.context.router.history.push(`/login`)
+    }
   }
 
   fetch(endpoint) {
@@ -35,43 +35,64 @@ class Home extends Component {
   }
 
   deleteAppointment = (id) => {
-    fetch(`/api/patients/${this.props.patient.id}/appointments/${id}`, {
-      method: 'DELETE',
-    }).then(() => {
-      const appt = this.props.upcomingAppointments
-      const newAppt = appt.filter(app => app.id !== id)
-      this.props.updateUpcomingAppointmentsInState(newAppt)
+    confirmAlert({
+      title: 'Delete appointment',
+      message: 'Are you sure you want to delete this appointment?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => {
+            fetch(`/api/patients/${this.props.patient.id}/appointments/${id}`, {
+              method: 'DELETE',
+            }).then(() => {
+              const appt = this.props.upcomingAppointments
+              const newAppt = appt.filter(app => app.id !== id)
+              this.props.updateUpcomingAppointmentsInState(newAppt)
+            })
+          }
+        },
+        {
+          label: 'No',
+          onClick: () => {}
+        }
+      ]
     })
+
+
+    
   }
+
+
+
 
   render() {
     let { completedAppointments, upcomingAppointments } = this.props
-    const onNewAppt = e =>{
+    const onNewAppt = e => {
       e.preventDefault()
       this.props.updateAppointmentInState(undefined)
-       this.context.router.history.push(`/bookingCalendar`)
+      this.context.router.history.push(`/bookingCalendar`)
     }
     return (
-        <div className='row'>
-          <div className='col-md-8 main'>
+      <div className='row'>
+        <div className='col-md-8 main'>
           <div className='row'>
             <div className='col-md-8'>
-            <button className="btn book-apt" onClick={onNewAppt}>Book Appointment</button>
-          <h2>Upcoming Appointments</h2>
-          {upcomingAppointments && upcomingAppointments.length
-              ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.props.upcomingAppointments}  updateAppointmentInState={this.props.updateAppointmentInState} patient={this.props.patient} status={'upcoming'} />)
-            : <div className='container'>No appointments found.</div>}
-          <h2>Previous Appointments</h2>
-          {completedAppointments && completedAppointments.length
-            ? <AppointmentList appointments={this.props.completedAppointments} status={'completed'} />
-            : <div className='container'>No appointments found.</div>}
-          </div>
-          <div className='col-md-4'>
-            <MedicalInfo patient={this.props.patient} />
+              <button className="btn book-apt" onClick={onNewAppt}>Book Appointment</button>
+              <h2>Upcoming Appointments</h2>
+              {upcomingAppointments && upcomingAppointments.length
+                ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.props.upcomingAppointments} updateAppointmentInState={this.props.updateAppointmentInState} patient={this.props.patient} status={'upcoming'} />)
+                : <div className='container'>No appointments found.</div>}
+              <h2>Previous Appointments</h2>
+              {completedAppointments && completedAppointments.length
+                ? <AppointmentList appointments={this.props.completedAppointments} status={'completed'} />
+                : <div className='container'>No appointments found.</div>}
+            </div>
+            <div className='col-md-4'>
+              <MedicalInfo patient={this.props.patient} />
             </div>
           </div>
-          </div>
         </div>
+      </div>
     )
   }
 }
