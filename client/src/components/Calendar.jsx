@@ -43,13 +43,14 @@ class Calendar extends Component {
 
   setUpdateData() {
     console.log("inside update data:", this.props)
-    const dateProps = (this.props.appointment.date).split('-')
-    const year = dateProps[0]
-    const month = dateProps[1]
-    const day = dateProps[2]
+
     if (this.props.appointment != undefined) {
+      const dateProps = (this.props.appointment.date).split('-')
+      const year = dateProps[0]
+      const month = dateProps[1]
+      const day = dateProps[2]
       this.setState({
-        date: new Date(year, month - 1, day, 0, 0, 0),
+        date: new Date(year, month, day, 0, 0, 0),
         time: this.props.appointment.time
       })
       this.renderFormattedDateLabel(new Date(year, month, day, 0, 0, 0))
@@ -107,17 +108,17 @@ class Calendar extends Component {
 
     const onUpdateAppt = e => {
       e.preventDefault()
-      if(this.state.formattedDate == null){
-        this.setState({formattedDate: this.props.date})
-        if(this.state.time == null){
+      if (this.state.formattedDate == null) {
+        this.setState({ formattedDate: this.props.date })
+        if (this.state.time == null) {
           this.props.updateAppointment(this.props.appointment.id, this.state.formattedDate, this.props.appointment.time)
-        }else {
+        } else {
           this.props.updateAppointment(this.props.appointment.id, this.state.formattedDate, this.state.time)
         }
-      }else{
-        if(this.state.time == null){
+      } else {
+        if (this.state.time == null) {
           this.props.updateAppointment(this.props.appointment.id, this.state.formattedDate, this.props.appointment.time)
-        }else {
+        } else {
           this.props.updateAppointment(this.props.appointment.id, this.state.formattedDate, this.state.time)
         }
       }
