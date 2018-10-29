@@ -56,6 +56,6 @@ class SoapsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def soap_params
-    params.require(:soap).permit(:provider_id, :appointment_id, :doctor_summary)
+    params.permit(:provider_id, :appointment_id, :doctor_summary, :doctorfile)
   end
 end
