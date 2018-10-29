@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Condition from './Condition.jsx';
+import Condition from './Condition.jsx'
 
 class Conditions extends Component {
 
   render() {
-    const conditionsItems =this.props.conditions.map(condition => (
+    const conditionsItems = this.props.conditions.map(condition => (
       <Condition condition={condition} key={condition.id} />
     ));
 
@@ -16,7 +16,6 @@ class Conditions extends Component {
         </div>
       </div>
     )
-
   }
 }
 

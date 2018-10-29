@@ -7,7 +7,7 @@ class Allergies extends Component {
   render() {
     const allergiesItems = this.props.allergies.map(allergy => (
       <Allergy allergy={allergy} key={allergy.id} />
-    ));
+    ))
 
     return (
       <div>

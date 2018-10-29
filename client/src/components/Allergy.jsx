@@ -11,7 +11,7 @@ class Allergy extends Component {
       <div>
       {allergy.name}
       </div>
-    );
+    )
   }
 }
 export default Allergy;
