@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class AppointmentPage extends Component {
   constructor() {
@@ -23,13 +24,26 @@ class AppointmentPage extends Component {
   }
 
   getSummary(appointmentId, patientId) {
-    this.fetch(`/api/patients/${patientId}/appointments/${appointmentId}/soaps`)
-      .then(summary => {
+    // this.fetch(`/api/patients/${patientId}/appointments/${appointmentId}/soaps`)
+    axios.get(`/api/patients/${patientId}/appointments/${appointmentId}/soaps`)
+      .then(res => {
+        console.log("axios comming in....")
+        let summary = res.data
         if (summary.length) {
-          const lastSummary = summary[summary.length - 1]
-          this.setState({ summary: lastSummary.doctor_summary })
+          let lSum = "";
+          summary.forEach(soap => {
+            console.log("soap", soap)
+            if (soap.appointment_id == appointmentId) {
+              console.log("found it")
+              lSum = soap;
+            } else {
+              console.log("We are in else")
+            }
+          })
+          console.log("lSum", lSum)
+          this.setState({ summary: lSum.doctor_summary })
         } else {
-          this.setState({ summary: [] })
+          this.setState({ summary: "Empty" })
         }
       })
   }
@@ -45,40 +59,42 @@ class AppointmentPage extends Component {
     return <div className='row'>
       <div className='col-8 main'>
         <div className='row'>
-      {
-        provider && summary && appointment
-          ? <div className='col-xs-12 card apptDetails'>
-              <h2>Appointment details</h2>
-              <hr />
-              <p>Your appointment is on {appointment.date} at {appointment.time} with Dr.{provider.last_name} </p>
-              <h3>Your Appointment Summary</h3>
-              <p><b>Type:</b> {appointment.app_type}</p>
-              <p><b>Concern:</b> {appointment.concern}</p>
-              <p><b>Description:</b> {appointment.concern_desc}</p>
-              <p><b>Symptoms:</b> {appointment.symptoms} {appointment.other_symptoms}</p>
-              <hr />
-              <h3>Vitals</h3>
-              <p><b>Temperature:</b> {appointment.temp}</p>
-              <p><b>Heart rate:</b> {appointment.heart_rate}</p>
-              <p><b>Blood Pressure:</b> {appointment.bp}</p>
-              <p><b>Question 1:</b> {appointment.q1}</p>
-              <p><b>Question 2:</b> {appointment.q2}</p>
-              {appointment.file.url
-              ? <div><p><b>Document Upload</b></p>
-              <p><a href={'http://localhost:3001/' + appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
-              : <div></div>
-              }
-              {appointment.status === 'completed' &&
-                <div>
-                  <hr />
-              <h3>Your Doctor's Summary and Instructions</h3>
-              {summary}
-      </div> }
-            </div>
-            : <div className='col-md-12'><p>Loading...</p></div>
-      }
-      <Link to={{ pathname: '/' }}><button className='btn aptbtn-details'>Back Home</button></Link>
-      </div>
+          {
+            provider && appointment
+              ? <div className='col-xs-12 card apptDetails'>
+                <h2>Appointment details</h2>
+                <hr />
+                <p>Your appointment is on {appointment.date} at {appointment.time} with Dr.{provider.last_name} </p>
+                <h3>Your Appointment Summary</h3>
+                <p><b>Type:</b> {appointment.app_type}</p>
+                <p><b>Concern:</b> {appointment.concern}</p>
+                <p><b>Description:</b> {appointment.concern_desc}</p>
+                <p><b>Symptoms:</b> {appointment.symptoms} {appointment.other_symptoms}</p>
+                <hr />
+                <h3>Vitals</h3>
+                <p><b>Temperature:</b> {appointment.temp}</p>
+                <p><b>Heart rate:</b> {appointment.heart_rate}</p>
+                <p><b>Blood Pressure:</b> {appointment.bp}</p>
+                <p><b>Question 1:</b> {appointment.q1}</p>
+                <p><b>Question 2:</b> {appointment.q2}</p>
+                {appointment.file.url
+                  ? <div><p><b>Document Upload</b></p>
+                    <p><a href={'http://localhost:3001/' + appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
+                  : <div></div>
+                }
+                {appointment.status === 'completed' &&
+                  <div>
+                    <hr />
+                    {summary
+                      ? <div><h3>Your Doctor's Summary and Instructions</h3>{summary}</div>
+                      : <div></div>
+                    }
+                  </div>}
+              </div>
+              : <div className='col-md-12'><p>Loading...</p></div>
+          }
+          <Link to={{ pathname: '/' }}><button className='btn aptbtn-details'>Back Home</button></Link>
+        </div>
       </div>
     </div>
   }
