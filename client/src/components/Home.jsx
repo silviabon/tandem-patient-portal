@@ -57,9 +57,6 @@ class Home extends Component {
         }
       ]
     })
-
-
-    
   }
 
 
