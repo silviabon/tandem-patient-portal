@@ -65,7 +65,7 @@ class AppointmentPage extends Component {
               <p><b>Question 1:</b> {appointment.q1}</p>
               <p><b>Question 2:</b> {appointment.q2}</p>
               <p><b>Document Upload</b></p>
-                <p><a href={'http://localhost:3001/' + appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p>
+              <p><a href={'http://localhost:3001/' + appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p>
               {appointment.status === 'completed' &&
                 <div>
                   <hr />
