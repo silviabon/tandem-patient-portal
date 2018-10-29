@@ -110,6 +110,11 @@ class EMR extends Component {
                   <p><Label horizontal>Other symptoms:</Label> {this.state.appointment.other_symptoms}</p>
                   <p><Label horizontal>Question 1:</Label> {this.state.appointment.q1}</p>
                   <p><Label horizontal>Question 2:</Label> {this.state.appointment.q2}</p>
+                  {this.state.appointment.file.url
+                  ? <div><p><b>Document Upload</b></p>
+                  <p><a href={'http://localhost:3001/' + this.state.appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
+                  : <div></div>
+                  }
                   <input type="hidden" name='appt_num' value={this.state.appointment.id}></input>
                 </Segment>
             </Container>

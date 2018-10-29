@@ -45,7 +45,6 @@ class AppointmentPage extends Component {
     return <div className='row'>
       <div className='col-8 main'>
         <div className='row'>
-
       {
         provider && summary && appointment
           ? <div className='col-xs-12 card apptDetails'>
@@ -64,8 +63,11 @@ class AppointmentPage extends Component {
               <p><b>Blood Pressure:</b> {appointment.bp}</p>
               <p><b>Question 1:</b> {appointment.q1}</p>
               <p><b>Question 2:</b> {appointment.q2}</p>
-              <p><b>Document Upload</b></p>
-              <p><a href={'http://localhost:3001/' + appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p>
+              {appointment.file.url
+              ? <div><p><b>Document Upload</b></p>
+              <p><a href={'http://localhost:3001/' + appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
+              : <div></div>
+              }
               {appointment.status === 'completed' &&
                 <div>
                   <hr />

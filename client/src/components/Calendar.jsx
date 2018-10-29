@@ -151,7 +151,7 @@ class Calendar extends Component {
             <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-details btn right' >Cancel</button></Link>
             {this.props.appointment
               // ?  <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-details btn right' type="submit" disabled={this.isDisabled()} >Save</button></Link>
-              ? <Button onClick={onUpdateAppt}>Save</Button>
+              ? <button onClick={onUpdateAppt} className='btn aptbtn-details '>Save</button>
               : <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-details btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
             }
 
