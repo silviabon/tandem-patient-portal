@@ -3,12 +3,14 @@ import { Container, Button, Input, Form, Label, Header, Segment, Grid, List, Loa
 import { Link } from 'react-router-dom'
 import Vitals from './Vitals.jsx';
 import PropTypes from 'prop-types'
+import axios from 'axios'
 
 class EMR extends Component {
   constructor() {
     super()
     this.state = {
     }
+    this.readFile = this.readFile.bind(this)
   }
 
   static contextTypes = {
@@ -23,7 +25,7 @@ class EMR extends Component {
       console.log("id p[]", app.id)
       if( app.id == currentAppointment) {
         theOne = app
-      }         
+      }
       console.log("app", theOne)
     });
     // let theOne = this.props.upcomingAppointments.filter(app => app.id == currentAppointment)
@@ -42,6 +44,12 @@ class EMR extends Component {
     return window.fetch(endpoint)
       .then(response => response.json())
       .catch(error => console.log(error))
+  }
+
+  readFile() {
+    const file = document.getElementById('doctorfile').files[0]
+    console.log(file)
+    this.setState({ doctorfile: file })
   }
 
   getVitalsInfo(patient) {
@@ -73,17 +81,12 @@ class EMR extends Component {
   }
 
   handleSubmit = event => {
-    console.log(`about to save patient is ${this.state.patient.id} appointment is ${this.state.appointment.id}` )
     event.preventDefault()
-    alert('An form was submitted')
-    let body = JSON.stringify({soap: {doctor_summary: event.target.doctor_summary.value}})
-    fetch(`http://localhost:3001/api/patients/${this.state.patient.id}/appointments/${this.state.appointment.id}/soaps/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: body,
-      }).then((response) => { this.context.router.history.push(`/home`); return response.json()})
+    let body = new FormData();
+    body.append('doctor_summary', event.target.doctor_summary.value)
+    body.append('doctorfile', this.state.doctorfile)
+    axios.post(`http://localhost:3001/api/patients/${this.state.patient.id}/appointments/${this.state.appointment.id}/soaps/`, body)
+    .then(() => { this.context.router.history.push(`/home`); return null })
   }
 
   render () {
@@ -107,6 +110,11 @@ class EMR extends Component {
                   <p><Label horizontal>Other symptoms:</Label> {this.state.appointment.other_symptoms}</p>
                   <p><Label horizontal>Question 1:</Label> {this.state.appointment.q1}</p>
                   <p><Label horizontal>Question 2:</Label> {this.state.appointment.q2}</p>
+                  {this.state.appointment.file.url
+                  ? <div><p><b>Document Upload</b></p>
+                  <p><a href={'http://localhost:3001/' + this.state.appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
+                  : <div></div>
+                  }
                   <input type="hidden" name='appt_num' value={this.state.appointment.id}></input>
                 </Segment>
             </Container>
@@ -128,6 +136,9 @@ class EMR extends Component {
         </textarea>
         <Header as='h3' dividing>Summary</Header>
         <TextArea name='doctor_summary'></TextArea>
+        <br /><br />
+        <label for="exampleFormControlFile1">Please upload your file</label>
+        <input type="file" className="form-control-file" id="doctorfile" name="doctorfile" onChange={this.readFile}></input>
         <br /><br />
         <Button primary type="submit">Save patient visit information</Button>
         </Form>

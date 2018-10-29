@@ -1,10 +1,7 @@
 
 import React, { Component } from 'react'
 import Reactcal from 'react-calendar'
-import Redirect from 'react-router-dom/Redirect';
-import { Container, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 class Calendar extends Component {
@@ -31,7 +28,7 @@ class Calendar extends Component {
   }
 
   componentDidMount() {
-    this.setUpdateData();
+    this.setUpdateData()
   }
 
   static contextTypes = {
@@ -88,7 +85,7 @@ class Calendar extends Component {
     let time = this.state.time
     const day = this.state.daysOfWeek[today.getDay()]
     if (day === 'Sunday' || day === 'Saturday' || time === "")
-      return true;
+      return true
   }
 
   render() {
@@ -131,15 +128,15 @@ class Calendar extends Component {
             {calendar}
           </div>
           <div className='col-md-4 appts'>
-            <form onSubmit={onSelectAppt}>
-              <h3>Available appointments on {day}, {formattedDate}</h3>
-              {this.createCalendarAppointnments()}
-              <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-details btn right' >Cancel</button></Link>
-              {this.props.appointment
-                ? <Button onClick={onUpdateAppt}>Save</Button>
-                : <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-details btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
-              }
-            </form>
+          <form onSubmit={onSelectAppt}>
+            <h3>Available appointments on {day}, {formattedDate}</h3>
+            {this.createCalendarAppointnments()}
+            <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-details btn right' >Cancel</button></Link>
+            {this.props.appointment
+              ? <button onClick={onUpdateAppt} className='btn aptbtn-details '>Save</button>
+              : <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-details btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
+            }
+          </form>
           </div>
         </div>
       </div>

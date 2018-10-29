@@ -22,8 +22,9 @@ class SoapsController < ApplicationController
     @soap = Soap.new
     @soap.provider_id = @appointment.provider_id
     @soap.appointment_id = @appointment.id
-    # pp "Hi ", params[:soap][:doctor_summary]
-    @soap.doctor_summary = params[:soap][:doctor_summary]
+    @soap.doctorfile = params[:doctorfile]
+    @soap.doctor_summary = params[:doctor_summary]
+
 
     if @soap.save
       render json: @soap, status: :created
@@ -56,6 +57,6 @@ class SoapsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def soap_params
-    params.require(:soap).permit(:provider_id, :appointment_id, :doctor_summary)
+    params.permit(:provider_id, :appointment_id, :doctor_summary, :doctorfile)
   end
 end
