@@ -32,8 +32,8 @@ class Calendar extends Component {
   }
 
   componentDidMount() {
-    let date = this.state.date
-    this.renderFormattedDateLabel(date)
+    // let date = this.state.date
+    // this.renderFormattedDateLabel(date)
     this.setUpdateData();
   }
 
@@ -44,21 +44,27 @@ class Calendar extends Component {
   setUpdateData() {
     console.log("inside update data:", this.props)
 
-    if (this.props.appointment != undefined) {
+    if (this.props.appointment === undefined) {
+      this.renderFormattedDateLabel(this.state.date)
+    }else{
       const dateProps = (this.props.appointment.date).split('-')
       const year = dateProps[0]
       const month = dateProps[1]
       const day = dateProps[2]
       this.setState({
-        date: new Date(year, month, day, 0, 0, 0),
+        date: new Date(year, month - 1, day, 0, 0, 0),
         time: this.props.appointment.time
       })
-      this.renderFormattedDateLabel(new Date(year, month, day, 0, 0, 0))
+      this.renderFormattedDateLabel(new Date(year, month , day, 0, 0, 0))
     }
   }
 
   renderFormattedDateLabel(date) {
-    this.setState({ formattedDate: `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}` })
+    if (this.props.appointment === undefined) {
+    this.setState({ formattedDate: `${date.getFullYear()}/${date.getMonth() + 1 }/${date.getDate()}` })
+    }else{
+      this.setState({ formattedDate: `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}` })
+    }
   }
 
   onClickDay(date) {
