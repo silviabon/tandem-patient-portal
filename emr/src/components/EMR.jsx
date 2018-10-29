@@ -85,8 +85,8 @@ class EMR extends Component {
     let body = new FormData();
     body.append('doctor_summary', event.target.doctor_summary.value)
     body.append('doctorfile', this.state.doctorfile)
-    axios.post(`api/patients/${this.state.patient.id}/appointments/${this.state.appointment.id}/soaps/`, body)
-    .then((response) => { this.context.router.history.push(`/home`); return response.json()})
+    axios.post(`http://localhost:3001/api/patients/${this.state.patient.id}/appointments/${this.state.appointment.id}/soaps/`, body)
+    .then(() => { this.context.router.history.push(`/home`); return null })
   }
 
   render () {
