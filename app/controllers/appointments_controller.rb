@@ -18,11 +18,6 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1
   def show
-
-    original_url = @appointment.file.url
-    pp "pepe " + original_url
-    @appointment.file_upload = 'http://localhost:3001/' + original_url
-
     render json: @appointment
   end
 
