@@ -43,7 +43,7 @@ class Questionnaire extends Component {
       e.preventDefault()
       confirmAlert({
         title: 'Please confirm',
-        message: 'Would you like to book this appointment?',
+        message: 'Are you sure you book this appointment?',
         buttons: [
           {
             label: 'Yes',
