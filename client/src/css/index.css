@@ -54,6 +54,47 @@ nav.navbar {
 }
 
 
+div.backgroundImgContainer img {
+  z-index: 50;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  }
+
+  .tofront {
+    z-index: 50;
+    position: relative;
+  }
+
+  div.opacity {
+    background-color: white;
+    background: rgba(255,255,255,0.8);
+    float: left;
+    position: relative;
+    margin-right: 1em;
+
+  }
+
+  h1.tagline {
+    font-size: 8em;
+    color: white;
+    margin-top: 0.1em;
+
+
+  }
+
+  h1.tagline2 {
+    font-size: 8em;
+    color: white;
+    margin-top: -0.59em;
+  }
+
+  nav.navbar {
+    box-shadow: 3px 2px 30px 1px darkgray;
+
+  }
+
+
 /*Home Page*/
 div.col-md-8 {
   margin-top: 3em;
@@ -231,6 +272,7 @@ div.main {
   margin: 0.8em;
   padding: 0.7em;
   border-color: lightgray;
+  width: 100%;
 }
 
 li {
@@ -282,14 +324,12 @@ nav.navbar {
 }
 
 .calendar {
-  float: left;
-  clear: right;
-  margin-right: 2em;
+justify-content: right;
 }
 
-div.appts {
+.appts {
   float: left;
-
+  justify-content: left;
 }
 
 div.logincont {
@@ -305,3 +345,4 @@ h2.logintitle {
   padding: 1.5em;
   width: 100%;
 }
+

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Container, Button, Input, Form, Label, Header, Segment, Grid, List } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
 
@@ -6,10 +8,10 @@ class Navbar extends Component {
     const patient = this.props.patient
     return(
     <nav className="navbar navbar-light bg-light">
-      <a className="navbar-brand" href="/">EMR Portal</a>
+      <Link to={{ pathname: '/home' }} ><Button color='olive'>EMR Portal</Button></Link>
       {patient
-            ? (<span>Hello, {patient.first_name} &nbsp;&nbsp;<button className="btn btn-danger navbar-btn"><a href='/'>Logout</a></button></span>)
-            : <div className='container'>Welcome to EMR Portal</div>}
+            ? (<span>Hello, {patient.first_name} &nbsp;&nbsp;<Button color='red'><a href='/'>Logout</a></Button></span>)
+            : <Container>Welcome to EMR Portal</Container>}
     </nav>)
   }
 }
