@@ -18,6 +18,11 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1
   def show
+
+    original_url = @appointment.file.url
+    pp "pepe " + original_url
+    @appointment.file_upload = 'http://localhost:3001/' + original_url
+
     render json: @appointment
   end
 
@@ -56,6 +61,6 @@ class AppointmentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def appointment_params
-      params.permit(:provider_id, :patient_id, :condition_id, :date, :patient_summary, :concern, :status, :time, :file, :app_type, :concern_desc, :symptoms, :other_symptoms, :temp, :heart_rate, :bp, :q1, :q2)
+      params.permit(:provider_id, :patient_id, :condition_id, :date, :patient_summary, :concern, :status, :time, :file, :file_upload, :app_type, :concern_desc, :symptoms, :other_symptoms, :temp, :heart_rate, :bp, :q1, :q2)
     end
 end

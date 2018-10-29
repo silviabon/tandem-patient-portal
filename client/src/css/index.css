@@ -27,7 +27,7 @@ button.navbar-btn {
   margin-left: 15px;
   color: white;
 }
-/* 
+/*
 button.navbar-btn:hover {
   background-color: #F39801;
   border-color: #F39801;
@@ -198,6 +198,7 @@ h3.card-header {
   color: black;
 }
 
+
 /*Calendar*/
 div.main {
   margin: 0 auto;
@@ -254,14 +255,14 @@ div.opacity {
   float: left;
   position: relative;
   margin-right: 1em;
- 
+
 }
 
 h1.tagline {
   font-size: 8em;
   color: white;
   margin-top: 0.1em;
-  
+
 
 }
 
@@ -288,7 +289,7 @@ nav.navbar {
 
 div.appts {
   float: left;
-  
+
 }
 
 div.logincont {

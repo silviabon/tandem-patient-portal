@@ -23,5 +23,6 @@ Rails.application.routes.draw do
 
   root "patients#show"
 
-  match "*path", to: "patients#show", via: :all
+  # match "*path", to: "/", via: :all
+  # match "*path", to: "patients#show", via: :all
 end

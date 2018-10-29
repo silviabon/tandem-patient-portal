@@ -16,7 +16,8 @@ gem 'puma', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 1.0'
-gem "mini_magick"
+# gem "mini_magick"
+# gem 'rmagick'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
