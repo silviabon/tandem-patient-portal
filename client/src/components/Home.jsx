@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import AppointmentList from './AppointmentList.jsx'
 import MedicalInfo from './MedicalInfo.jsx'
 import PropTypes from 'prop-types'
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 class Home extends Component {
   constructor(props) {
@@ -33,14 +35,35 @@ class Home extends Component {
   }
 
   deleteAppointment = (id) => {
-    fetch(`/api/patients/${this.props.patient.id}/appointments/${id}`, {
-      method: 'DELETE',
-    }).then(() => {
-      const appt = this.props.upcomingAppointments
-      const newAppt = appt.filter(app => app.id !== id)
-      this.props.updateUpcomingAppointmentsInState(newAppt)
+    confirmAlert({
+      title: 'Delete appointment',
+      message: 'Are you sure you want to delete this appointment?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => {
+            fetch(`/api/patients/${this.props.patient.id}/appointments/${id}`, {
+              method: 'DELETE',
+            }).then(() => {
+              const appt = this.props.upcomingAppointments
+              const newAppt = appt.filter(app => app.id !== id)
+              this.props.updateUpcomingAppointmentsInState(newAppt)
+            })
+          }
+        },
+        {
+          label: 'No',
+          onClick: () => {}
+        }
+      ]
     })
+
+
+    
   }
+
+
+
 
   render() {
     let { completedAppointments, upcomingAppointments } = this.props
