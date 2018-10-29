@@ -9,7 +9,6 @@ class AppointmentList extends Component {
 
   render() {
     let appointments = this.props.appointments.sort(function (a, b) { return new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse())})
-    console.log("appointments sorted: ", appointments)
     return (
     <div>
       <div className='row'>
@@ -17,7 +16,7 @@ class AppointmentList extends Component {
       {appointments && appointments.length
         ? <div>
           {appointments.map((appointment) => {
-            return <Appointment deleteAppointment={this.props.deleteAppointment} appointment={appointment} key={appointment.id} status={this.props.status} />
+            return <Appointment deleteAppointment={this.props.deleteAppointment} appointment={appointment}  updateAppointmentInState={this.props.updateAppointmentInState} key={appointment.id} status={this.props.status} />
           })}
         </div>
         : <div className='container'>Loading...</div>

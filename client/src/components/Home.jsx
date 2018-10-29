@@ -10,6 +10,7 @@ class Home extends Component {
     this.state = {
     }
     this.deleteAppointment=this.deleteAppointment.bind(this)
+
   }
 
   static contextTypes = {
@@ -45,15 +46,20 @@ class Home extends Component {
 
   render() {
     let { completedAppointments, upcomingAppointments } = this.props
+    const onNewAppt = e =>{
+      e.preventDefault()
+      this.props.updateAppointmentInState(undefined)
+       this.context.router.history.push(`/bookingCalendar`)
+    }
     return (
         <div className='row'>
           <div className='col-md-8 main'>
           <div className='row'>
             <div className='col-md-8'>
-          <Link to={{ pathname: '/bookingCalendar' }}><button className='btn book-apt'>Book Appointment</button></Link>
+            <button className="btn book-apt" onClick={onNewAppt}>Book Appointment</button>
           <h2>Upcoming Appointments</h2>
           {upcomingAppointments && upcomingAppointments.length
-              ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.props.upcomingAppointments} patient={this.props.patient} status={'upcoming'} />)
+              ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.props.upcomingAppointments}  updateAppointmentInState={this.props.updateAppointmentInState} patient={this.props.patient} status={'upcoming'} />)
             : <div className='container'>No appointments found.</div>}
           <h2>Previous Appointments</h2>
           {completedAppointments && completedAppointments.length
