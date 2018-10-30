@@ -104,7 +104,7 @@ class App extends Component {
     body.append('provider_id', this.state.patient.provider_id)
     body.append('date', calendar.date)
     body.append('time', calendar.time)
-    body.append('condition_id', 1)
+    body.append('condition_id', questionnaire.conditionType)
     body.append('app_type', questionnaire.apptType)
     body.append('concern', questionnaire.concern)
     body.append('concern_desc', questionnaire.concernDescription)
