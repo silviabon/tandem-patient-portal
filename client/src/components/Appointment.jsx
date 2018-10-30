@@ -14,7 +14,7 @@ class Appointment extends Component {
   static contextTypes = {
     router: PropTypes.object
   }
-  
+
   componentDidMount() {
     this.getProvider(this.props.appointment.provider_id)
     this.getCondition(this.props.appointment.patient_id, this.props.appointment.condition_id)
@@ -66,15 +66,17 @@ class Appointment extends Component {
         <div className='card'>
           <div className='card-body appt-card'>
             <div className='row'>
-              <div className='col-md-7 time-col'><p>{appt.concern} {condition
-                ? <span>{condition}</span>
+              <div className='col-md-7 time-col'><p>{condition
+                ? <span className='condition'>{condition}</span>
                 : <span></span>
-              }</p>
+              }<span className='concern'>{appt.concern}</span> </p>
                 <p className='appt-time'>{appt.date} at {appt.time} with Doctor {provider.last_name}</p></div>
               {status === "upcoming"
                 ? <div className='col-sm-4 detail-button'>
                   <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}>
-                    <button className='btn aptbtn-more'> Details</button> </Link>
+                    <button className='btn aptbtn-more'> Details</button>
+                  </Link>
+
                   <button className="btn aptbtn-more" onClick={onUpdateAppt}>Update</button>
                   <a className='btn' onClick={onDeleteAppt}>
                     <img src="https://cdn4.iconfinder.com/data/icons/devine_icons/128/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" width='30' height='30' className='trash' />
