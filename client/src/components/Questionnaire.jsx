@@ -161,8 +161,9 @@ class Questionnaire extends Component {
 
                   <label for="exampleFormControlFile1">Please upload your file</label>
                   <input type="file" className="form-control-file" id="file" name="file" onChange={this.readFile}></input>
-                  <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-details btn right' >Cancel</button></Link>
-                  <button type="submit" value="submit" className='btn login right' >Submit your health Questionnaire</button>
+                  <button type="submit" value="submit" className='btn login inline' >Submit your health Questionnaire</button>
+                  <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-more btn inilne' >Cancel</button></Link>
+                  
                 </div>
               </div>
             </div>

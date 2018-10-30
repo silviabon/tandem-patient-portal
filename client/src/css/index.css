@@ -358,3 +358,8 @@ img.trash {
   padding: 0px;
   margin: 0px;
 }
+
+.inline {
+  display: inline-block;
+  margin-top: 0px;
+}
