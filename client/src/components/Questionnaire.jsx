@@ -106,7 +106,7 @@ class Questionnaire extends Component {
                   <option value="Follow-up">Follow-up</option>
                 </select> </div>
               <div className='col-md-6'>
-                <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea '><option selected value="" disabled>Following up? Which Condition?</option>{conditionItems}</select> </p>
+                <p><select name='conditionType' onChange={this.handleChange} className='form-control textarea '><option selected value='' disabled>Following up? Which Condition?</option>{conditionItems}</select> </p>
               </div>
             </div>
             <p><input placeholder="What is your main concern?" required="true" name="concern" onChange={this.handleChange} className='form-control textarea' ></input></p>
