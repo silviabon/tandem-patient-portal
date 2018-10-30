@@ -132,7 +132,8 @@ class Calendar extends Component {
             <h3>Available appointments on {day}, {formattedDate}</h3>
             {this.createCalendarAppointnments()}
             <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-more btn right' >Cancel</button></Link>
-            {this.props.appointment
+            {this.props.appointment != '' 
+            
               ? <button onClick={onUpdateAppt} className='btn aptbtn-more '>Save</button>
               : <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-more btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
             }
