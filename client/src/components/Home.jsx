@@ -64,9 +64,15 @@ class Home extends Component {
 
   render() {
     let { completedAppointments, upcomingAppointments } = this.props
+
     const onNewAppt = e => {
+
       e.preventDefault()
-      this.props.updateAppointmentInState(undefined)
+      
+      if (upcomingAppointments.length > 0) {
+        this.props.updateAppointmentInState('')
+      }
+
       this.context.router.history.push(`/bookingCalendar`)
     }
     return (
