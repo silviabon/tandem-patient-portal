@@ -42,6 +42,7 @@ class ProviderAppointment extends Component {
                 <p><Label horizontal>Date:</Label> {appt.date}</p>
                 <p><Label horizontal>Time:</Label> {appt.time}</p>
                 <p><Label horizontal>Patient:</Label> {patientName}</p>
+                <p>{appt.concern_desc}</p>
               </div>
                 {status === "upcoming"
                   ? <span>
