@@ -68,12 +68,30 @@ class Home extends Component {
     const onNewAppt = e => {
 
       e.preventDefault()
-      
-      if (upcomingAppointments.length > 0) {
-        this.props.updateAppointmentInState('')
-      }
 
-      this.context.router.history.push(`/bookingCalendar`)
+      confirmAlert({
+        title: 'Attention!',
+        message: 'If you are displaying severe symptoms please call 911 or go to your nearest emergency room',
+        buttons: [
+          {
+            label: 'Continue',
+            onClick: () => {
+              
+              this.context.router.history.push(`/bookingCalendar`)
+            }
+          },
+          {
+            label: 'Cancel',
+            onClick: () => {}
+          }
+        ]
+      })
+
+      // if (upcomingAppointments.length > 0) {
+      //   this.props.updateAppointmentInState('')
+      // }
+
+      // this.context.router.history.push(`/bookingCalendar`)
     }
     return (
       <div className='row'>
