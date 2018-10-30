@@ -7,7 +7,7 @@ class Condition extends Component {
 
     return (
       <div>
-      {condition.name}
+        {condition.name}
       </div>
     )
   }
