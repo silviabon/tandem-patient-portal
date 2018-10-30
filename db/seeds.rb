@@ -37,6 +37,8 @@ carl.prescriptions.create!(name: 'Amoxicilin', dose: '10mg', quantity: '30 caps'
 carl.prescriptions.create!(name: 'Prozac', dose: '10mg', quantity: '30 caps', refill: 3, route: 'oral', date: '2017-09-10')
 sarah.prescriptions.create!(name: 'Penicilin', dose: '10mg', quantity: '10 caps', refill: 0, route: 'oral', date: '2018-03-14')
 
+
+c0 = carl.conditions.create!(id: 0, name:'')
 c1 = carl.conditions.create!(name: 'Diabetes')
 c2 = carl.conditions.create!(name: 'High Blood Pressure')
 c3 = carl.conditions.create!(name: 'Depression')

@@ -8,8 +8,8 @@ class Immunization extends Component {
     return (
       <div className='card-body med-info'>
         <p><em>{immunization.name}</em>< br />
-          <span>Dose:</span><span>{immunization.dose}</span>< br />
-          <span>Date:</span><span>{immunization.date}</span></p>
+          <span>Dose: </span><span>{immunization.dose}</span>< br />
+          <span>Date: </span><span>{immunization.date}</span></p>
       </div>
     )
   }
