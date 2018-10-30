@@ -13,7 +13,7 @@ class Prescription extends Component {
           <span>Route: </span><span>{prescription.route}</span>< br />
           <span>Date: </span><span>{prescription.date}</span></p>
       </div>
-    );
+    )
   }
 }
 

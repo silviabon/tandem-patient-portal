@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Allergy from './Allergy.jsx';
-
+import Allergy from './Allergy.jsx'
 
 class Allergies extends Component {
 
@@ -13,9 +12,9 @@ class Allergies extends Component {
       <div>
         <h3 className='card-header'>Allergies</h3>
         <div className='card-body med-info'>
-        <p>{allergiesItems}</p>
+          <p>{allergiesItems}</p>
+        </div>
       </div>
-    </div>
     )
   }
 }

@@ -22,7 +22,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log("props on Home", this.props.patient)
     if (!this.props.patient) {
       this.context.router.history.push(`/login`)
     }
@@ -53,20 +52,15 @@ class Home extends Component {
         },
         {
           label: 'No',
-          onClick: () => {}
+          onClick: () => { }
         }
       ]
     })
   }
 
-
-
-
   render() {
     let { completedAppointments, upcomingAppointments } = this.props
-
     const onNewAppt = e => {
-
       e.preventDefault()
 
       confirmAlert({
