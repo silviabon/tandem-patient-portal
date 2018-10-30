@@ -99,7 +99,8 @@ class AppointmentPage extends Component {
               </div>
               : <div className='col-md-12'><p>Loading...</p></div>
           }
-          <Link to={{ pathname: '/' }}><button className='btn aptbtn-more'>Back Home</button></Link>
+          <Link to={{ pathname: '/', state: { appointment: ''} }}><button className='btn aptbtn-more'>Back Home</button></Link>
+          {/* <Link to={{ pathname: '/' }}><button className='btn aptbtn-more'>Back Home</button></Link> */}
         </div>
       </div>
     </div>
