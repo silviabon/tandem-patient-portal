@@ -14,10 +14,11 @@ class Appointment extends Component {
   static contextTypes = {
     router: PropTypes.object
   }
+  
   componentDidMount() {
     this.getProvider(this.props.appointment.provider_id)
     this.getCondition(this.props.appointment.patient_id, this.props.appointment.condition_id)
-    this.setState({patient: this.props.appointment.patient_id})
+    this.setState({ patient: this.props.appointment.patient_id })
   }
 
   fetch(endpoint) {
@@ -35,7 +36,6 @@ class Appointment extends Component {
     axios.get(`/api/patients/${patientId}/conditions/${conditionId}`)
       .then(res => {
         let condition = res.data;
-        console.log("api call ", condition.name)
         this.setState({ condition: condition.name })
       })
   }
@@ -43,16 +43,14 @@ class Appointment extends Component {
   handlePageChange() {
     setTimeout(() => {
       window.location = '/'
-    }, 2000);
+    }, 2000)
   }
-
 
   render() {
     const appt = this.props.appointment
     const status = this.props.status
     let { provider, patient, condition } = this.state
     let link = `appointment/${this.props.appointment.id}`
-    let linkUpdate = `/bookingCalendar/${this.props.appointment.id}`
     const onDeleteAppt = e => {
       e.preventDefault()
       let aptid = this.props.appointment.id
@@ -61,7 +59,7 @@ class Appointment extends Component {
     const onUpdateAppt = e => {
       e.preventDefault()
       this.props.updateAppointmentInState(this.props.appointment)
-       this.context.router.history.push(`/bookingCalendar`)
+      this.context.router.history.push(`/bookingCalendar`)
     }
     return provider && patient
       ? (
@@ -72,32 +70,22 @@ class Appointment extends Component {
                 ? <span>{condition}</span>
                 : <span></span>
               }</p>
-              <p className='appt-time'>{appt.date} at {appt.time} with Doctor {provider.last_name}</p></div>
-
-            {status === "upcoming"
-
-              ? <div className='col-sm-4 detail-button'>
-
-
+                <p className='appt-time'>{appt.date} at {appt.time} with Doctor {provider.last_name}</p></div>
+              {status === "upcoming"
+                ? <div className='col-sm-4 detail-button'>
                   <Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}>
-                  <button className='btn aptbtn-more'> Details</button>
-
-                  </Link>
+                    <button className='btn aptbtn-more'> Details</button> </Link>
                   <button className="btn aptbtn-more" onClick={onUpdateAppt}>Update</button>
-
                   <a className='btn' onClick={onDeleteAppt}>
                     <img src="https://cdn4.iconfinder.com/data/icons/devine_icons/128/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" width='30' height='30' className='trash' />
                   </a>
-
                 </div>
-
-              : <div className='col-md-4 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn-more'>Details</button></Link>
-              </div>
-            }
-         </div>
+                : <div className='col-md-4 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn-more'>Details</button></Link>
+                </div>
+              }
+            </div>
           </div>
         </div>
-
       )
       : <div className='container'>
         <p>Loading...</p>
@@ -107,10 +95,3 @@ class Appointment extends Component {
 
 export default Appointment
 
-
-// <div className='col-2 detail-button'><Link to={{ pathname: link, state: { appointment: { appt }, patient: { patient } } }}><button className='btn btn-primary aptbtn'>Details</button></Link></div>
-//                  <div className='col-2 delete-button'>
-//                 <button className="btn btn-primary aptbtn" onClick={onDeleteAppt}>Delete</button>
-//                 </div>
-
-{/* <div className='col-md-4 detail-button'></div><Link to={{ pathname: linkUpdate, state: { appointment: { appt }, patient: { patient } } }}><button className='btn aptbtn-details'> Change date</button></Link> */}

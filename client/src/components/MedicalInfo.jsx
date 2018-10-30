@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Conditions from './Conditions.jsx';
-import Allergies from './Allergies.jsx';
-import Prescriptions from './Prescriptions.jsx';
-import Immunizations from './Immunizations.jsx';
-import Vitals from './Vitals.jsx';
+import Conditions from './Conditions.jsx'
+import Allergies from './Allergies.jsx'
+import Prescriptions from './Prescriptions.jsx'
+import Immunizations from './Immunizations.jsx'
+import Vitals from './Vitals.jsx'
 
 class MedicalInfo extends Component {
   constructor() {
@@ -46,37 +46,36 @@ class MedicalInfo extends Component {
         } else {
           this.setState({ [info]: [] })
         }
-      }
-      )
+      })
   }
+
   render() {
     let { vitals, conditions, allergies, prescriptions, immunizations } = this.state
     let patient = this.props.patient
-    console.log(patient)
 
     return <div>
-    <div className='med-info-card'>
-      {vitals
-        ? <Vitals vitals={this.state.vitals} />
-        : <div className='container'> loading... </div>
-      }
-      {conditions
-        ? <Conditions conditions={this.state.conditions} />
-        : <div className='container'> loading... </div>
-      }
-      {allergies
-        ? <Allergies allergies={this.state.allergies} />
-        : <div className='container'> loading... </div>
-      }
-      {prescriptions
-        ? <Prescriptions prescriptions={this.state.prescriptions} />
-        : <div className='container'> loading... </div>
-      }
-      {immunizations
-        ? <Immunizations immunizations={this.state.immunizations} />
-        : <div className='container'> loading... </div>
-      }
-    </div>
+      <div className='med-info-card'>
+        {vitals
+          ? <Vitals vitals={this.state.vitals} />
+          : <div className='container'> loading... </div>
+        }
+        {conditions
+          ? <Conditions conditions={this.state.conditions} />
+          : <div className='container'> loading... </div>
+        }
+        {allergies
+          ? <Allergies allergies={this.state.allergies} />
+          : <div className='container'> loading... </div>
+        }
+        {prescriptions
+          ? <Prescriptions prescriptions={this.state.prescriptions} />
+          : <div className='container'> loading... </div>
+        }
+        {immunizations
+          ? <Immunizations immunizations={this.state.immunizations} />
+          : <div className='container'> loading... </div>
+        }
+      </div>
     </div>
   }
 }

@@ -19,7 +19,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("cdm on emr app")
   }
 
   fetch(endpoint) {
@@ -31,38 +30,33 @@ class App extends Component {
   updatePatientsInState(patients) {
     this.setState({
       patients
-    });
+    })
   }
 
   updateCompletedAppointmentsInState(completedAppointments) {
     this.setState({
       completedAppointments
-    });
+    })
   }
 
   updateUpcomingAppointmentsInState(upcomingAppointments) {
     this.setState({
       upcomingAppointments
-    });
+    })
   }
 
-  render () {
+  render() {
     return <div>
-    <Navbar/>
-    <Router>
-      <Switch>
-        {/* <Route path='/' exact render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment} patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments}  {...props}/>} />
-        <Route path='/home'render={(props)=><Home updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} deleteAppointment={this.deleteAppointment}  patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
-        <Route path='/login' render={()=><Login updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState}  />} />
-        <Route path='/appointment' render={(props)=><AppointmentPage patient={this.state.patient} {...props}/>} /> */}
-        {/* <Route path='/' render={(props)=><Login updatePatientsInState={this.updatePatientsInState} {...props} />} /> */}
-        <Route path='/'  exact  render={(props)=><Login updatePatientsInState={this.updatePatientsInState} {...props} />} />
-        <Route path='/emr' render={(props)=><EMR patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
-        <Route path='/emrp' render={(props)=><EMRPrevious patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props}/>} />
-        <Route path='/home' render={(props)=><Home provider={this.state.provider} patients={this.state.patients} updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState} {...props} />} />
-        <Route path='/login' render={(props)=><Login updatePatientsInState={this.updatePatientsInState} {...props} />} />
-      </Switch>
-    </Router>
+      <Navbar />
+      <Router>
+        <Switch>
+          <Route path='/' exact render={(props) => <Login updatePatientsInState={this.updatePatientsInState} {...props} />} />
+          <Route path='/emr' render={(props) => <EMR patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props} />} />
+          <Route path='/emrp' render={(props) => <EMRPrevious patient={this.state.patient} upcomingAppointments={this.state.upcomingAppointments} completedAppointments={this.state.completedAppointments} {...props} />} />
+          <Route path='/home' render={(props) => <Home provider={this.state.provider} patients={this.state.patients} updatePatientInState={this.updatePatientInState} updateConditionsInState={this.updateConditionsInState} updateUpcomingAppointmentsInState={this.updateUpcomingAppointmentsInState} updateCompletedAppointmentsInState={this.updateCompletedAppointmentsInState} {...props} />} />
+          <Route path='/login' render={(props) => <Login updatePatientsInState={this.updatePatientsInState} {...props} />} />
+        </Switch>
+      </Router>
     </div>
   }
 }

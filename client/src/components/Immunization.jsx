@@ -14,4 +14,4 @@ class Immunization extends Component {
     )
   }
 }
-export default Immunization;
+export default Immunization

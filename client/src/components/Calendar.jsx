@@ -5,10 +5,8 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class Calendar extends Component {
-
   constructor(props) {
     super(props)
-
     this.state = {
       date: new Date(),
       time: "",
@@ -128,16 +126,15 @@ class Calendar extends Component {
             {calendar}
           </div>
           <div className='col-md-4 appts'>
-          <form onSubmit={onSelectAppt}>
-            <h3>Available appointments on {day}, {formattedDate}</h3>
-            {this.createCalendarAppointnments()}
-            <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-more btn right' >Cancel</button></Link>
-            {this.props.appointment != '' 
-            
-              ? <button onClick={onUpdateAppt} className='btn aptbtn-more '>Save</button>
-              : <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-more btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
-            }
-          </form>
+            <form onSubmit={onSelectAppt}>
+              <h3>Available appointments on {day}, {formattedDate}</h3>
+              {this.createCalendarAppointnments()}
+              <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-more btn right' >Cancel</button></Link>
+              {this.props.appointment != ''
+                ? <button onClick={onUpdateAppt} className='btn aptbtn-more '>Save</button>
+                : <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-more btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
+              }
+            </form>
           </div>
         </div>
       </div>
