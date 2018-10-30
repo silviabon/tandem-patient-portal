@@ -12,6 +12,7 @@ class AppointmentPage extends Component {
   componentDidMount() {
     this.getSummary(this.props.location.state.appointment.appt.id, this.props.location.state.patient.patient)
     this.getProvider(this.props.location.state.appointment.appt.provider_id)
+    this.getCondition(this.props.location.state.patient.patient, this.props.location.state.appointment.appt.condition_id)
     this.setState({ appointment: this.props.location.state.appointment.appt })
   }
 
@@ -21,6 +22,15 @@ class AppointmentPage extends Component {
       .then(provider2 => {
         this.setState({ provider: provider2 })
       })
+  }
+
+  getCondition(patientId, conditionId) {
+    axios.get(`/api/patients/${patientId}/conditions/${conditionId}`)
+    .then(res => {
+      let condition = res.data;
+      console.log("api call ", condition.name )
+      this.setState ({ condition : condition.name })
+    })
   }
 
   getSummary(appointmentId, patientId) {
@@ -55,7 +65,7 @@ class AppointmentPage extends Component {
   }
 
   render() {
-    let { provider, summary, doctorfile, appointment } = this.state
+    let { provider, summary, doctorfile, appointment, condition } = this.state
     return <div className='row'>
       <div className='col-8 main'>
         <div className='row'>
@@ -67,6 +77,11 @@ class AppointmentPage extends Component {
                 <p>Your appointment is on {appointment.date} at {appointment.time} with Dr.{provider.last_name} </p>
                 <h3>Your Appointment Summary</h3>
                 <p><b>Type:</b> {appointment.app_type}</p>
+                <p><b>Condition:</b> {condition
+                  ? <span>{condition}</span>
+                  : <span></span>
+                      }
+                </p>
                 <p><b>Concern:</b> {appointment.concern}</p>
                 <p><b>Description:</b> {appointment.concern_desc}</p>
                 <p><b>Symptoms:</b> {appointment.symptoms} {appointment.other_symptoms}</p>

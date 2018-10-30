@@ -23,6 +23,7 @@ class Questionnaire extends Component {
   }
 
   handleChange(e) {
+    console.log("THIS.STATE", this.state)
     const fieldName = e.target.name
     const value = e.target.value
     this.setState({ [fieldName]: value })
@@ -38,7 +39,7 @@ class Questionnaire extends Component {
   render() {
     const calendar = this.props.location.state
     const questionnaire = this.state
-    const patient = this.props.patient
+    const patient = this.props.patientz
 
     const onBookingAppt = e => {
       e.preventDefault()
