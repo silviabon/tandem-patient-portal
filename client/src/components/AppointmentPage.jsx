@@ -64,7 +64,7 @@ class AppointmentPage extends Component {
           {
             provider && appointment
               ? <div className='col-xs-12 card apptDetails'>
-                <h2>Appointment details</h2>
+                <h1>Appointment details</h1>
                 <hr />
                 <p>Your appointment is on {appointment.date} at {appointment.time} with Dr.{provider.last_name} </p>
                 <h3>Your Appointment Summary</h3>
@@ -95,7 +95,7 @@ class AppointmentPage extends Component {
                     <hr />
                     {summary
                       ? <div>
-                        <h3>Your Doctor's Summary and Instructions</h3>{summary}
+                        <h2>Your Doctor's Summary and Instructions</h2>{summary}
                         {doctorfile
                           ? <div>Attachment: <p><a href={'http://localhost:3001/' + doctorfile} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
                           : <div></div>

@@ -10,7 +10,7 @@ class Immunizations extends Component {
 
     return (
       <div>
-        <h3 className='card-header'>Immunizations</h3>
+        <h2 className='card-header'>Immunizations</h2>
         {immunizationsItems}
       </div>
     )
