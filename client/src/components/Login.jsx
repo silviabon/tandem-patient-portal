@@ -48,8 +48,8 @@ class Login extends Component {
             <div className='opacity col-md-5'>
               <h2 className="logintitle">Please login</h2>
               <form onSubmit={this.handleSubmit} className='form-group opaque'>
-                <input className='form-control textarea' type="text" name="email" placeholder="example@example.com"></input>
-                <input className='form-control textarea' type="password" name="password" placeholder="Type your password"></input>
+                <input className='form-control textarea' type="text" name="email" placeholder="example@example.com" defaultValue='sandra@gmail.com'></input>
+                <input className='form-control textarea' type="password" name="password" placeholder="Type your password" defaultValue="123"></input>
                 <br />
                 <p>Are you a new patient to our clinic? <a href='#'>Contact us</a> to learn more about our registration process.</p>
                 <input className='btn login' type="submit" value="Login" />
