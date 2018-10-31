@@ -94,11 +94,11 @@ div.backgroundImgContainer img {
 
 /*Home Page*/
 div.col-md-8 {
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 div.col-md-4 {
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 div.card {
@@ -241,7 +241,7 @@ h3.card-header {
 div.main {
   margin: 0 auto;
   margin-bottom: 3em;
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 .left {
@@ -316,7 +316,7 @@ nav.navbar {
 }
 
 .cal {
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 .calendar {
@@ -337,7 +337,7 @@ h2.logintitle {
 }
 
 .apptDetails {
-  margin-top: 3em;
+  margin-top: 2em;
   padding: 1.5em;
   width: 100%;
 }
@@ -363,7 +363,7 @@ img.trash {
 span.condition {
   border: 1px solid #498999;
   border-radius: 5px;
-  padding: 0px 5px;
+  padding: 0px 6px;
   font-size: .85em;
   margin-right: 8px;
   line-height: 1.5em;
@@ -379,6 +379,7 @@ span.concern {
 .font-size-cal {
   font-size: 1.1em;
 }
+
 
 input::placeholder {
   opacity: 1;
