@@ -74,9 +74,9 @@ class Questionnaire extends Component {
         <div className='col-8 main'>
           <form className='form-group' onSubmit={onBookingAppt}>
             <h1>Appointment Questionnaire</h1>
-            <h3>Let's prepare for your appointment for {calendar.formattedDate} at {calendar.time}</h3>
+            <h2>Let's prepare for your appointment for {calendar.formattedDate} at {calendar.time}</h2>
             <hr />
-            <h3>Appointment Details</h3>
+            <h2>Appointment Details</h2>
             <div className='row'>
               <div className='col-md-6'>
                 <select name='apptType' onChange={this.handleChange} className="form-control textarea"  >
@@ -93,7 +93,7 @@ class Questionnaire extends Component {
             <hr />
             <div className='row'>
               <div className='col-12'>
-                <h3>Symptoms</h3>
+                <h2>Symptoms</h2>
                 Please indicate which symptoms you are displaying</div>
               <div className='col-md-3'>
                 <p className='checked' ><input type="checkbox" name="cough" onChange={handleSymptoms} /> Cough  </p>
@@ -120,7 +120,7 @@ class Questionnaire extends Component {
               <hr />
               <div className='row'>
                 <div className='col-md-6'>
-                  <h3>Vital Measurements</h3>
+                  <h2>Vital Measurements</h2>
                   <p>Please enter any vitals you have measured:</p>
                   <p className='checked' ><input placeholder='Temperature (&#176;C)' name='temperature' onChange={this.handleChange} className='textarea form-control' /></p>
                   <p className='checked' ><input placeholder='Heart Rate (BPM)' name='heartrate' onChange={this.handleChange} className='textarea form-control' /></p>
@@ -128,7 +128,7 @@ class Questionnaire extends Component {
                   <p className='checked' ><input placeholder='Blood Pressure (Diastolic)' name='bp_d' onChange={this.handleChange} className='textarea form-control' /></p>
                 </div>
                 <div className='col-md-6'>
-                  <h3>Questions for the doctor:</h3>
+                  <h2>Questions for the doctor:</h2>
                   <p>What do you need answered?</p>
                   <p className='checked' > <input placeholder='First Questions' name='question1' className='textarea form-control' onChange={this.handleChange} />  </p>
                   <p className='checked' ><input placeholder='Second Question' name='question2' className='textarea form-control' onChange={this.handleChange} /></p>
