@@ -10,7 +10,7 @@ class Conditions extends Component {
 
     return (
       <div>
-        <h3 className='card-header'>Conditions</h3>
+        <h2 className='card-header'>Conditions</h2>
         <div className='card-body med-info'>
           {conditionsItems}
         </div>

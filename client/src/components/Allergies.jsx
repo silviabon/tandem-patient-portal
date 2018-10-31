@@ -10,7 +10,7 @@ class Allergies extends Component {
 
     return (
       <div>
-        <h3 className='card-header'>Allergies</h3>
+        <h2 className='card-header'>Allergies</h2>
         <div className='card-body med-info'>
           <p>{allergiesItems}</p>
         </div>
