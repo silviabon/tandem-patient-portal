@@ -1,0 +1,24 @@
+heroku buildpacks:add -a <app> https://github.com/heroku/heroku-buildpack-multi-procfile
+
+heroku buildpacks:add -a safe-crag-82533 https://github.com/heroku/heroku-buildpack-multi-procfile
+
+git push git@heroku.com:<app> master
+
+https://git.heroku.com/safe-crag-82533.git
+
+git push git@heroku.com:safe-crag-82533 feature/heroku:master
+
+heroku create --buildpack https://github.com/heroku/heroku-buildpack-multi-procfile.git
+
+git push git@heroku.com:stark-dusk-60127 feature/heroku:master
+
+
+
+heroku create -a emrportal
+heroku create -a tandemhealth
+heroku buildpacks:add -a emrportal https://github.com/heroku/heroku-buildpack-multi-procfile
+heroku buildpacks:add -a tandemhealth https://github.com/heroku/heroku-buildpack-multi-procfile
+heroku config:set -a emrportal PROCFILE=emr/Procfile
+heroku config:set -a tandemhealth PROCFILE=Procfile
+git push https://git.heroku.com/emrportal.git feature/heroku:master
+git push https://git.heroku.com/tandemhealth.git feature/heroku:master
