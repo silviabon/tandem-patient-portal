@@ -65,7 +65,7 @@ class Home extends Component {
 
       confirmAlert({
         title: 'Attention!',
-        message: 'If you are displaying severe symptoms please call 911 or go to your nearest emergency room',
+        message: 'If you are experiencing severe symptoms please call 911 or go to your nearest emergency room',
         buttons: [
           {
             label: 'Continue',

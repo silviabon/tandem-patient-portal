@@ -96,24 +96,24 @@ class Questionnaire extends Component {
                 <h3>Symptoms</h3>
                 Please indicate which symptoms you are displaying</div>
               <div className='col-md-3'>
-                <p><input type="checkbox" name="cough" onChange={handleSymptoms} /> Cough  </p>
-                <p><input type="checkbox" name="fever" onChange={handleSymptoms} /> Fever </p>
-                <p><input type="checkbox" name="pain" onChange={handleSymptoms} /> Pain </p>
+                <p className='checked' ><input type="checkbox" name="cough" onChange={handleSymptoms} /> Cough  </p>
+                <p className='checked' ><input type="checkbox" name="fever" onChange={handleSymptoms} /> Fever </p>
+                <p className='checked' ><input type="checkbox" name="pain" onChange={handleSymptoms} /> Pain </p>
               </div>
               <div className='col-md-3'>
-                <p><input type="checkbox" name="nausea" onChange={handleSymptoms} /> Nausea </p>
-                <p><input type="checkbox" name="fatique" onChange={handleSymptoms} /> Fatigue </p>
-                <p><input type="checkbox" name="swelling" onChange={handleSymptoms} /> Swelling </p>
+                <p className='checked' ><input type="checkbox" name="nausea" onChange={handleSymptoms} /> Nausea </p>
+                <p className='checked' ><input type="checkbox" name="fatique" onChange={handleSymptoms} /> Fatigue </p>
+                <p className='checked' ><input type="checkbox" name="swelling" onChange={handleSymptoms} /> Swelling </p>
               </div>
               <div className='col-md-3'>
-                <p><input type="checkbox" name="diarrhea" onChange={handleSymptoms} /> Diarrhea </p>
-                <p><input type="checkbox" name="vomiting" onChange={handleSymptoms} /> Vomiting </p>
-                <p><input type="checkbox" name="shortness of breath" onChange={handleSymptoms} /> Shortness of Breath </p>
+                <p className='checked' ><input type="checkbox" name="diarrhea" onChange={handleSymptoms} /> Diarrhea </p>
+                <p className='checked' ><input type="checkbox" name="vomiting" onChange={handleSymptoms} /> Vomiting </p>
+                <p className='checked' ><input type="checkbox" name="shortness of breath" onChange={handleSymptoms} /> Shortness of Breath </p>
               </div>
               <div className='col-md-3'>
-                <p><input type="checkbox" name="headache" onChange={handleSymptoms} /> Headache </p>
-                <p><input type="checkbox" name="rash" onChange={handleSymptoms} /> Rash </p>
-                <p>Other (Please Specify):<input name="otherSymptoms" onChange={this.handleChange} className='textarea form-control' /></p>
+                <p className='checked' ><input type="checkbox" name="headache" onChange={handleSymptoms} /> Headache </p>
+                <p className='checked' ><input type="checkbox" name="rash" onChange={handleSymptoms} /> Rash </p>
+                <p className='checked' >Other (Please Specify):<input name="otherSymptoms" onChange={this.handleChange} className='textarea form-control' /></p>
               </div>
             </div>
             <div className="vq">
@@ -122,20 +122,20 @@ class Questionnaire extends Component {
                 <div className='col-md-6'>
                   <h3>Vital Measurements</h3>
                   <p>Please enter any vitals you have measured:</p>
-                  <p><input placeholder='Temperature (&#176;C)' name='temperature' onChange={this.handleChange} className='textarea form-control' /></p>
-                  <p><input placeholder='Heart Rate (BPM)' name='heartrate' onChange={this.handleChange} className='textarea form-control' /></p>
-                  <p><input placeholder='Blood Pressure (Systolic)' name='bp_s' onChange={this.handleChange} className='textarea form-control' /> </p>
-                  <p><input placeholder='Blood Pressure (Diastolic)' name='bp_d' onChange={this.handleChange} className='textarea form-control' /></p>
+                  <p className='checked' ><input placeholder='Temperature (&#176;C)' name='temperature' onChange={this.handleChange} className='textarea form-control' /></p>
+                  <p className='checked' ><input placeholder='Heart Rate (BPM)' name='heartrate' onChange={this.handleChange} className='textarea form-control' /></p>
+                  <p className='checked' ><input placeholder='Blood Pressure (Systolic)' name='bp_s' onChange={this.handleChange} className='textarea form-control' /> </p>
+                  <p className='checked' ><input placeholder='Blood Pressure (Diastolic)' name='bp_d' onChange={this.handleChange} className='textarea form-control' /></p>
                 </div>
                 <div className='col-md-6'>
                   <h3>Questions for the doctor:</h3>
                   <p>What do you need answered?</p>
-                  <p> <input placeholder='First Questions' name='question1' className='textarea form-control' onChange={this.handleChange} />  </p>
-                  <p><input placeholder='Second Question' name='question2' className='textarea form-control' onChange={this.handleChange} /></p>
-                  <label for="exampleFormControlFile1">Please upload your file</label>
+                  <p className='checked' > <input placeholder='First Questions' name='question1' className='textarea form-control' onChange={this.handleChange} />  </p>
+                  <p className='checked' ><input placeholder='Second Question' name='question2' className='textarea form-control' onChange={this.handleChange} /></p>
+                  <p>Please upload your file</p>
                   <input type="file" className="form-control-file" id="file" name="file" onChange={this.readFile}></input>
                   <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-more btn right' >Cancel</button></Link>
-                  <button type="submit" value="submit" className='btn login right' >Submit your health Questionnaire</button>
+                  <button type="submit" value="submit" className='btn login right' >Submit your health questionnaire</button>
                   
                   
                 </div>
