@@ -13,14 +13,14 @@ class AppointmentList extends Component {
     <div>
       <div className='row'>
         <div className='col-md-12'>
-      {appointments && appointments.length
+        {appointments && appointments.length
         ? <div>
           {appointments.map((appointment) => {
             return <Appointment deleteAppointment={this.props.deleteAppointment} appointment={appointment}  updateAppointmentInState={this.props.updateAppointmentInState} key={appointment.id} status={this.props.status} patient={this.props.patient} />
           })}
         </div>
         : <div className='container'>Loading...</div>
-      }
+        }
         </div>
       </div>
     </div>
