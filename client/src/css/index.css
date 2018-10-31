@@ -5,6 +5,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.btn {
+  font-family: 'Open Sans', sans-serif;
+}
+
 #root {
   padding: 0;
 }
@@ -361,7 +365,9 @@ img.trash {
 
 }
 span.condition {
-  border: 1px solid #498999;
+  border: 1px solid #F6B729;
+  background-color: #F6B729;
+  color: white;
   border-radius: 5px;
   padding: 0px 6px;
   font-size: .85em;
