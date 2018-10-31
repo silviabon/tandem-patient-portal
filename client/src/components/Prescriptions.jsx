@@ -10,7 +10,7 @@ class Prescriptions extends Component {
 
     return (
       <div>
-        <h3 className='card-header'>Prescriptions</h3>
+        <h2 className='card-header'>Prescriptions</h2>
         {prescriptionsItems}
       </div>
     )
