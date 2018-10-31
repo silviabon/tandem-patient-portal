@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 1.2em;
+  font-size: 1.6em !important; 
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -27,16 +27,13 @@ button.navbar-btn {
   margin-left: 15px;
   color: white;
 }
-/*
-button.navbar-btn:hover {
-  background-color: #F39801;
-  border-color: #F39801;
-} */
+
 
 span.nav-name {
   font-size: 1.2em;
-  line-height: 1.7em;
+  line-height: 1.5em;
   color: white;
+  vertical-align: middle;
 }
 
 img#logo{
@@ -97,11 +94,11 @@ div.backgroundImgContainer img {
 
 /*Home Page*/
 div.col-md-8 {
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 div.col-md-4 {
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 div.card {
@@ -244,7 +241,7 @@ h3.card-header {
 div.main {
   margin: 0 auto;
   margin-bottom: 3em;
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 .left {
@@ -316,11 +313,10 @@ h1.tagline2 {
 
 nav.navbar {
   box-shadow: 3px 2px 30px 1px darkgray;
-
 }
 
 .cal {
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 .calendar {
@@ -341,7 +337,7 @@ h2.logintitle {
 }
 
 .apptDetails {
-  margin-top: 3em;
+  margin-top: 2em;
   padding: 1.5em;
   width: 100%;
 }
@@ -357,4 +353,48 @@ a.btn {
 img.trash {
   padding: 0px;
   margin: 0px;
+}
+
+.inline {
+  display: inline-block;
+  margin-top: 0px;
+
+}
+span.condition {
+  border: 1px solid #498999;
+  border-radius: 5px;
+  padding: 0px 6px;
+  font-size: .85em;
+  margin-right: 8px;
+  line-height: 1.5em;
+  vertical-align: middle;
+}
+
+span.concern {
+  font-size: 1.14em;
+  line-height: 1.5em;
+  vertical-align: middle;
+}
+
+.font-size-cal {
+  font-size: 1.1em;
+}
+
+
+/* input::placeholder {
+  opacity: 1;
+  font-size: 1.3em;
+} */
+
+/* textarea::placeholder {
+  opacity: 1;
+  font-size: 1.3em;
+} */
+
+option.drop {
+  font-size: 6em;
+}
+
+p.checked {
+  font-size: 0.8em;
 }

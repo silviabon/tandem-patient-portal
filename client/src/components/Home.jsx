@@ -22,7 +22,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log("props on Home", this.props.patient)
     if (!this.props.patient) {
       this.context.router.history.push(`/login`)
     }
@@ -53,27 +52,40 @@ class Home extends Component {
         },
         {
           label: 'No',
-          onClick: () => {}
+          onClick: () => { }
         }
       ]
     })
   }
 
-
-
-
   render() {
     let { completedAppointments, upcomingAppointments } = this.props
-
     const onNewAppt = e => {
-
       e.preventDefault()
-      
-      if (upcomingAppointments.length > 0) {
-        this.props.updateAppointmentInState('')
-      }
 
-      this.context.router.history.push(`/bookingCalendar`)
+      confirmAlert({
+        title: 'Attention!',
+        message: 'If you are experiencing severe symptoms please call 911 or go to your nearest emergency room',
+        buttons: [
+          {
+            label: 'Continue',
+            onClick: () => {
+              
+              this.context.router.history.push(`/bookingCalendar`)
+            }
+          },
+          {
+            label: 'Cancel',
+            onClick: () => {}
+          }
+        ]
+      })
+
+      // if (upcomingAppointments.length > 0) {
+      //   this.props.updateAppointmentInState('')
+      // }
+
+      // this.context.router.history.push(`/bookingCalendar`)
     }
     return (
       <div className='row'>

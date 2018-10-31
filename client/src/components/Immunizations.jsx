@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Immunization from './Immunization.jsx';
+import Immunization from './Immunization.jsx'
 
 class Immunizations extends Component {
 

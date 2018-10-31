@@ -5,10 +5,8 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class Calendar extends Component {
-
   constructor(props) {
     super(props)
-
     this.state = {
       date: new Date(),
       time: "",
@@ -65,7 +63,7 @@ class Calendar extends Component {
     this.state.appConfig.listItems.map((item) => {
       const day = this.state.daysOfWeek[this.state.date.getDay()]
       if (day === 'Monday' || day === 'Tuesday' || day === 'Wednesday' || day === 'Thursday' || day === 'Friday')
-        calendarAppts.push(<div><button className='btn selector' onClick={this.onTimeClick} value={item}>Book on {day}, at {item}</button></div>)
+        calendarAppts.push(<div><button className='btn selector font-size-cal' onClick={this.onTimeClick} value={item}>Book on {day}, at {item}</button></div>)
     })
     if (calendarAppts.length > 0) {
       return calendarAppts
@@ -128,16 +126,15 @@ class Calendar extends Component {
             {calendar}
           </div>
           <div className='col-md-4 appts'>
-          <form onSubmit={onSelectAppt}>
-            <h3>Available appointments on {day}, {formattedDate}</h3>
-            {this.createCalendarAppointnments()}
-            <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-more btn right' >Cancel</button></Link>
-            {this.props.appointment != '' 
-            
-              ? <button onClick={onUpdateAppt} className='btn aptbtn-more '>Save</button>
-              : <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-more btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
-            }
-          </form>
+            <form onSubmit={onSelectAppt}>
+              <h3>Available appointments</h3>
+              {this.createCalendarAppointnments()}
+              <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-more btn right' >Cancel</button></Link>
+              {this.props.appointment != ''
+                ? <button onClick={onUpdateAppt} className='btn aptbtn-more '>Save</button>
+                : <Link to={{ pathname: '/bookingQuestionnaire', state: this.state }}><button className='aptbtn-more btn' type="submit" disabled={this.isDisabled()} >Continue</button></Link>
+              }
+            </form>
           </div>
         </div>
       </div>
