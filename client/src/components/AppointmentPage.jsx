@@ -57,6 +57,7 @@ class AppointmentPage extends Component {
 
   render() {
     let { provider, summary, doctorfile, appointment, condition } = this.state
+    console.log('apppointment', appointment)
     return <div className='row'>
       <div className='col-8 main'>
         <div className='row'>
@@ -85,6 +86,7 @@ class AppointmentPage extends Component {
                 <p><b>Question 2:</b> {appointment.q2}</p>
                 {appointment.file.url
                   ? <div><p><b>Document Upload</b></p>
+                    <p>{appointment.file.url}</p>
                     <p><a href={'http://localhost:3001/' + appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
                   : <div></div>
                 }

@@ -381,16 +381,20 @@ span.concern {
 }
 
 
-input::placeholder {
+/* input::placeholder {
   opacity: 1;
   font-size: 1.3em;
-}
+} */
 
-textarea::placeholder {
+/* textarea::placeholder {
   opacity: 1;
   font-size: 1.3em;
-}
+} */
 
 option.drop {
   font-size: 6em;
+}
+
+p.checked {
+  font-size: 0.8em;
 }
