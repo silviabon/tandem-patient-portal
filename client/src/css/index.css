@@ -365,9 +365,7 @@ img.trash {
 
 }
 span.condition {
-  border: 1px solid #F6B729;
-  background-color: #F6B729;
-  color: white;
+  border: 2px solid #F6B729;
   border-radius: 5px;
   padding: 0px 6px;
   font-size: .85em;
