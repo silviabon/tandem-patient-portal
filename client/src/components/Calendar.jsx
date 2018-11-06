@@ -127,7 +127,7 @@ class Calendar extends Component {
           </div>
           <div className='col-md-4 appts'>
             <form onSubmit={onSelectAppt}>
-              <h3>Available appointments on {day}, {formattedDate}</h3>
+              <h2>Available appointments</h2>
               {this.createCalendarAppointnments()}
               <Link to={{ pathname: '/home', state: this.state }}><button className='aptbtn-more btn right' >Cancel</button></Link>
               {this.props.appointment != ''

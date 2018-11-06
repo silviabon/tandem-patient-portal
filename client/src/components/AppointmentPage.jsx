@@ -57,13 +57,14 @@ class AppointmentPage extends Component {
 
   render() {
     let { provider, summary, doctorfile, appointment, condition } = this.state
+    console.log('apppointment', appointment)
     return <div className='row'>
       <div className='col-8 main'>
         <div className='row'>
           {
             provider && appointment
               ? <div className='col-xs-12 card apptDetails'>
-                <h2>Appointment details</h2>
+                <h1>Appointment details</h1>
                 <hr />
                 <p>Your appointment is on {appointment.date} at {appointment.time} with Dr.{provider.last_name} </p>
                 <h3>Your Appointment Summary</h3>
@@ -85,6 +86,7 @@ class AppointmentPage extends Component {
                 <p><b>Question 2:</b> {appointment.q2}</p>
                 {appointment.file.url
                   ? <div><p><b>Document Upload</b></p>
+                    <p>{appointment.file.url}</p>
                     <p><a href={'http://localhost:3001/' + appointment.file.url} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
                   : <div></div>
                 }
@@ -93,7 +95,7 @@ class AppointmentPage extends Component {
                     <hr />
                     {summary
                       ? <div>
-                        <h3>Your Doctor's Summary and Instructions</h3>{summary}
+                        <h2>Your Doctor's Summary and Instructions</h2>{summary}
                         {doctorfile
                           ? <div>Attachment: <p><a href={'http://localhost:3001/' + doctorfile} target='_blank'><img src='https://png.icons8.com/ios/2x/document.png' /></a></p></div>
                           : <div></div>

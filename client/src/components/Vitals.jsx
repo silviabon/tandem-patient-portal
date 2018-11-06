@@ -7,7 +7,7 @@ class Vitals extends Component {
 
     return (
       <div>
-        <h3 className='card-header'>Vitals</h3>
+        <h2 className='card-header'>Vitals</h2>
         <div className='card-body med-info'>
           <p><span>Blood pressure - systolic: </span> <span>{vitals.bp_s}</span><br />
             <span>Blood pressure -  diastolic: </span> <span>{vitals.bp_d}</span><br />

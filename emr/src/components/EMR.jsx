@@ -119,6 +119,9 @@ class EMR extends Component {
           <Header as='h3' dividing>Objective</Header>
           <textarea id="objective" name="objective" rows="3" cols="33" maxLength="200" wrap="hard">
           </textarea>
+          <Header as='h3' dividing>Assessment</Header>
+          <textarea id="plan" name="plan" rows="3" cols="33" maxLength="200" wrap="hard">
+          </textarea>
           <Header as='h3' dividing>Plan</Header>
           <textarea id="plan" name="plan" rows="3" cols="33" maxLength="200" wrap="hard">
           </textarea>

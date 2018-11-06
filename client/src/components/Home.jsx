@@ -65,7 +65,7 @@ class Home extends Component {
 
       confirmAlert({
         title: 'Attention!',
-        message: 'If you are displaying severe symptoms please call 911 or go to your nearest emergency room',
+        message: 'If you are experiencing severe symptoms please call 911 or go to your nearest emergency room',
         buttons: [
           {
             label: 'Continue',
@@ -93,11 +93,11 @@ class Home extends Component {
           <div className='row'>
             <div className='col-md-8'>
               <button className="btn book-apt" onClick={onNewAppt}>Book Appointment</button>
-              <h2>Upcoming Appointments</h2>
+              <h1>Upcoming Appointments</h1>
               {upcomingAppointments && upcomingAppointments.length
                 ? (<AppointmentList deleteAppointment={this.deleteAppointment} appointments={this.props.upcomingAppointments} updateAppointmentInState={this.props.updateAppointmentInState} patient={this.props.patient} status={'upcoming'} />)
                 : <div className='container'>No appointments found.</div>}
-              <h2>Previous Appointments</h2>
+              <h1>Previous Appointments</h1>
               {completedAppointments && completedAppointments.length
                 ? <AppointmentList appointments={this.props.completedAppointments} status={'completed'} />
                 : <div className='container'>No appointments found.</div>}
