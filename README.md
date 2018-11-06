@@ -1,4 +1,4 @@
-![Tandem Health Portal Logo](/Users/benguidolin/Documents/PATIENT-PORTAL/docs/Screen Shot 2018-11-06 at 11.58.43.png)
+![Tandem Health Portal Logo](https://github.com/bguids91/tandem-patient-portal/blob/master/docs/Screen%20Shot%202018-11-06%20at%2011.58.43.png?raw=true)
 
 # Tandem Health Portal
 
