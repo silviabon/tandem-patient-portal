@@ -21,3 +21,9 @@ rake db:migrate
 rake db:seed
 rake start
 ```
+
+## Team Members
+
+Alefiya Vahanvaty https://github.com/alefiyaV
+Sebastian Mantilla https://github.com/sebas
+Silvia Bon https://github.com/silviabon
