@@ -1,15 +1,16 @@
-![Tandem Health Portal](/Users/benguidolin/Documents/PATIENT-PORTAL/docs/logo_clipped_rev_3.png)
-
 # Tandem Health Portal
 
 
 ## Getting started
 
 ``` shell
-git clone https://github.com/superhighfives/list-of-ingredients.git
-cd list-of-ingredients
+git clone https://github.com/bguids91/patient-portal.git
+cd patient-portal
 bundle
 cd client
+npm install
+cd ..
+cd emr
 npm install
 cd ..
 rake db:migrate
