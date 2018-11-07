@@ -4,6 +4,10 @@
 
 The identified problem is that time is not efficiently spent at your family doctor’s appointments. Also, patients are not always allowed access to their medical records. Our solution gives patients more autonomy over their own health and allows doctors more time and preparation for their visits. Instead of a doctor spending a portion of your short visit gathering data, they can have access to this data when the appointment is made. Some patients suffer a general anxiety towards doctor visits and can very easily forget important information for their visit. Our solution gives patients the space to gather their thoughts and ultimately have a more thorough and complete appointment with their GP.  Our hope is to improve patient engagement in matters of their own health. Patients can start keeping a curated copy of their medical record.
 
+## Demo
+
+![Demo](https://github.com/bguids91/tandem-patient-portal/blob/master/docs/ezgif.com-optimize.gif?raw=true)
+
 
 ## Getting started
 
