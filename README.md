@@ -29,5 +29,6 @@ rake start
 ## Team Members
 
 - Alefiya Vahanvaty https://github.com/alefiyaV
+- Ben Guidolin https://github.com/bguids91
 - Sebastian Mantilla https://github.com/sebas
 - Silvia Bon https://github.com/silviabon
